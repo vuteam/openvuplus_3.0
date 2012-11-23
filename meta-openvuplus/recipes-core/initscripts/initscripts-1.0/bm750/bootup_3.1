@@ -1,0 +1,36 @@
+#double check driver
+if lsmod | grep -q 'brcmfb'; then
+        echo driver is installed
+else
+	for mod in procmk dvb-bcm7335 brcmfb; do
+		modprobe $mod
+	done
+fi
+
+depmod -Ae
+
+# sleep after 10min
+hdparm -S 120 /dev/sda
+
+# accustic management
+hdparm -M 128 /dev/sda
+
+if [ ! -h /boot/bootlogo.mvi ]; then                                                                                               
+        ln -sf /usr/share/bootlogo.mvi /boot/bootlogo.mvi                                                                          
+fi                                                                                                                                 
+                                                                                                                                   
+if [ ! -h /boot/bootlogo_wait.mvi ]; then                                                                                          
+        ln -sf /usr/share/bootlogo_wait.mvi /boot/bootlogo_wait.mvi                                                                
+fi                                                                                                                                 
+                                     
+if [ ! -h /boot/backdrop.mvi ]; then                                                                                               
+        ln -sf /usr/share/backdrop.mvi /boot/backdrop.mvi
+fi
+
+[ -e /etc/dropbear/dropbear_rsa_host_key ] && /usr/bin/showiframe /boot/bootlogo.mvi || /usr/bin/showiframe /boot/bootlogo_wait.mvi
+
+ipkg-cl configure
+
+if [ -f /usr/local/bin/vucamd ]; then
+	/usr/local/bin/vucamd &
+fi

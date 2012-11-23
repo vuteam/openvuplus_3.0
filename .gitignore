@@ -1,0 +1,11 @@
+/build/
+/.deps/
+/meta-*/
+!/meta-bsp/
+!/meta-openvuplus/
+/openembedded-core/
+/sources/
+*.swp
+bblayers.conf
+/tmp/
+/bitbake.env
