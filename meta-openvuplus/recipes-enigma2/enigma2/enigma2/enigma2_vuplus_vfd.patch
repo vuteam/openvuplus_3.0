@@ -1,0 +1,141 @@
+diff --git a/configure.ac b/configure.ac
+index 4902a9c..4bd2117 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -207,4 +207,5 @@ tools/enigma2.sh
+ enigma2.pc
+ ])
+ AC_DEFINE(BUILD_VUPLUS,1,[Define to 1 for vuplus])
++AC_DEFINE(BUILD_VUPLUS_DUO,1,[Define to 1 for duo])
+ AC_OUTPUT
+diff --git a/lib/gdi/glcddc.cpp b/lib/gdi/glcddc.cpp
+index 096705e..bcf0f5f 100755
+--- a/lib/gdi/glcddc.cpp
++++ b/lib/gdi/glcddc.cpp
+@@ -34,6 +34,16 @@ void gLCDDC::exec(gOpcode *o)
+ {
+ 	switch (o->opcode)
+ 	{
++#ifdef BUILD_VUPLUS_DUO /* ikseong  */
++	case gOpcode::renderText:
++		if (o->parm.renderText->text)
++		{
++			lcd->updates(gDC::m_current_offset,o->parm.renderText->text);
++			free(o->parm.renderText->text);
++			delete o->parm.renderText;
++		}
++		break;
++#endif			
+ 	case gOpcode::flush:
+ //		if (update)
+ #ifndef BUILD_VUPLUS /* ikseong  */
+diff --git a/lib/gdi/lcd.cpp b/lib/gdi/lcd.cpp
+index 9cb657c..83add38 100755
+--- a/lib/gdi/lcd.cpp
++++ b/lib/gdi/lcd.cpp
+@@ -228,3 +228,25 @@ void eDBoxLCD::update()
+ 	}
+ }
+ 
++#ifdef BUILD_VUPLUS_DUO /* ikseong  */
++char *eDBoxLCD::remaketext(char *text)
++{
++	int len = strlen(text);
++	int i;
++	for(i=0;i<len;i++)
++	{
++		if(text[i]==0x0a)
++			text[i] = 0x20;
++	}
++	return text;
++}
++
++void eDBoxLCD::updates(ePoint start,char *text)
++{
++	if((lcdfd >= 0) && (start.y() < 5))
++	{
++		text = remaketext(text);
++		write(lcdfd,text,strlen(text));
++	}
++}
++#endif
+diff --git a/lib/gdi/lcd.h b/lib/gdi/lcd.h
+index e7b4c2c..561e3b0 100644
+--- a/lib/gdi/lcd.h
++++ b/lib/gdi/lcd.h
+@@ -36,6 +36,9 @@ public:
+ 	int stride() { return _stride; }
+ 	eSize size() { return res; }
+ 	virtual void update()=0;
++#ifdef BUILD_VUPLUS_DUO /* ikseong  */
++	virtual void updates(ePoint start,char *text) = 0;
++#endif
+ #endif
+ };
+ 
+@@ -59,6 +62,10 @@ public:
+ 	void setInverted( unsigned char );
+ 	bool isOled() const { return !!is_oled; }
+ 	void update();
++#ifdef BUILD_VUPLUS_DUO /* ikseong  */
++	char *remaketext(char *text);
++	void updates(ePoint start,char *text);
++#endif
+ };
+ 
+ #endif
+diff --git a/lib/python/Screens/ChoiceBox.py b/lib/python/Screens/ChoiceBox.py
+index 7c8b142..39e70d4 100644
+--- a/lib/python/Screens/ChoiceBox.py
++++ b/lib/python/Screens/ChoiceBox.py
+@@ -31,7 +31,9 @@ class ChoiceBox(Screen):
+ 			pos += 1
+ 		self["list"] = ChoiceList(list = self.list, selection = selection)
+ 		self["summary_list"] = StaticText()
+-		self.updateSummary()
++#	ikseong
++#		self.updateSummary()
++		self.updateSummary(selection)
+ 				
+ 		self["actions"] = NumberActionMap(["WizardActions", "InputActions", "ColorActions", "DirectionActions"], 
+ 		{
+@@ -120,14 +122,21 @@ class ChoiceBox(Screen):
+ 	def updateSummary(self, curpos=0):
+ 		pos = 0
+ 		summarytext = ""
++#	ikseong		
++#		for entry in self.summarylist:
++#			if pos > curpos-2 and pos < curpos+5:
++#				if pos == curpos:
++#					summarytext += ">"
++#				else:
++#					summarytext += entry[0]
++#				summarytext += ' ' + entry[1] + '\n'
++#			pos += 1
+ 		for entry in self.summarylist:
+-			if pos > curpos-2 and pos < curpos+5:
+-				if pos == curpos:
+-					summarytext += ">"
+-				else:
+-					summarytext += entry[0]
+-				summarytext += ' ' + entry[1] + '\n'
++			if pos == curpos:
++				summarytext += entry[1] +'\n'
++				break
+ 			pos += 1
++#
+ 		self["summary_list"].setText(summarytext)
+ 
+ 	def cancel(self):
+diff --git a/lib/python/enigma_python.i b/lib/python/enigma_python.i
+index 0bddce1..040952d 100755
+--- a/lib/python/enigma_python.i
++++ b/lib/python/enigma_python.i
+@@ -131,6 +131,7 @@ is usually caused by not marking PSignals as immutable.
+ 
+ #define DEBUG
+ #define BUILD_VUPLUS
++#define BUILD_VUPLUS_DUO
+ typedef long time_t;
+ %include "typemaps.i"
+ %include "std_string.i"
