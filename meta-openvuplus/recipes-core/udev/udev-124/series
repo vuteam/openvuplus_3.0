@@ -1,0 +1,6 @@
+noasmlinkage.patch -p1
+flags.patch -p1
+vol_id_ld.patch -p1
+udevtrigger_add_devname_filtering.patch -p1
+libvolume-id-soname.patch -p1
+mtd-exclude-persistent.patch -p1
