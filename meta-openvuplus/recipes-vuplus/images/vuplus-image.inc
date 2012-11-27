@@ -26,6 +26,7 @@ TASK_VUPLUS_BASE ?= "task-vuplus-base"
 
 IMAGE_INSTALL = " \
 	${TASK_CORE_BOOT} \
+	${TASK_VUPLUS_BASE} \
 "
 
 IMAGE_PKGTYPE = "ipk"
