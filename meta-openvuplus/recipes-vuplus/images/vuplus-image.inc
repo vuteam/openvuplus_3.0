@@ -25,6 +25,7 @@ TASK_VUPLUS_BASE ?= "task-vuplus-base"
 #"
 
 IMAGE_INSTALL = " \
+	${ROOTFS_PKGMANAGE} \
 	${TASK_CORE_BOOT} \
 	${TASK_VUPLUS_BASE} \
 "
