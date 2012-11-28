@@ -19,6 +19,7 @@ RDEPENDS_${PN} += " \
   enigma2-meta \
   enigma2-plugins-meta \
   enigma2-skins-meta \
+  showiframe \
 "
 
 #  enigma2-plugin-extensions-mediascanner \

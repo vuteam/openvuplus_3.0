@@ -13,8 +13,7 @@ BAD_RECOMMENDATIONS += "libnss-mdns"
 
 TASK_CORE_BOOT ?= "task-core-boot"
 TASK_VUPLUS_BASE ?= "task-vuplus-base"
-#TASK_VUPLUS_DVBAPI ?= "task-vuplus-dvbapi3"
-#TASK_VUPLUS_ENIGMA ?= "task-vuplus-enigma2"
+TASK_VUPLUS_ENIGMA ?= "task-vuplus-enigma2"
 
 # packages to drag into the image
 #IMAGE_INSTALL = " \
@@ -28,6 +27,7 @@ IMAGE_INSTALL = " \
 	${ROOTFS_PKGMANAGE} \
 	${TASK_CORE_BOOT} \
 	${TASK_VUPLUS_BASE} \
+	${TASK_VUPLUS_ENIGMA} \
 "
 
 IMAGE_PKGTYPE = "ipk"
