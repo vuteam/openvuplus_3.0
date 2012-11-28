@@ -5,21 +5,26 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=c9e255efa454e0155c1fd758df7dcaf3"
 DEPENDS = "jpeg libungif libmad libpng libsigc++-1.2 gettext-native \
 	dreambox-dvbincludes freetype libdvbsi++ python swig-native \
 	libfribidi libxmlccwrap libdreamdvd gstreamer gst-plugin-dvbmediasink \
-	gst-plugins-bad gst-plugins-good gst-plugins-ugly \
+	gst-plugins-bad gst-plugins-good gst-plugins-ugly python-wifi \
+	hostap-daemon bridge-utils \
 "
 
 # DEPENDS += "wvdial wvstreams ppp usbmodeswitch usbmodeswitch-data djmount minidlna"
 
+RDEPENDS_GST= "gst-plugins-base-decodebin gst-plugins-base-decodebin2 gst-plugins-base-app gst-plugins-bad-fragmented \
+		gst-plugins-good-id3demux gst-plugins-ugly-mad gst-plugins-base-ogg gst-plugins-base-playbin \
+        	gst-plugins-base-typefindfunctions gst-plugins-base-audioconvert gst-plugins-base-audioresample \
+		gst-plugins-good-wavparse gst-plugins-ugly-mpegstream \
+		gst-plugins-good-flac gst-plugin-dvbmediasink gst-plugins-bad-mpegdemux gst-plugins-ugly-dvdsub \
+		gst-plugins-good-souphttpsrc gst-plugins-ugly-mpegaudioparse gst-plugins-base-subparse \
+        	gst-plugins-good-apetag gst-plugins-good-icydemux gst-plugins-good-autodetect gst-plugins-good-flv \
+"
+
 RDEPENDS = "python-codecs python-core python-lang python-re python-threading \
-	python-xml python-fcntl gst-plugins-base-decodebin gst-plugins-base-decodebin2 python-stringold \
-	python-pickle gst-plugins-base-app gst-plugins-bad-fragmented \
-	gst-plugins-good-id3demux gst-plugins-ugly-mad gst-plugins-base-ogg gst-plugins-base-playbin \
-	gst-plugins-base-typefindfunctions gst-plugins-base-audioconvert gst-plugins-base-audioresample \
-	gst-plugins-good-wavparse python-netclient gst-plugins-ugly-mpegstream \
-	gst-plugins-good-flac gst-plugin-dvbmediasink gst-plugins-bad-mpegdemux gst-plugins-ugly-dvdsub \
-	gst-plugins-good-souphttpsrc gst-plugins-ugly-mpegaudioparse gst-plugins-base-subparse \
-	gst-plugins-good-apetag gst-plugins-good-icydemux gst-plugins-good-autodetect gst-plugins-good-flv \
-	glibc-gconv-iso8859-15 ethtool"
+		python-xml python-fcntl python-stringold python-pickle python-netclient \
+		glibc-gconv-iso8859-15 ethtool \
+		${RDEPENDS_GST} \
+"
 
 GST_RTSP_RDEPENDS = "gst-plugins-good-udp gst-plugins-good-rtsp gst-plugins-good-rtp gst-plugins-good-rtpmanager"
 GST_ALSA_RDEPENDS = "gst-plugins-base-alsa alsa-conf"

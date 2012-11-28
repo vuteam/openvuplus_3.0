@@ -16,19 +16,17 @@ RDEPENDS_${PN} += " \
   enigma2-defaultservices \
   enigma2-streamproxy \
   tuxbox-tuxtxt-32bpp \
+  showiframe \
   enigma2-meta \
   enigma2-plugins-meta \
   enigma2-skins-meta \
-  showiframe \
+  enigma2-plugin-extensions-mediascanner \
+  enigma2-plugin-systemplugins-factorytest \
+  enigma2-plugin-systemplugins-crashreport \
+  enigma2-plugin-extensions-remotestreamconvert \
+  enigma2-plugin-systemplugins-zappingmodeselection \
+  enigma2-plugin-extensions-addstreamurl \
 "
-
-#  enigma2-plugin-extensions-mediascanner \
-#  enigma2-plugin-systemplugins-factorytest \
-#  enigma2-plugin-systemplugins-crashreport \
-#  enigma2-plugin-extensions-remotestreamconvert \
-#  enigma2-plugin-systemplugins-zappingmodeselection \
-#  enigma2-plugin-extensions-addstreamurl \
-#"
 
 # vuplus-blindscan-utils \
 # enigma2-plugin-systemplugins-3gmodemmanager \
@@ -43,24 +41,23 @@ RRECOMMENDS_${PN} += " \
   python-twisted-core \
   python-twisted-protocols \
   python-twisted-web \
+  ${@base_contains("MACHINE_FEATURES", "wifi", "task-vuplus-wlan", "", d)} \
+  enigma2-plugin-extensions-mediaplayer \
+  enigma2-plugin-extensions-pictureplayer \
+  enigma2-plugin-systemplugins-skinselector \
+  enigma2-plugin-systemplugins-ui3dsetup \
+  enigma2-plugin-systemplugins-uipositionsetup \
+  enigma2-plugin-systemplugins-hdmicec \
 "
-
-#  enigma2-plugin-extensions-mediaplayer \
-#  enigma2-plugin-extensions-pictureplayer \
-#  enigma2-plugin-systemplugins-skinselector \
-#  enigma2-plugin-systemplugins-ui3dsetup \
-#  enigma2-plugin-systemplugins-uipositionsetup \
-#  enigma2-plugin-systemplugins-hdmicec \
 #  ${@base_contains("MACHINE_FEATURES", "wifi", "enigma2-plugin-systemplugins-wirelessaccesspoint", "", d)} \
-#  ${@base_contains("MACHINE_FEATURES", "wifi", "task-vuplus-wlan", "", d)} \
 #"
 
-#RDEPENDS_${PN} += " \
-#  ${@base_contains("VUPLUS_FEATURES", "fan_simple", "enigma2-plugin-systemplugins-fancontrol","", d)} \
-#  ${@base_contains("VUPLUS_FEATURES", "fan_manual", "enigma2-plugin-systemplugins-manualfancontrol", "", d)} \
-#  ${@base_contains("VUPLUS_FEATURES", "rc_code", "enigma2-plugin-systemplugins-remotecontrolcode", "", d)} \
-#  ${@base_contains("VUPLUS_FEATURES", "led", "enigma2-plugin-systemplugins-ledbrightnesssetup", "", d)} \
-#"
+RDEPENDS_${PN} += " \
+  ${@base_contains("VUPLUS_FEATURES", "fan_simple", "enigma2-plugin-systemplugins-fancontrol","", d)} \
+  ${@base_contains("VUPLUS_FEATURES", "fan_manual", "enigma2-plugin-systemplugins-manualfancontrol", "", d)} \
+  ${@base_contains("VUPLUS_FEATURES", "rc_code", "enigma2-plugin-systemplugins-remotecontrolcode", "", d)} \
+  ${@base_contains("VUPLUS_FEATURES", "led", "enigma2-plugin-systemplugins-ledbrightnesssetup", "", d)} \
+"
 
 #RDEPENDS_task-vuplus-enigma2_append_bm750 = "\
 #  enigma2-plugin-systemplugins-fancontrol \

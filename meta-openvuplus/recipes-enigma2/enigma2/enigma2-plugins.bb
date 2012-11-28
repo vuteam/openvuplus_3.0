@@ -46,8 +46,6 @@ S = "${WORKDIR}/git"
 
 DEPENDS = "python-pyopenssl python-gdata streamripper python-mutagen python-daap"
 DEPENDS += "enigma2"
-#DEPENDS += "enigma2-plugin-extensions-openwebif"
-
 
 def modify_po():
 	import os
