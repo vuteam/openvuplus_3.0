@@ -1,5 +1,6 @@
 SUMMARY = "Tuxbox common files"
-LICENSE = "CLOSED"
+LICENSE = "GPLv2"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 SRCREV = "77ff3efbac5eb01c2fc914ba8fb99374d0970ff5"
 PR = "r1"
 
