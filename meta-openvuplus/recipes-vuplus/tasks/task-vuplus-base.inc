@@ -8,7 +8,6 @@ inherit task
 
 VUPLUS_BASE_ESSENTIAL = "\
   autofs \
-  base-files-doc \
   vuplus-compat \
   dreambox-keymaps \
   e2fsprogs-e2fsck \
@@ -59,7 +58,6 @@ VUPLUS_BASE_RECOMMENDS = "\
 #VUPLUS_BASE_RECOMMENDS_append_vuultimo = " vuplus-fpga-update"
 
 VUPLUS_BASE_OPTIONAL_RECOMMENDS = "\
-  gdbserver \
   hddtemp \
   joe \
   mc \
