@@ -8,14 +8,13 @@ PR = "r19-${SRCDATE}"
 
 PREFERRED_GCC_VERSION = "4.4.3"
 
-
 DEPENDS = "\
-	virtual/kernel \
+	linux-vuplus \
 	module-init-tools \
 "
 
 RDEPENDS = "\
-	virtual/kernel \
+	linux-vuplus \
 	module-init-tools-depmod \
 " 
 

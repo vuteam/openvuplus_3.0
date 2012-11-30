@@ -22,9 +22,9 @@ WIFI_FIRMWARES = "\
 	firmware-rt3070 \
 "
 
-RALINK_MODULE = "${@base_version_less_or_equal('VUPLUS_KERNEL_VERSION', '3.1.1, 'rt3070', 'kernel-module-rt2800usb rt2870sta firmware-rt3070', d)}"
+RALINK_MODULE = "${@base_version_less_or_equal('VUPLUS_KERNEL_VERSION', '3.1.1', 'rt3070', 'kernel-module-rt2800usb rt2870sta firmware-rt3070', d)}"
 
-REALTEK_MODULE = "${@base_version_less_or_equal('VUPLUS_KERNEL_VERSION', '3.1.1, 'r8192cu', 'kernel-module-rtl8192cu', d)}"
+REALTEK_MODULE = "${@base_version_less_or_equal('VUPLUS_KERNEL_VERSION', '3.1.1', 'r8192cu', 'kernel-module-rtl8192cu', d)}"
 
 KERNEL_WIFI_MODULES = " \
 	kernel-module-ath9k-htc \
