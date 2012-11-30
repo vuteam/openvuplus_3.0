@@ -1,0 +1,6 @@
+SRCDATE = "20120628"
+
+MODULES_NAME = "procmk\ndvb-bcm7413\nbrcmfb\nfpga_directc"
+
+SRC_URI[md5sum] = "319c12d52558510265d71d1223d34d51"
+SRC_URI[sha256sum] = "995a780608f47d9f5fcd304ec96482eaa3dfa189830ec3bf6a96d9d44e12911a"
