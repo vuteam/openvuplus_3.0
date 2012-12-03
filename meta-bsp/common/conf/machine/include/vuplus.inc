@@ -6,7 +6,7 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "kernel"
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "vuplus-bootlogo"
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "vuplus-dvb-modules"
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "task-vuplus-essential"
-MACHINE_FEATURES += "alsa kernel26 wifi"
+MACHINE_FEATURES += "kernel26 alsa pci wifi vuwlan"
 
 PREFERRED_PROVIDER_virtual/kernel = "linux-vuplus"
 
