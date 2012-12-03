@@ -23,7 +23,8 @@ S = "${WORKDIR}/stblinux-2.6.37"
 
 inherit kernel
 
-FILES_kernel-image = "/boot/vmlinux.gz /boot/autoexec.bat"
+FILES_kernel-vmlinux = "/boot/vmlinux-*"
+FILES_kernel-image = "/boot/vmlinux.gz"
 
 export OS = "Linux"
 KERNEL_IMAGETYPE = "vmlinux"

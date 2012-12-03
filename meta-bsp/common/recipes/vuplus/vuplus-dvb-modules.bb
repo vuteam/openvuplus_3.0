@@ -8,17 +8,10 @@ PR = "r19-${SRCDATE}"
 
 PREFERRED_GCC_VERSION = "4.4.3"
 
-DEPENDS = "\
-	linux-vuplus \
-	module-init-tools \
-"
-
-RDEPENDS = "\
-	linux-vuplus \
-	module-init-tools-depmod \
-" 
-
 SRC_URI = "http://archive.vuplus.com/download/drivers/vuplus-dvb-modules-${MACHINE}-${PV}-${PREFERRED_GCC_VERSION}-${SRCDATE}.tar.gz "
+
+DEPENDS += "virtual/kernel module-init-tools"
+RDEPENDS += "module-init-tools-depmod"
 
 S = "${WORKDIR}"
 

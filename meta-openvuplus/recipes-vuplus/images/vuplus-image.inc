@@ -14,6 +14,7 @@ BAD_RECOMMENDATIONS += "libnss-mdns"
 TASK_CORE_BOOT ?= "task-core-boot"
 TASK_VUPLUS_BASE ?= "task-vuplus-base"
 TASK_VUPLUS_ENIGMA ?= "task-vuplus-enigma2"
+TASK_ESSENCIAL ?= "task-vuplus-essential"
 
 # packages to drag into the image
 #IMAGE_INSTALL = " \
@@ -28,6 +29,7 @@ IMAGE_INSTALL = " \
 	${TASK_CORE_BOOT} \
 	${TASK_VUPLUS_BASE} \
 	${TASK_VUPLUS_ENIGMA} \
+	${TASK_ESSENCIAL} \
 "
 
 IMAGE_PKGTYPE = "ipk"
