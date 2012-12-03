@@ -1,6 +1,6 @@
 PR .= "-splash0"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${P}:"
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " file://initrd_cfe_auto.bin file://splash_cfe_auto.bin"
 
