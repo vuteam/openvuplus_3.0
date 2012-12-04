@@ -8,12 +8,6 @@ inherit task
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-DEPENDS_${PN} += " \
-	enigma2-plugin-extensions-openwebif \
-	enigma2-plugin-extensions-remotestreamconvert \
-	enigma2-plugin-extensions-addstreamurl \
-"
-
 RDEPENDS_${PN} += " \
 	enigma2 \
 	enigma2-defaultservices \

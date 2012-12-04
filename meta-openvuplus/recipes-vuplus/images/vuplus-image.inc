@@ -8,6 +8,13 @@ SUMMARY = "A Vuplus firmware image"
 #	strace \
 #"
 
+# build e2openplugins
+DEPENDS += " \
+        enigma2-plugin-extensions-openwebif \
+        enigma2-plugin-extensions-remotestreamconvert \
+        enigma2-plugin-extensions-addstreamurl \
+"
+
 #BAD_RECOMMENDATIONS += "libnss-mdns wpa-supplicant-passphrase"
 BAD_RECOMMENDATIONS += "libnss-mdns"
 
