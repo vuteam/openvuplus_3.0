@@ -7,7 +7,7 @@ index 6255b30..d955011 100644
  Description: a client to use last.fm, the social music revolution 
  Maintainer: 3c5x9 <3c5x9@gmx.net>
 -Depends: enigma2 (>> 1.0git20070908), python-twisted-web, gst-plugin-neonhttpsrc, python-crypt
-+Depends: enigma2 (>> 1.0git20070908), python-twisted-web, gst-plugin-bad-neonhttpsrc, python-crypt
++Depends: enigma2 (>> 1.0git20070908), python-twisted-web, gst-plugins-bad-neonhttpsrc, python-crypt
 diff --git a/mytube/CONTROL/control b/mytube/CONTROL/control
 index 43f3093..6f343c9 100644
 --- a/mytube/CONTROL/control
@@ -17,7 +17,7 @@ index 43f3093..6f343c9 100644
  Maintainer: Mladen Horvat <acid-burn@opendreambox.org>
  Homepage: http://www.dream-multimedia-tv.de/
 -Depends: enigma2 (>= 2.6git20090520), python-twisted-web, python-gdata, gst-plugin-flv
-+Depends: enigma2 (>= 2.6git20090520), python-twisted-web, python-gdata, gst-plugin-good-flv
++Depends: enigma2 (>= 2.6git20090520), python-twisted-web, python-gdata, gst-plugins-good-flv
 diff --git a/netcaster/CONTROL/control b/netcaster/CONTROL/control
 index 0e69a47..83ac563 100644
 --- a/netcaster/CONTROL/control
@@ -27,7 +27,7 @@ index 0e69a47..83ac563 100644
  Maintainer: 3c5x9 <3c5x9@gmx.net>
  Homepage: http://enigma2-plugins.schwerkraft.elitedvb.net/
 -Depends: enigma2 (>= 1.0git20071803), gst-plugin-neonhttpsrc (>= 0.10.4), gst-plugin-icydemux (>= 0.10.14)
-+Depends: enigma2 (>= 1.0git20071803), gst-plugin-bad-neonhttpsrc (>= 0.10.4), gst-plugin-good-icydemux (>= 0.10.14)
++Depends: enigma2 (>= 1.0git20071803), gst-plugins-bad-neonhttpsrc (>= 0.10.4), gst-plugins-good-icydemux (>= 0.10.14)
 diff --git a/podcast/CONTROL/control b/podcast/CONTROL/control
 index 4bce2da..24209f5 100644
 --- a/podcast/CONTROL/control
@@ -37,7 +37,7 @@ index 4bce2da..24209f5 100644
  Maintainer: Nabil Hanna <nabil1978@web.de>
  Homepage: http://www.lt-forums.org/ali
 -Depends: enigma2 (>= 2.6git20090520), gst-plugin-neonhttpsrc, python-twisted-web
-+Depends: enigma2 (>= 2.6git20090520), gst-plugin-good-neonhttpsrc, python-twisted-web
++Depends: enigma2 (>= 2.6git20090520), gst-plugins-good-neonhttpsrc, pythons-twisted-web
 diff --git a/zdfmediathek/src/plugin.py b/zdfmediathek/src/plugin.py
 index b46d12f..3b27d56 100644
 --- a/zdfmediathek/src/plugin.py
@@ -47,7 +47,7 @@ index b46d12f..3b27d56 100644
  	try:
  		#FIXMEE add better check ! ? !
 -		for line in popen("opkg info gst-plugin-rtsp").readlines():
-+		for line in popen("opkg info gst-plugin-good-rtsp").readlines():
++		for line in popen("opkg info gst-plugins-good-rtsp").readlines():
  			if line.find("Version: ") != -1:
  				if line[9:] >= "0.10.23-r7.1":
  					PLAY_MP4 = True

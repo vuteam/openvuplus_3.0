@@ -1,4 +1,4 @@
-PR .= "-vuplus0"
+PR .= "-vuplus1"
 
 do_install_append() {
         ln -s media/hdd ${D}/hdd
