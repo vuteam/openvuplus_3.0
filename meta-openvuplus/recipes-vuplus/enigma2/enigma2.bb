@@ -74,42 +74,18 @@ RDEPENDS_enigma2-plugin-extensions-dlnabrowser = "djmount fuse-utils libfuse2 li
 RDEPENDS_enigma2-plugin-extensions-dlnaserver = "minidlna libexif12 libavformat52 libavutil50 libavcodec52 libgsm1 libmp3lame0 libschroedinger-1.0-0 libtheora0 liboil"
 
 PN = "enigma2"
-PR = "r38"
+PR = "r39"
 
-SRCDATE = "20110922"
-SRCREV = "5e19a3f8a5e8ce8a4e2cb2b601a1b8ef3554e4be"
+SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision
 #but we need it to build a ipk package version
 #when you like to checkout a specific revision of e2 you need
 #have to specify a commit id or a tag name in SRCREV
 
-# if you want experimental use
 ####################################################
-BRANCH = "experimental"
+BRANCH = "vuplus_experimental"
 PV = "experimental-git${SRCDATE}"
-#SRCREV = ""
-####################################################
-
-# if you want a 2.7-based release, use
-####################################################
-#BRANCH="2.7"
-#PV = "2.7git${SRCDATE}"
-# if you want 2.7.0 use
-#SRCREV = "d5a16c6e9d0ee1cc2dc0d65b4321842dea4b0891"
-####################################################
-
-# if you want a vuplus release, use
-####################################################
-#BRANCH_vuplus = "vuplus"
-#PV_vuplus = "2.8git${SRCDATE}"
-#SRCREV_vuplus = "4186f8c308d9450353520a88eb5a5ee3940281d3"
-####################################################
-
-#if you want a vuplus experimental, use
-####################################################
-BRANCH_vuplus = "vuplus_experimental"
-PV_vuplus = "experimental-git${SRCDATE}"
-SRCREV_vuplus = ""
+SRCREV = ""
 ####################################################
 
 # enigma2_vuplus_mediaplayer.patch is for trick-play in media player
@@ -206,21 +182,3 @@ python populate_packages_prepend() {
 
 RCONFLICTS_${PN} = "dreambox-keymaps"
 RREPLACES_${PN} = "dreambox-keymaps tuxbox-tuxtxt-32bpp (<= 0.0+cvs20090130-r1)"
-
-# workaround for opkg <= 0.1.7+svnr455-r19.1
-#pkg_preinst_${PN} () {
-#	if [ "x$D" != "x" ]; then
-#		exit 1
-#	fi
-#	if [ -f ${datadir}/fonts/tuxtxt.ttf ]; then
-#		cp -a ${datadir}/fonts/tuxtxt.ttf /tmp/tuxtxt.ttf
-#	fi
-#}
-#pkg_postinst_${PN} () {
-#	if [ "x$D" != "x" ]; then
-#		exit 1
-#	fi
-#	if [ -f /tmp/tuxtxt.ttf -a ! -f ${datadir}/fonts/tuxtxt.ttf ]; then
-#		mv /tmp/tuxtxt.ttf ${datadir}/fonts/tuxtxt.ttf
-#	fi
-#}
