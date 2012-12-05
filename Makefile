@@ -29,7 +29,7 @@
 # This only sets the default value. All platforms now use a shared build
 # directory. Run "MACHINE=vuultimo bitbake vuplus-image" to build an image
 # for the vuultimo, if it is not the default.
-MACHINE ?= bm750
+MACHINE ?= vuultimo
 
 MULTI_TEMPORARILY ?=
 
@@ -95,14 +95,14 @@ help:
 	@echo
 	@echo "  * Select a new target machine:"
 	@echo "      $$ echo MACHINE=vuultimo >> conf/make.conf"
-	@echo "    [Valid values: vusolo, bm750, vuuno, vuultimo, vuduo2]"
+	@echo "    [Valid values: vusolo, bm750, vuuno, vuultimo, vusolo2, vuduo2]"
 	@echo
 	@echo "  * Build a firmware image for the selected target machine:"
 	@echo "      $$ $(MAKE) image"
 	@echo
 	@echo "  * Build a firmware image for a different target machine:"
 	@echo "      $$ $(MAKE) image MACHINE=vuultimo"
-	@echo "    [Valid values: vusolo, bm750, vuuno, vuultimo, vuduo2]"
+	@echo "    [Valid values: vusolo, bm750, vuuno, vuultimo, vusolo2, vuduo2]"
 	@echo
 	@echo "  * Download all source files at once:"
 	@echo "      $$ $(MAKE) download"
@@ -122,16 +122,6 @@ help:
 	@echo "Trouble finding a recipe? Try ./scripts/drepo grep 'search string'"
 	@echo "or ./scripts/drepo find -name \"*recipe*\"."
 	@echo
-	@if [ -z "$(GIT_USER_NAME)" -o -z "$(GIT_USER_EMAIL)" ]; then \
-		echo "Before doing any commits, please configure your name and email"; \
-		echo "address using the following commands:"; \
-		echo; \
-		echo "  $$ $(GIT) config user.name \"Your Name\""; \
-		echo "  $$ $(GIT) config user.email \"mail@example.com\""; \
-	else \
-		echo "Git has been configured for $(GIT_USER_NAME) <$(GIT_USER_EMAIL)>."; \
-		echo "Please submit patches to <enigma2-devel@lists.elitedvb.net>."; \
-	fi
 
 usage:
 	@echo "[*] Please run '$(MAKE) help' to display further information!"
