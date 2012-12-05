@@ -74,7 +74,7 @@ RDEPENDS_enigma2-plugin-extensions-dlnabrowser = "djmount fuse-utils libfuse2 li
 RDEPENDS_enigma2-plugin-extensions-dlnaserver = "minidlna libexif12 libavformat52 libavutil50 libavcodec52 libgsm1 libmp3lame0 libschroedinger-1.0-0 libtheora0 liboil"
 
 PN = "enigma2"
-PR = "r39"
+PR = "r40"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision
@@ -97,6 +97,7 @@ SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH};t
            file://enigma2_vuplus_remove_dreambox_enigma.patch;patch=1;pnum=1 \
            file://enigma2_vuplus_vfd_mode.patch;patch=1;pnum=1 \
            file://enigma2_vuplus_addlibpythondeps.patch;patch=1;pnum=1 \
+           file://enigma2_wirelessaccesspoint.patch;patch=1;pnum=1 \
            file://MyriadPro-Regular.otf \
            file://MyriadPro-Semibold.otf \
            file://MyriadPro-SemiboldIt.otf \

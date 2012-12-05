@@ -1,0 +1,30 @@
+commit 982c734fd5a2f7488667005f0a926042022e28e0
+Author: Chang.H.S <jhs@dev3>
+Date:   Wed Dec 5 14:15:05 2012 +0900
+
+    wirelessAccessPoint : fix to continue commented lines on sysctl.conf
+
+diff --git a/lib/python/Plugins/SystemPlugins/WirelessAccessPoint/plugin.py b/lib/python/Plugins/SystemPlugins/WirelessAccessPoint/plugin.py
+index ff6849d..223dcea 100755
+--- a/lib/python/Plugins/SystemPlugins/WirelessAccessPoint/plugin.py
++++ b/lib/python/Plugins/SystemPlugins/WirelessAccessPoint/plugin.py
+@@ -522,11 +522,14 @@ class WirelessAccessPoint(Screen,ConfigListScreen):
+ 			fp.close()
+ 		sysctlList = {}
+ 		for line in sysctlLines:
+-			line = line.strip()
+-			(key,value) = line.split("=")
+-			key=key.strip()
+-			value=value.strip()
+-			sysctlList[key] = value
++			try:
++				line = line.strip()
++				(key,value) = line.split("=")
++				key=key.strip()
++				value=value.strip()
++				sysctlList[key] = value
++			except:
++				continue
+ 		sysctlList["net.ipv4.ip_forward"] = str(setValue)
+ 		fp = file(sysctlPath, "w")
+ 		for (key,value) in sysctlList.items():
