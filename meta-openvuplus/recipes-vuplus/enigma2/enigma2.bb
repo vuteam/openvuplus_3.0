@@ -142,6 +142,9 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit autotools pkgconfig
 
+do_configure_prepend() {
+	git checkout ${BRANCH}
+}
 
 do_compile_prepend_vuplus() {
         install -m 0755 ${WORKDIR}/MyriadPro-Regular.otf ${S}/data/fonts/
