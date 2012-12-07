@@ -1,4 +1,4 @@
-PR .= "-vuplus2"
+PR .= "-vuplus3"
 
 SRC_URI += "file://busybox-telnetd.xinetd.in \
             file://busybox-telnetd@.service \

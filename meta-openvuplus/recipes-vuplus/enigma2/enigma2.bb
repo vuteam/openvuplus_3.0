@@ -72,10 +72,10 @@ RDEPENDS_enigma2-plugin-systemplugins-wirelessaccesspoint = "hostap-daemon bridg
 RDEPENDS_enigma2-plugin-extensions-streamtv = "librtmp0 gst-plugins-bad-rtmp "
 RDEPENDS_enigma2-plugin-extensions-dlnabrowser = "djmount fuse-utils libfuse2 libupnp3 kernel-module-fuse "
 RDEPENDS_enigma2-plugin-extensions-dlnaserver = "minidlna libexif12 libavformat52 libavutil50 libavcodec52 libgsm1 libmp3lame0 libschroedinger-1.0-0 libtheora0 liboil"
-RDEPENDS_enigma2-plugin-systemplugins-devicemanager = "ntfs-3g dosfstools"
+RDEPENDS_enigma2-plugin-systemplugins-devicemanager = "util-linux-blkid ntfs-3g dosfstools"
 
 PN = "enigma2"
-PR = "r41"
+PR = "r42"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision
