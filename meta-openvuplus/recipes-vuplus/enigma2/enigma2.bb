@@ -6,10 +6,8 @@ DEPENDS = "jpeg libungif libmad libpng libsigc++-1.2 gettext-native \
 	dreambox-dvbincludes freetype libdvbsi++ python swig-native \
 	libfribidi libxmlccwrap libdreamdvd gstreamer gst-plugin-dvbmediasink \
 	gst-plugins-bad gst-plugins-good gst-plugins-ugly python-wifi \
-	hostap-daemon bridge-utils \
+	hostap-daemon bridge-utils ntfs-3g dosfstools \
 "
-
-# DEPENDS += "wvdial wvstreams ppp usbmodeswitch usbmodeswitch-data djmount minidlna"
 
 RDEPENDS_GST= "gst-plugins-base-decodebin gst-plugins-base-decodebin2 gst-plugins-base-app gst-plugins-bad-fragmented \
 		gst-plugins-good-id3demux gst-plugins-ugly-mad gst-plugins-base-ogg gst-plugins-base-playbin \
@@ -81,8 +79,10 @@ RDEPENDS_enigma2-plugin-extensions-hbbtv = "opera-hbbtv"
 DEPENDS += "wvdial wvstreams ppp usb-modeswitch usb-modeswitch-data"
 RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-modeswitch-data wvdial wvstreams kernel-module-usbserial"
 
+RDEPENDS_enigma2-plugin-systemplugins-devicemanager = "util-linux-blkid ntfs-3g dosfstools"
+
 PN = "enigma2"
-PR = "r40"
+PR = "r43"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision
