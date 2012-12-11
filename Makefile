@@ -31,7 +31,7 @@
 # for the vuultimo, if it is not the default.
 MACHINE ?= vuultimo
 
-MULTI_TEMPORARILY ?=
+MULTI_TEMPORARILY ?= YES
 
 # Adjust according to the number CPU cores to use for parallel build.
 # Default: Number of processors in /proc/cpuinfo, if present, or 1.
