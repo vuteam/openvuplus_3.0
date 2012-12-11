@@ -1,4 +1,4 @@
-SRCDATE = "20120628"
+SRCDATE = "20121025"
 
 MODULES_NAME = "procmk\ndvb-bcm7335\nbrcmfb"
 
