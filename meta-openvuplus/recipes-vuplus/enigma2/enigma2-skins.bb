@@ -1,6 +1,7 @@
 SUMMARY = "Skins for Enigma2"
 MAINTAINER = "Felix Domke <tmbinc@elitedvb.net>"
-LICENSE = "CLOSED"
+LICENSE = "Proprietary"
+LIC_FILES_CHKSUM = "file://README;startline=1;endline=6;md5=d41d8cd98f00b204e9800998ecf8427e"
 
 PACKAGES_DYNAMIC = "enigma2-skin-*"
 
@@ -9,7 +10,7 @@ SRCREV="de610a460bec046f0dca9987ecba458303daaf1d"
 SRCDATE="20110128"
 BRANCH="master"
 PV = "experimental-git${SRCDATE}"
-PR = "r0"
+PR = "r1"
 
 SRC_URI="git://schwerkraft.elitedvb.net/enigma2-skins/enigma2-skins.git;protocol=git;branch=${BRANCH};tag=${SRCREV}"
 
