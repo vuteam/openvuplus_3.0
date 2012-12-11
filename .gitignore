@@ -4,7 +4,7 @@
 !/meta-bsp/
 !/meta-openvuplus/
 /openembedded-core/
-/sources/
+/resource/
 *.swp
 bblayers.conf
 /tmp/
