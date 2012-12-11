@@ -1,5 +1,5 @@
-DEPENDS += "libmms"
-PR .= "-vuplus0"
+DEPENDS += "libmms librtmp"
+PR .= "-vuplus1"
 
 SRC_URI += " \
         file://0001-mpegtsdemux-fix-bd-streamtype-detection.diff.patch \

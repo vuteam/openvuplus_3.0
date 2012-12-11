@@ -1,4 +1,4 @@
-PR = "${INC_PR}.0"
+PR = "${INC_PR}.3"
 
 RDEPENDS_${PN} = " \
   enigma2-streamproxy-xinetd \

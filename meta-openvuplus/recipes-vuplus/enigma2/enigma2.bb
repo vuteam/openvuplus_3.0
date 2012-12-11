@@ -49,7 +49,7 @@ SUMMARY_enigma2-plugin-systemplugins-satelliteequipmentcontrol = "allows you to 
 SUMMARY_enigma2-plugin-systemplugins-satfinder = "helps you to align your dish."
 SUMMARY_enigma2-plugin-systemplugins-skinselector = "shows a menu with selectable skins."
 SUMMARY_enigma2-plugin-systemplugins-videomode = "selects advanced video modes"
-RDEPENDS_enigma2-plugin-extensions-dvdplayer = "libdreamdvd0"
+DEPENDS_enigma2-plugin-extensions-dvdplayer = "libdreamdvd0"
 RDEPENDS_enigma2-plugin-systemplugins-nfiflash = "python-twisted-web"
 RDEPENDS_enigma2-plugin-systemplugins-softwaremanager = "python-twisted-web"
 RCONFLICTS_enigma2-plugin-systemplugins-softwaremanager = "enigma2-plugin-systemplugins-configurationbackup enigma2-plugin-systemplugins-softwareupdate"
@@ -67,11 +67,19 @@ SUMMARY_enigma2-plugin-systemplugins-networkwizard = "provides easy step by step
 RDEPENDS_enigma2-plugin-extensions-webbrowser = "python-gdata libqtwebkite4 vuplus-webbrowser-utils qt4-embedded-fonts qt4-embedded-plugin-imageformat-gif qt4-embedded-plugin-imageformat-ico qt4-embedded-plugin-imageformat-jpeg qt4-embedded-plugin-imageformat-mng qt4-embedded-plugin-imageformat-svg qt4-embedded-plugin-imageformat-tiff qt4-embedded-plugin-iconengine-svgicon "
 SUMMARY_enigma2-plugin-systemplugins-crashreport = "automatically send crashlogs to Vu+"
 RDEPENDS_enigma2-plugin-systemplugins-crashreport = "python-twisted-mail python-twisted-names python-compression python-mime python-email"
-RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usbmodeswitch usbmodeswitch-data wvdial wvstreams libwvutils4.6 libwvstreams-extras libuniconf4.6"
 RDEPENDS_enigma2-plugin-systemplugins-wirelessaccesspoint = "hostap-daemon bridge-utils"
+
 RDEPENDS_enigma2-plugin-extensions-streamtv = "librtmp0 gst-plugins-bad-rtmp "
-RDEPENDS_enigma2-plugin-extensions-dlnabrowser = "djmount fuse-utils libfuse2 libupnp3 kernel-module-fuse "
-RDEPENDS_enigma2-plugin-extensions-dlnaserver = "minidlna libexif12 libavformat52 libavutil50 libavcodec52 libgsm1 libmp3lame0 libschroedinger-1.0-0 libtheora0 liboil"
+
+DEPENDS += "djmount minidlna"
+RDEPENDS_enigma2-plugin-extensions-dlnaserver = "minidlna "
+RDEPENDS_enigma2-plugin-extensions-dlnabrowser = "djmount kernel-module-fuse fuse-utils"
+
+DEPENDS += "opera-hbbtv"
+RDEPENDS_enigma2-plugin-extensions-hbbtv = "opera-hbbtv"
+
+DEPENDS += "wvdial wvstreams ppp usb-modeswitch usb-modeswitch-data"
+RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-modeswitch-data wvdial wvstreams kernel-module-usbserial"
 
 PN = "enigma2"
 PR = "r40"
