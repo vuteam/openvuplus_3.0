@@ -2,7 +2,7 @@ DESCRIPTION = "Vuplus: W-LAN Task for the Vuplus Distribution"
 SECTION = "vuplus/base"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
-PR = "r8"
+PR = "r9"
 
 inherit task
 
@@ -24,7 +24,7 @@ WIFI_FIRMWARES = "\
 
 RALINK_MODULE = "${@base_version_less_or_equal('VUPLUS_KERNEL_VERSION', '3.1.1', 'rt3070', 'kernel-module-rt2800usb rt2870sta firmware-rt3070', d)}"
 
-REALTEK_MODULE = "${@base_version_less_or_equal('VUPLUS_KERNEL_VERSION', '3.1.1', 'r8192cu', 'kernel-module-rtl8192cu', d)}"
+REALTEK_MODULE = "r8192cu"
 
 KERNEL_WIFI_MODULES = " \
 	kernel-module-ath9k-htc \
@@ -33,7 +33,6 @@ KERNEL_WIFI_MODULES = " \
 	kernel-module-rt73usb \
 	kernel-module-rt2500usb \
 	kernel-module-r8192u-usb \
-	kernel-module-rtl8192cu \
 	kernel-module-rtl8187 \
 	kernel-module-r8712u \
 	kernel-module-w35und \

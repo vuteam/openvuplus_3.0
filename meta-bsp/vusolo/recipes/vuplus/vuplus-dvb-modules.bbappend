@@ -2,6 +2,5 @@ SRCDATE = "20121025"
 
 MODULES_NAME = "procmk\ndvb-bcm7325\nbrcmfb"
 
-SRC_URI[md5sum] = "5b9f02dfdb4dfc9979287aa1e1e794c2"
-SRC_URI[sha256sum] = "32ec3859b9f47af03a26451dadb84fb30ef5c973ce291e79419b6ef13c37eb46"
-
+RC_URI[md5sum] = "a7b76cc1e6804073c41bfeeb37d99e87"
+SRC_URI[sha256sum] = "a464d388996a43791e745572221787a3ccfaf27f0d0e220b930ecb718d584c17"

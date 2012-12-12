@@ -43,7 +43,7 @@ XSUM ?= md5sum
 
 BUILD_DIR = $(CURDIR)/build
 TOPDIR = $(BUILD_DIR)/$(MACHINE)
-DL_DIR = $(CURDIR)/sources
+DL_DIR = $(CURDIR)/resource/sources
 
 ifeq ($(MULTI_TEMPORARILY), YES)
 SSTATE_DIR = $(TOPDIR)/sstate-cache
@@ -63,7 +63,7 @@ BBLAYERS ?= \
 	$(CURDIR)/openembedded-core/meta
 
 CONFFILES = \
-	bitbake.env \
+	$(TOPDIR)/bitbake.env \
 	$(TOPDIR)/conf/bblayers.conf \
 	$(TOPDIR)/conf/local.conf
 
@@ -108,8 +108,8 @@ help:
 	@echo "      $$ $(MAKE) download"
 	@echo
 	@echo "  * Set up the environment to build recipes manually:"
+	@echo "      $$ cd $(BUILD_DIR)"
 	@echo "      $$ source bitbake.env"
-	@echo "      $$ cd build/$(MACHINE)"
 	@echo "      $$ bitbake <target>"
 	@echo "    [Replace <target> with a recipe name, e.g. vuplus-image or enigma2]"
 	@echo
@@ -146,11 +146,11 @@ distclean: clean
 
 image: init
 	@echo '[*] Building image for $(MACHINE)'
-	@. $(CURDIR)/bitbake.env && cd $(TOPDIR) && bitbake vuplus-image
+	@. $(TOPDIR)/bitbake.env && cd $(TOPDIR) && bitbake vuplus-image
 
 download: init
 	@echo '[*] Downloading sources'
-	@. $(CURDIR)/bitbake.env && cd $(TOPDIR) && bitbake -cfetchall -k vuplus-image
+	@. $(TOPDIR)/bitbake.env && cd $(TOPDIR) && bitbake -cfetchall -k vuplus-image
 
 update:
 	@echo '[*] Updating Git repositories...'
@@ -177,8 +177,9 @@ BITBAKE_ENV_HASH := $(call hash, \
 	'CURDIR = "$(CURDIR)"' \
 	)
 
-bitbake.env: $(DEPDIR)/.bitbake.env.$(BITBAKE_ENV_HASH)
+$(TOPDIR)/bitbake.env: $(DEPDIR)/.bitbake.env.$(BITBAKE_ENV_HASH)
 	@echo '[*] Generating $@'
+	@test -d $(@D) || mkdir -p $(@D)
 	@echo '# Automatically generated file. Do not edit!' > $@
 	@echo 'export PATH=$(CURDIR)/openembedded-core/scripts:$(CURDIR)/bitbake/bin:$${PATH}' >> $@
 
@@ -215,6 +216,7 @@ $(TOPDIR)/conf/local.conf: $(DEPDIR)/.local.conf.$(MACHINE).$(LOCAL_CONF_HASH)
 	@echo 'USER_CLASSES = "buildstats"' >> $@
 	@echo 'include $(DISTRO_INCLUDE_CONF)' >> $@
 	@echo 'include $(MACHINE_INCLUDE_CONF)' >> $@
+#	@echo 'INHERIT+="rm_work"' >> $@
 
 BBLAYERS_CONF_HASH := $(call hash, \
 	'BBLAYERS_CONF_VERSION = "0"' \
