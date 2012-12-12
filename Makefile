@@ -179,6 +179,7 @@ BITBAKE_ENV_HASH := $(call hash, \
 
 $(TOPDIR)/bitbake.env: $(DEPDIR)/.bitbake.env.$(BITBAKE_ENV_HASH)
 	@echo '[*] Generating $@'
+	@test -d $(@D) || mkdir -p $(@D)
 	@echo '# Automatically generated file. Do not edit!' > $@
 	@echo 'export PATH=$(CURDIR)/openembedded-core/scripts:$(CURDIR)/bitbake/bin:$${PATH}' >> $@
 
@@ -215,6 +216,7 @@ $(TOPDIR)/conf/local.conf: $(DEPDIR)/.local.conf.$(MACHINE).$(LOCAL_CONF_HASH)
 	@echo 'USER_CLASSES = "buildstats"' >> $@
 	@echo 'include $(DISTRO_INCLUDE_CONF)' >> $@
 	@echo 'include $(MACHINE_INCLUDE_CONF)' >> $@
+#	@echo 'INHERIT+="rm_work"' >> $@
 
 BBLAYERS_CONF_HASH := $(call hash, \
 	'BBLAYERS_CONF_VERSION = "0"' \
