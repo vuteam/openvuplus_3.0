@@ -13,6 +13,10 @@ DEPENDS += " \
         enigma2-plugin-extensions-openwebif \
         enigma2-plugin-extensions-remotestreamconvert \
         enigma2-plugin-extensions-addstreamurl \
+        enigma2-plugin-systemplugins-autoshutdown \
+"
+DEPENDS += " \
+	${@base_contains("VUPLUS_FEATURES", "webmanual", "vuplus-manual", "", d)} \
 "
 
 #BAD_RECOMMENDATIONS += "libnss-mdns wpa-supplicant-passphrase"
