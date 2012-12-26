@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
 KV = "2.6.37"
 
-PR = "r2"
+PR = "r3"
 SRCREV = ""
 
 MODULE = "linux-2.6.37"
@@ -15,6 +15,7 @@ SRC_URI += "http://archive.vuplus.com/download/kernel/stblinux-3.3.6-1.2.tar.bz2
         file://fix_cpu_proc.patch;patch=1;pnum=1 \
         file://brcm_mtd_mac.patch;patch=1;pnum=1 \
         file://dvb_core_5.5.patch;patch=1;pnum=1 \
+	file://brcm_remove_entire_mtd.patch;patch=1;pnum=1 \
         file://${MACHINE}_defconfig \
 	"
 
