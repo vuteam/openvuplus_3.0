@@ -24,7 +24,7 @@
 -include conf/make.conf
 
 # Target platform:
-# vusolo, bm750, vuuno, vuultimo, vuduo2
+# vusolo, bm750, vuuno, vuultimo, vusolo2, vuduo2
 #
 # This only sets the default value. All platforms now use a shared build
 # directory. Run "MACHINE=vuultimo bitbake vuplus-image" to build an image
