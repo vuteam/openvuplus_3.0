@@ -2,6 +2,8 @@ DESCRIPTION = "Data files for usbmodeswitch"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
 
+PR = "r1"
+
 inherit allarch
 
 SRC_URI = "http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-data-${PV}.tar.bz2 \
@@ -9,6 +11,7 @@ SRC_URI = "http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-data-${PV}.t
 	"
 
 do_install() {
+	install -d ${D}/usr/share/usb_modeswitch
 	oe_runmake install DESTDIR=${D}
 }
 
