@@ -1,0 +1,177 @@
+diff --git a/lib/python/Plugins/SystemPlugins/TransCodingSetup/plugin.py b/lib/python/Plugins/SystemPlugins/TransCodingSetup/plugin.py
+index 09ec093..f73da01 100755
+--- a/lib/python/Plugins/SystemPlugins/TransCodingSetup/plugin.py
++++ b/lib/python/Plugins/SystemPlugins/TransCodingSetup/plugin.py
+@@ -7,7 +7,7 @@ from Components.Sources.StaticText import StaticText
+ from Plugins.Plugin import PluginDescriptor
+ from Tools.Directories import fileExists
+ from enigma import eTimer
+-from os import system as os_system
++from os import system as os_system, popen as os_popen
+ from __init__ import _
+ 
+ config.plugins.transcodingsetup = ConfigSubsection()
+@@ -15,13 +15,17 @@ config.plugins.transcodingsetup.transcoding = ConfigSelection(default = "disable
+ config.plugins.transcodingsetup.port = ConfigSelection(default = "8002", choices = [ ("8001", "8001"), ("8002", "8002")] )
+ 
+ error_msg ={
+-	-1 : "File not exist - /proc/stb/encoder/enable.",
+-	-2 : "File not exist - /etc/inetd.conf.",
+-	-3 : "File open error - /proc/stb/encoder/enable.",
+-	-4 : "File open error - /etc/inetd.conf.",
+-	-5 : "Set encoder error.",
+-	-6 : "Set port error.",
+-	-7 : "Setting value is incorrect."
++	-1 : "File not exist - /proc/stb/encoder/enable",
++	-2 : "File not exist - /etc/inetd.conf",
++	-3 : "File open error - /proc/stb/encoder/enable",
++	-4 : "File open error - /etc/inetd.conf",
++	-5 : "Set encoder error",
++	-6 : "Set port error",
++	-7 : "Setting value is incorrect",
++	-8 : "File not exist - /etc/xinetd.d/streamproxy",
++	-9 : "File not exist - /etc/xinetd.d/transtreamproxy",
++	-10 : "File open error - /etc/xinetd.d/streamproxy",
++	-11 : "File open error - /etc/xinetd.d/transtreamproxy",
+ }
+ class TranscodingSetupInit:
+ 	def __init__(self):
+@@ -44,8 +48,6 @@ class TranscodingSetupInit:
+ 			return -7
+ 		if not fileExists("/proc/stb/encoder/enable"):
+ 			return -1
+-		elif not fileExists("/etc/inetd.conf"):
+-			return -2
+ 		if self.setEncoder(transcoding) < 0:
+ 			return -5
+ 		res = self.setPort(port)
+@@ -53,11 +55,11 @@ class TranscodingSetupInit:
+ 			self.setEncoder(self.transcoding_old)
+ 			return res
+ 		else:
+-			self.inetdRestart()
++			self.restartDaemon()
+ 		return res
+ 
+ 	def setEncoder(self,mode = "disabled"):
+-		print "<TranscodingSetup> set encoder : %s" % mode
++#		print "<TranscodingSetup> set encoder : %s" % mode
+ 		mode = mode.strip(' ').strip('\n')
+ 		try:
+ 			fd = open("/proc/stb/encoder/enable",'r')
+@@ -78,14 +80,29 @@ class TranscodingSetupInit:
+ #			print "setEncoder exception error"
+ 			return -1
+ 
++	def isXinetd(self):
++		ps_xinetd = os_popen('ps -ef | grep xinetd | grep -v grep').read()
++		if ps_xinetd.strip() == '':
++			return False
++		else:
++			return True
++
+ 	def setPort(self, port = "8001"):
+-		print "<TranscodingSetup> set port : %s" % port
++#		print "<TranscodingSetup> set port : %s" % port
++		if self.isXinetd():
++			res = self.setPort_xinetd(port)
++		else:
++			res = self.setPort_inetd(port)
++		return res
++
++	def setPort_inetd(self, port = "8001"):
++		if not fileExists("/etc/inetd.conf"):
++			return -2
+ 		try:
+ 			fp = file('/etc/inetd.conf', 'r')
+ 			datas = fp.readlines()
+ 			fp.close()
+ 		except:
+-#			print "file open error, inetd.conf!"
+ 			return -4
+ 		try:
+ 			newdatas=""
+@@ -112,9 +129,65 @@ class TranscodingSetupInit:
+ 			return -6
+ 		return 0
+ 
+-	def inetdRestart(self):
+-		if fileExists("/etc/init.d/inetd"):
+-			os_system("/etc/init.d/inetd restart")
++	def setPort_xinetd(self, port = "8001"):
++		if not fileExists("/etc/xinetd.d/streamproxy") :
++			return -8
++		if  not fileExists("/etc/xinetd.d/transtreamproxy"):
++			return -9
++
++		try:
++			fp_s = file('/etc/xinetd.d/streamproxy')
++			data_s = fp_s.readlines()
++			fp_s.close()
++		except:
++			return -10
++
++		try:
++			fp_t = file('/etc/xinetd.d/transtreamproxy')
++			data_t = fp_t.readlines()
++			fp_t.close()
++		except:
++			return -11
++# fix xinetd port
++		try:
++			if port == "8001":
++				port_s = "8002"
++				port_t = "8001"
++			else:
++				port_s = "8001"
++				port_t = "8002"
++
++			newdata_s=""
++			for line in data_s:
++				if line.find("port") != -1:
++					line = "\tport = %s\n"%port_s
++				newdata_s+=line
++
++			newdata_t=""
++			for line in data_t:
++				if line.find("port") != -1:
++					line = "\tport = %s\n"%port_t
++				newdata_t+=line
++
++			fd = file("/etc/xinetd.d/streamproxy",'w')
++			fd.write(newdata_s)
++			fd.close()
++
++			fd = file("/etc/xinetd.d/transtreamproxy",'w')
++			fd.write(newdata_t)
++			fd.close()
++
++		except:
++			return -6
++		return 0
++
++	def restartDaemon(self):
++		if self.isXinetd():
++			if fileExists("/etc/init.d/xinetd"):
++				os_system("/etc/init.d/xinetd restart")
++		else:		
++			if fileExists("/etc/init.d/inetd"):
++				os_system("/etc/init.d/inetd restart")
+ 
+ 	def getModel(self):
+ 		if fileExists("/proc/stb/info/vumodel"):
+@@ -182,12 +255,12 @@ class TranscodingSetup(Screen,ConfigListScreen, TranscodingSetupInit):
+ 	def keySave(self):
+ 		transcoding = config.plugins.transcodingsetup.transcoding.value
+ 		port = config.plugins.transcodingsetup.port.value
+-		print "<TranscodingSetup> Transcoding %s(port : %s)"%(transcoding, port)
++#		print "<TranscodingSetup> Transcoding %s(port : %s)"%(transcoding, port)
+ 		ret = self.setupTranscoding(transcoding, port)
+ 		if ret is not None and ret <0 :
+ 			self.resetConfig()
+ 			global error_msg
+-			self.session.openWithCallback(self.close, MessageBox, _("Failed, Encoder %s\n(%s).")%(transcoding, error_msg[ret]), MessageBox.TYPE_ERROR)
++			self.session.openWithCallback(self.close, MessageBox, _("Failed, Encoder %s.\n(%s)")%(transcoding, error_msg[ret]), MessageBox.TYPE_ERROR)
+ 		else:
+ 			self.saveAll()
+ 			if transcoding == "enabled" and port == "8001" :
