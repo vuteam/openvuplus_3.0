@@ -1,8 +1,6 @@
-PR .= "-vuplus3"
+PR .= "-vuplus4"
 
-SRC_URI += "file://busybox-telnetd.xinetd.in \
-            file://busybox-telnetd@.service \
-            file://busybox-telnetd.socket \
+SRC_URI += " \
             file://0001-ifupdown-support-post-up-pre-down-hooks.patch \
             file://0002-ifupdown-code-shrink.patch \
             file://0003-ifupdown-remove-interface-from-state_list-if-iface_u.patch \
@@ -13,22 +11,26 @@ SRC_URI += "file://busybox-telnetd.xinetd.in \
             file://0002-Create-and-use-our-own-copy-of-linux-ext2_fs.h.patch \
             file://0003-Drop-include-bb_linux_ext2_fs.h-use-existing-e2fspro.patch \
             file://mount_single_uuid.patch \
+	    file://inetd \
+	    file://inetd.conf \
 "
 
-inherit systemd xinetd
+DEPENDS += "mtd-utils"
+
+PACKAGES =+ "${PN}-inetd"
+INITSCRIPT_PACKAGES += "${PN}-inetd"
+INITSCRIPT_NAME_${PN}-inetd = "inetd.${BPN}"
+CONFFILES_${PN}-inetd = "${sysconfdir}/inetd.conf"
+FILES_${PN}-inetd = "${sysconfdir}/init.d/inetd.${BPN} ${sysconfdir}/inetd.conf"
+RDEPENDS_${PN}-inetd += "${PN}"
+
+RRECOMMENDS_${PN} += "${PN}-inetd"
 
 do_install_append() {
         if grep -q "CONFIG_CRONTAB=y" ${WORKDIR}/defconfig; then
                 install -d ${D}${sysconfdir}/cron/crontabs
         fi
-        install -d ${D}${systemd_unitdir}/system
-        ln -sf /dev/null ${D}${systemd_unitdir}/system/busybox-telnetd.service
 }
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${P}:"
 
-SYSTEMD_PACKAGES += "${PN}-systemd"
-SYSTEMD_SERVICE_${PN}-systemd = "busybox-telnetd.socket"
-
-XINETD_PACKAGES = "${PN}-xinetd"
-XINETD_SERVICE_${PN}-xinetd = "busybox-telnetd"

@@ -1,0 +1,53 @@
+diff --git a/lib/python/Plugins/SystemPlugins/TransCodingSetup/plugin.py b/lib/python/Plugins/SystemPlugins/TransCodingSetup/plugin.py
+index 09ec093..e46422a 100755
+--- a/lib/python/Plugins/SystemPlugins/TransCodingSetup/plugin.py
++++ b/lib/python/Plugins/SystemPlugins/TransCodingSetup/plugin.py
+@@ -37,10 +37,10 @@ class TranscodingSetupInit:
+ 
+ 	def setTranscoding(self, transcoding, port):
+ 		if not self.getModel():
+-			print "This plugin is only supported for solo2/duo2."
++#			print "This plugin is only supported for solo2/duo2."
+ 			return -8
+ 		if transcoding not in ["enabled","disabled"] or port not in ["8001","8002"]:
+-			print "Input error."
++#			print "Input error."
+ 			return -7
+ 		if not fileExists("/proc/stb/encoder/enable"):
+ 			return -1
+@@ -57,7 +57,7 @@ class TranscodingSetupInit:
+ 		return res
+ 
+ 	def setEncoder(self,mode = "disabled"):
+-		print "<TranscodingSetup> set encoder : %s" % mode
++#		print "<TranscodingSetup> set encoder : %s" % mode
+ 		mode = mode.strip(' ').strip('\n')
+ 		try:
+ 			fd = open("/proc/stb/encoder/enable",'r')
+@@ -79,7 +79,7 @@ class TranscodingSetupInit:
+ 			return -1
+ 
+ 	def setPort(self, port = "8001"):
+-		print "<TranscodingSetup> set port : %s" % port
++#		print "<TranscodingSetup> set port : %s" % port
+ 		try:
+ 			fp = file('/etc/inetd.conf', 'r')
+ 			datas = fp.readlines()
+@@ -115,6 +115,8 @@ class TranscodingSetupInit:
+ 	def inetdRestart(self):
+ 		if fileExists("/etc/init.d/inetd"):
+ 			os_system("/etc/init.d/inetd restart")
++		elif fileExists("/etc/init.d/inetd.busybox"):
++			os_system("/etc/init.d/inetd.busybox restart")
+ 
+ 	def getModel(self):
+ 		if fileExists("/proc/stb/info/vumodel"):
+@@ -182,7 +184,7 @@ class TranscodingSetup(Screen,ConfigListScreen, TranscodingSetupInit):
+ 	def keySave(self):
+ 		transcoding = config.plugins.transcodingsetup.transcoding.value
+ 		port = config.plugins.transcodingsetup.port.value
+-		print "<TranscodingSetup> Transcoding %s(port : %s)"%(transcoding, port)
++#		print "<TranscodingSetup> Transcoding %s(port : %s)"%(transcoding, port)
+ 		ret = self.setupTranscoding(transcoding, port)
+ 		if ret is not None and ret <0 :
+ 			self.resetConfig()

@@ -1,8 +1,6 @@
-PR = "${INC_PR}.0"
+PR = "${INC_PR}.1"
 
 RDEPENDS_${PN} = " \
-  dropbear-xinetd \
-  vsftpd-xinetd \
 "
 
 require task-vuplus-base.inc
