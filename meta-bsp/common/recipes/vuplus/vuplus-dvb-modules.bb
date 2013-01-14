@@ -4,7 +4,7 @@ LICENSE = "CLOSED"
 
 KV = "${VUPLUS_KERNEL_VERSION}"
 PV = "${KV}"
-PR = "r19-${SRCDATE}"
+PR = "r20-${SRCDATE}"
 
 PREFERRED_GCC_VERSION = "4.4.3"
 
@@ -29,7 +29,7 @@ do_install() {
 
 pkg_postinst_${PN} () {
         if [ -d /proc/stb ]; then
-                depmod -ae
+                depmod -a
         fi
         true
 }
