@@ -8,9 +8,9 @@ IMAGEDIR ?= "${MACHINE}"
 EXTRA_IMAGECMD_COMPAT = "--eraseblock=0x20000 -n -l"
 
 IMAGE_CMD_ubi_prepend = " \
-	cp ${IMAGE_ROOTFS}/boot/vmlinux.gz ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.vmlinux.gz; \
+	cp ${IMAGE_ROOTFS}/tmp/vmlinux.gz ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.vmlinux.gz; \
 	cp ${IMAGE_ROOTFS}/boot/splash_cfe_auto.bin ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.splash_cfe_auto.bin; \
-	rm -f ${IMAGE_ROOTFS}/boot/vmlinux.gz; \
+	rm -f ${IMAGE_ROOTFS}/tmp/vmlinux.gz; \
 	rm -f ${IMAGE_ROOTFS}/boot/splash_cfe_auto.bin; \
 	mkfs.jffs2 --root=${IMAGE_ROOTFS}/boot --faketime \
 	--disable-compressor=lzo --compression-mode=size \

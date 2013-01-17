@@ -3,6 +3,7 @@ SECTION = "kernel"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
+PR = "r1"
 KV = "3.1.1"
 SRCREV = "r2"
 
@@ -21,14 +22,14 @@ S = "${WORKDIR}/linux-${KV}"
 
 inherit kernel
 
-FILES_kernel-vmlinux = "/boot/vmlinux-3.1.1"
-FILES_kernel-image = "/boot/vmlinux.gz"
-
 export OS = "Linux"
 KERNEL_IMAGETYPE = "vmlinux"
 KERNEL_OUTPUT = "vmlinux"
 KERNEL_OBJECT_SUFFIX = "ko"
+KERNEL_IMAGEDEST = "tmp"
 
+FILES_kernel-image = "/${KERNEL_IMAGEDEST}/vmlinux.gz"
+FILES_kernel-vmlinux = "/${KERNEL_IMAGEDEST}/vmlinux-3.1.1"
 
 do_configure_prepend() {
         oe_machinstall -m 0644 ${WORKDIR}/${MACHINE}_defconfig ${S}/.config
