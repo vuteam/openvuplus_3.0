@@ -5,7 +5,7 @@ LICENSE = "GPL-2.0-with-OpenSSL-exception"
 LIC_FILES_CHKSUM = "file://COPYING;md5=a6067ad950b28336613aed9dd47b1271"
 DEPENDS = "libcap openssl"
 DEPENDS += "${@base_contains('DISTRO_FEATURES', 'pam', 'libpam', '', d)}"
-PR = "r4"
+PR = "r5"
 
 SRC_URI = " \
         https://security.appspot.com/downloads/${BP}.tar.gz \
@@ -69,6 +69,7 @@ do_configure() {
         set_default ls_recurse_enable YES
         set_default secure_chroot_dir "${SECURE_CHROOT_DIR}"
         set_default rsa_cert_file "${RSA_CERT_FILE}"
+	set_default local_root "/"
 }
 do_compile() {
         oe_runmake 'CFLAGS=${CFLAGS}' 'LIBS=${LIBS}' 'LINK=${LINK}'

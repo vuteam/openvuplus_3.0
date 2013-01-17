@@ -1,8 +1,0 @@
-/dev/root	/		rootfs	noatime				0 1
-tmpfs		/proc		proc	nodev,noexec,nosuid		0 0
-tmpfs		/proc/bus/usb	usbfs	nodev,noexec,nosuid		0 0
-tmpfs		/sys		sysfs	nodev,noexec,nosuid		0 0
-tmpfs		/dev/pts	devpts	noexec,nosuid,mode=0620,gid=5	0 0
-tmpfs		/dev/shm	tmpfs	nosuid,nodev			0 0
-tmpfs		/var/volatile	tmpfs	mode=0755			0 0
-/dev/sda1	/media/hdd	auto	defaults			0 0
