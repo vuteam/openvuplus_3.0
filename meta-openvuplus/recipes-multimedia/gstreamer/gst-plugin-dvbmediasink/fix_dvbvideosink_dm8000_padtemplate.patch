@@ -1,9 +1,3 @@
-commit 34a5871e18b59f852a86ac131dba020b31d0ba0e
-Author: Chang.H.S <jhs@dev3>
-Date:   Mon Dec 10 16:06:20 2012 +0900
-
-    1
-
 diff --git a/src/gstdvbvideosink.c b/src/gstdvbvideosink.c
 index fcd8fed..b3ce35f 100644
 --- a/src/gstdvbvideosink.c
