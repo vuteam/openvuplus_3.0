@@ -1,7 +1,5 @@
-PR .= "-vuplus1"
+PR .= "-vuplus2"
 
-#BOOTUP = "${@base_contains('PREFERRED_VERSION_linux-vuplus', '3.1.1', 'bootup_3.1', ' ', d)}"
-#BOOTUP_vusolo2 = "${@base_contains('PREFERRED_VERSION_linux-vuplus', '3.3.6', 'bootup_3.1', ' ', d)}"
 BOOTUP = "bootup_3.1" 
 
 SRC_URI_append = " \

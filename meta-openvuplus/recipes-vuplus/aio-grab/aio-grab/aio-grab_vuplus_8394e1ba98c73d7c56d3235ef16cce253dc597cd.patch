@@ -8,9 +8,16 @@ index ccfb515..a6f8d11 100644
  stamp-h1
 +aio-grab_vuplus_*
 diff --git a/main.c b/main.c
-index 190ff5f..c611913 100644
+index 190ff5f..dd22bc4 100644
 --- a/main.c
 +++ b/main.c
+@@ -1,5 +1,5 @@
+ /*
+-AiO Dreambox Screengrabber v0.83a
++AiO Screengrabber v0.83a
+ 
+ written 2006 - 2009 by Seddi
+ Contact: seddi@ihad.tv / http://www.ihad.tv
 @@ -38,6 +38,7 @@ Feel free to use the code for your own projects. See LICENSE file for details.
  #include <sys/stat.h>
  #include <sys/types.h>
@@ -44,14 +51,18 @@ index 190ff5f..c611913 100644
  static const char *file_getline(const char *filename)
  {
  	static char *line = NULL;
-@@ -184,7 +199,6 @@ static int file_scanf_lines(const char *filename, const char *fmt, ...)
+@@ -184,10 +199,9 @@ static int file_scanf_lines(const char *filename, const char *fmt, ...)
  }
  
  // main program
 -
  int main(int argc, char **argv) {
  
- 	printf("AiO Dreambox Screengrabber " PACKAGE_VERSION "\n\n");
+-	printf("AiO Dreambox Screengrabber " PACKAGE_VERSION "\n\n");
++	printf("AiO Screengrabber " PACKAGE_VERSION "\n\n");
+ 
+ 	unsigned int xres_v = 0,yres_v = 0,xres_o,yres_o,xres,yres,aspect,width;
+ 	int c,osd_only,video_only,use_osd_res,use_png,use_jpg,jpg_quality,no_aspect,use_letterbox;
 @@ -205,11 +219,29 @@ int main(int argc, char **argv) {
  	char filename[256] = { "/tmp/screenshot.bmp" };
  
