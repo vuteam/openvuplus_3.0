@@ -1,19 +1,13 @@
-commit 962f9068bfd74aefe65a63ccdd89e417ef2ca827
-Author: Chang.H.S <jhs@dev3>
-Date:   Mon Dec 10 16:07:30 2012 +0900
-
-    2
-
 diff --git a/src/gstdvbaudiosink.c b/src/gstdvbaudiosink.c
-index 0966d33..ff54ab6 100644
+index 9a71412..b99f2fc 100644
 --- a/src/gstdvbaudiosink.c
 +++ b/src/gstdvbaudiosink.c
-@@ -354,7 +354,7 @@ gst_dvbaudiosink_init (GstDVBAudioSink *klass, GstDVBAudioSinkClass * gclass)
+@@ -394,7 +394,7 @@ gst_dvbaudiosink_init (GstDVBAudioSink *klass, GstDVBAudioSinkClass * gclass)
  	klass->dump_filename = NULL;
  
  	gst_base_sink_set_sync (GST_BASE_SINK(klass), FALSE);
 -	gst_base_sink_set_async_enabled (GST_BASE_SINK(klass), TRUE);
 +	gst_base_sink_set_async_enabled (GST_BASE_SINK(klass), FALSE);
- }
  
- static void
+ 	gst_pad_set_acceptcaps_function (GST_BASE_SINK (klass)->sinkpad,
+ 		GST_DEBUG_FUNCPTR (gst_dvbaudiosink_acceptcaps));
