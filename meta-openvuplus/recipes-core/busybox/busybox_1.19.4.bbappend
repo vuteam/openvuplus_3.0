@@ -1,4 +1,4 @@
-PR .= "-vuplus4"
+PR .= "-vuplus5"
 
 SRC_URI += " \
             file://0001-ifupdown-support-post-up-pre-down-hooks.patch \
