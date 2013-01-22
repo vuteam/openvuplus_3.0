@@ -4,6 +4,7 @@ compatible header files for the API to the drivers."
 MAINTAINER = "Felix Domke <tmbinc@elitedvb.net>"
 
 PV="1"
+PR="1.1.1"
 LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://dbox/avs_core.h;beginline=1;endline=21;md5=b2ab401756a0768647ae13acb2e325ab"
 
