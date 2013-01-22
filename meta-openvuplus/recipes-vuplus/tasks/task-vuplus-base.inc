@@ -53,7 +53,7 @@ VUPLUS_BASE_RECOMMENDS = "\
   sambaserver \
   openvpn \
   zeroconf \
-  ${@base_contains("VUPLUS_FEATURES", "vuplus-fpga-update", "vuplus-fpga-update", "", d)} \
+  ${@base_contains("MACHINE_FEATURES", "vuplus-fpga-update", "vuplus-fpga-update", "", d)} \
 "
 
 VUPLUS_BASE_OPTIONAL_RECOMMENDS = "\
