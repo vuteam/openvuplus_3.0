@@ -23,7 +23,6 @@ RDEPENDS_${PN} += " \
 	enigma2-plugin-extensions-remotestreamconvert \
 	enigma2-plugin-systemplugins-zappingmodeselection \
  	enigma2-plugin-extensions-addstreamurl \
-	enigma2-plugin-extensions-remotestreamconvert \
 	vuplus-blindscan-utils \
 	enigma2-plugin-systemplugins-devicemanager \
 "
