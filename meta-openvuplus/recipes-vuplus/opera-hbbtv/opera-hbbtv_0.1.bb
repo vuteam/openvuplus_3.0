@@ -5,7 +5,7 @@ LICENSE = "CLOSED"
 DEPENDS = "tslib mpfr gmp"
 RDEPENS = "tslib-conf libts-1.0-0 libsysfs2 libgmp3 libmpfr1"
 
-SRC_DATE = "20121128_1"
+SRC_DATE = "20130122_1"
 
 PR = "r1_${SRC_DATE}"
 SRC_URI = "http://code.vuplus.com/download/build.fc3abf29fb03f797e78f907928125638/embedded/opera-sdk-build-package/opera-hbbtv_${SRC_DATE}.tar.gz"
@@ -33,5 +33,5 @@ PACKAGES = "${PN}"
 
 FILES_${PN} = "/"
 
-SRC_URI[md5sum] = "e534839ac1aedaf2bcdf0e5c277e631c"
-SRC_URI[sha256sum] = "9738b06ed35632a675de0cf95bd123d7f9759927a96910c28294ee723fead181"
+SRC_URI[md5sum] = "ae2d63b91728367210547a2aa8612daf"
+SRC_URI[sha256sum] = "39230e0f70337ed4c02077b0bb8f0c1c7adc9ed756e41141ca4a3971c9453d81"
