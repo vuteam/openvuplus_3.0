@@ -77,7 +77,7 @@ DEPENDS += "opera-hbbtv"
 RDEPENDS_enigma2-plugin-extensions-hbbtv = "opera-hbbtv"
 
 DEPENDS += "wvdial wvstreams ppp usb-modeswitch usb-modeswitch-data"
-RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-modeswitch-data wvdial wvstreamsa \
+RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-modeswitch-data wvdial wvstreams \
 	kernel-module-ppp-async kernel-module-ppp-deflate kernel-module-ppp-synctty kernel-module-ppp-generic kernel-module-usbserial \
 "
 
@@ -85,7 +85,7 @@ RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-m
 RDEPENDS_enigma2-plugin-systemplugins-devicemanager = "util-linux-blkid ntfs-3g dosfstools"
 
 PN = "enigma2"
-PR = "r4"
+PR = "r5"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision
