@@ -1,6 +1,7 @@
 SUMMARY = "Vuplus: Essential packages"
 SECTION = "vuplus/base"
-LICENSE = "CLOSED"
+LICENSE = "MIT"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 DEPENDS = "virtual/kernel"
 RDEPENDS_${PN} = '${ESSENTIAL_RDEPENDS}'
 

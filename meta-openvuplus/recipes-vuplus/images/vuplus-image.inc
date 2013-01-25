@@ -1,12 +1,12 @@
 SUMMARY = "A Vuplus firmware image"
 
 # packages to build for the feed
-#DEPENDS = " \
-#	gdb \
-#	lsof \
-#	ltrace \
-#	strace \
-#"
+DEPENDS = " \
+	gdb \
+	lsof \
+	ltrace \
+	strace \
+"
 
 # build e2openplugins
 DEPENDS += " \
@@ -26,6 +26,7 @@ TASK_CORE_BOOT ?= "task-core-boot"
 TASK_VUPLUS_BASE ?= "task-vuplus-base"
 TASK_VUPLUS_ENIGMA ?= "task-vuplus-enigma2"
 TASK_ESSENCIAL ?= "task-vuplus-essential"
+TASK_VUPLUS_DVBAPI ?= "task-vuplus-dvbapi"
 
 # packages to drag into the image
 #IMAGE_INSTALL = " \
@@ -36,9 +37,9 @@ TASK_ESSENCIAL ?= "task-vuplus-essential"
 #"
 
 IMAGE_INSTALL = " \
-	${ROOTFS_PKGMANAGE} \
-	${TASK_CORE_BOOT} \
+	${TASK_CORE_BOOT} ${ROOTFS_PKGMANAGE} \
 	${TASK_VUPLUS_BASE} \
+	${TASK_VUPLUS_DVBAPI} \
 	${TASK_VUPLUS_ENIGMA} \
 	${TASK_ESSENCIAL} \
 "

@@ -2,12 +2,13 @@ SUMMARY = "Vuplus: Base Task for Vuplus."
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-INC_PR = "r1"
+INC_PR = "r2"
 
 inherit task
 
 VUPLUS_BASE_ESSENTIAL = "\
   autofs \
+  base-files-doc \
   vuplus-compat \
   dreambox-keymaps \
   e2fsprogs-e2fsck \
@@ -43,7 +44,7 @@ VUPLUS_FIRMWARE_DVB = " \
   firmware-drxd-a2 \
 "
 
-# chang : use xinetd instead of netkit-base.
+# chang : use inetd in busybox instead of netkit-base.
 # chang : mkfs-ubifs and mkfs-jffs2 are included in mtd-utils.
 
 VUPLUS_BASE_RECOMMENDS = "\
@@ -52,10 +53,8 @@ VUPLUS_BASE_RECOMMENDS = "\
   sambaserver \
   openvpn \
   zeroconf \
+  ${@base_contains("MACHINE_FEATURES", "vuplus-fpga-update", "vuplus-fpga-update", "", d)} \
 "
-
-#VUPLUS_BASE_RECOMMENDS_append_vuuno = " vuplus-fpga-update"
-#VUPLUS_BASE_RECOMMENDS_append_vuultimo = " vuplus-fpga-update"
 
 VUPLUS_BASE_OPTIONAL_RECOMMENDS = "\
   hddtemp \

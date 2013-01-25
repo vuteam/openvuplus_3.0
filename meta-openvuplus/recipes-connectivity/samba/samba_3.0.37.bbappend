@@ -1,4 +1,4 @@
-PR .= "-vuplus1"
+PR .= "-vuplus2"
 
 SRC_URI += " \
 	file://01samba-kill \

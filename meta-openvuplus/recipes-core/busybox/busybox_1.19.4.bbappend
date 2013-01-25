@@ -1,4 +1,4 @@
-PR .= "-vuplus5"
+PR .= "-vuplus7"
 
 SRC_URI += " \
             file://0001-ifupdown-support-post-up-pre-down-hooks.patch \
@@ -7,6 +7,8 @@ SRC_URI += " \
             file://0004-ifupdown-support-metric-for-static-default-gw.patch \
             file://0005-ifupdown-improve-compatibility-with-Debian.patch \
             file://0006-get_linux_version_code-don-t-fail-on-3.0-foo.patch \
+            file://0007-ifplugd-move-read_pid-to-libbb-pidfile.c-and-rename-.patch \
+            file://0009-udhcpc-calculate-broadcast-address-if-not-given-by-s.patch \
             file://0001-work-around-linux-ext2_fs.h-breakage.patch \
             file://0002-Create-and-use-our-own-copy-of-linux-ext2_fs.h.patch \
             file://0003-Drop-include-bb_linux_ext2_fs.h-use-existing-e2fspro.patch \
@@ -15,6 +17,7 @@ SRC_URI += " \
 	    file://inetd \
 	    file://inetd.conf \
 "
+# 0008-ifupdown-dhcp_down-wait-until-udhcpc-has-been-killed.patch is removed. if patched, postdown is not working.(/etc/network/interfaces)
 
 DEPENDS += "mtd-utils"
 

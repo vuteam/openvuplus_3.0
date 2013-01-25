@@ -6,7 +6,7 @@ DEPENDS = "jpeg libungif libmad libpng libsigc++-1.2 gettext-native \
 	dreambox-dvbincludes freetype libdvbsi++ python swig-native \
 	libfribidi libxmlccwrap libdreamdvd gstreamer gst-plugin-dvbmediasink \
 	gst-plugins-bad gst-plugins-good gst-plugins-ugly python-wifi \
-	hostap-daemon bridge-utils ntfs-3g dosfstools \
+	hostap-daemon bridge-utils ntfs-3g dosfstools util-linux \
 "
 
 RDEPENDS_GST= "gst-plugins-base-decodebin gst-plugins-base-decodebin2 gst-plugins-base-app gst-plugins-bad-fragmented \
@@ -77,7 +77,7 @@ DEPENDS += "opera-hbbtv"
 RDEPENDS_enigma2-plugin-extensions-hbbtv = "opera-hbbtv"
 
 DEPENDS += "wvdial wvstreams ppp usb-modeswitch usb-modeswitch-data"
-RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-modeswitch-data wvdial wvstreamsa \
+RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-modeswitch-data wvdial wvstreams \
 	kernel-module-ppp-async kernel-module-ppp-deflate kernel-module-ppp-synctty kernel-module-ppp-generic kernel-module-usbserial \
 "
 
@@ -85,7 +85,7 @@ RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-m
 RDEPENDS_enigma2-plugin-systemplugins-devicemanager = "util-linux-blkid ntfs-3g dosfstools"
 
 PN = "enigma2"
-PR = "r4"
+PR = "r5"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision
@@ -198,3 +198,4 @@ python populate_packages_prepend() {
 
 RCONFLICTS_${PN} = "dreambox-keymaps"
 RREPLACES_${PN} = "dreambox-keymaps tuxbox-tuxtxt-32bpp (<= 0.0+cvs20090130-r1)"
+
