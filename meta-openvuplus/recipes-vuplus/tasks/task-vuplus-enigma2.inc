@@ -23,7 +23,6 @@ RDEPENDS_${PN} += " \
 	enigma2-plugin-extensions-remotestreamconvert \
 	enigma2-plugin-systemplugins-zappingmodeselection \
  	enigma2-plugin-extensions-addstreamurl \
-	vuplus-blindscan-utils \
 	enigma2-plugin-systemplugins-devicemanager \
 "
 
@@ -49,7 +48,7 @@ RDEPENDS_${PN} += " \
   ${@base_contains("MACHINE_FEATURES", "rc_code", "enigma2-plugin-systemplugins-remotecontrolcode", "", d)} \
   ${@base_contains("MACHINE_FEATURES", "led", "enigma2-plugin-systemplugins-ledbrightnesssetup", "", d)} \
   ${@base_contains("MACHINE_FEATURES", "webif", "enigma2-plugin-extensions-openwebif", "", d)} \
-  ${@base_contains("MACHINE_FEATURES", "blindscan", "enigma2-plugin-systemplugins-blindscan", "", d)} \
+  ${@base_contains("MACHINE_FEATURES", "blindscan", "enigma2-plugin-systemplugins-blindscan  vuplus-blindscan-utils", "", d)} \
   ${@base_contains("MACHINE_FEATURES", "fpgaupgrade", "enigma2-plugin-systemplugins-fpgaupgrade", "", d)} \
   ${@base_contains("MACHINE_FEATURES", "firmwareupgrade", "enigma2-plugin-systemplugins-firmwareupgrade", "", d)} \
   ${@base_contains("MACHINE_FEATURES", "hbbtv", "enigma2-plugin-extensions-hbbtv", "", d)} \

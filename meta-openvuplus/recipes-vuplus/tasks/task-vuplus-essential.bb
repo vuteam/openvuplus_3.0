@@ -7,10 +7,9 @@ RDEPENDS_${PN} = '${ESSENTIAL_RDEPENDS}'
 
 RRECOMMENDS_${PN} = '${ESSENTIAL_RRECOMMENDS}'
 
-#RDEPENDS_${PN} += '${KERNEL_3G_MODULES}'
 RDEPENDS_${PN} += '${KERNEL_DVB_MODULES}'
 
-PR = "r0"
+PR = "r1"
 
 inherit task
 
@@ -32,15 +31,6 @@ ESSENTIAL_RRECOMMENDS = " \
         kernel-module-sr-mod \
         kernel-module-usbhid \
 	kernel-module-ext2 \
-"
-
-KERNEL_3G_MODULES = " \
-        kernel-module-ppp-async \
-        kernel-module-ppp-deflate \
-        kernel-module-ppp-synctty \
-        kernel-module-ppp-generic \
-        kernel-module-slhc \
-        kernel-module-usbserial \
 "
 
 KERNEL_DVB_MODULES = " \
