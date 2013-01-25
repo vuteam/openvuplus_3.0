@@ -1,4 +1,4 @@
-PR .= "-vuplus4"
+PR .= "-vuplus5"
 
 SRC_URI += " \
             file://0001-ifupdown-support-post-up-pre-down-hooks.patch \
@@ -11,6 +11,7 @@ SRC_URI += " \
             file://0002-Create-and-use-our-own-copy-of-linux-ext2_fs.h.patch \
             file://0003-Drop-include-bb_linux_ext2_fs.h-use-existing-e2fspro.patch \
             file://mount_single_uuid.patch \
+            file://change-passwd-default-algorithm.patch \
 	    file://inetd \
 	    file://inetd.conf \
 "

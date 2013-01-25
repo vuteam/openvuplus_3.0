@@ -1,0 +1,13 @@
+diff --git a/loginutils/passwd.c b/loginutils/passwd.c
+index 1cfafae..3231b23 100644
+--- a/loginutils/passwd.c
++++ b/loginutils/passwd.c
+@@ -94,7 +94,7 @@ int passwd_main(int argc UNUSED_PARAM, char **argv)
+ 	};
+ 	unsigned opt;
+ 	int rc;
+-	const char *opt_a = "d"; /* des */
++	const char *opt_a = "m"; /* des */
+ 	const char *filename;
+ 	char *myname;
+ 	char *name;
