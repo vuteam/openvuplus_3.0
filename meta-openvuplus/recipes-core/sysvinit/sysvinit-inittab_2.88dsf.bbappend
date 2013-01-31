@@ -1,4 +1,4 @@
-PR .= "-dream3"
+PR .= "-vuplus3"
 
 do_install_append() {
         sed -e 's,^id:5:initdefault:$,id:3:initdefault:,' -i ${D}${sysconfdir}/inittab
