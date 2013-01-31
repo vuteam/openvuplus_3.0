@@ -1,7 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-PR .= "-vuplus1"
+PR .= "-vuplus2"
 
-do_install_append () {
-	touch ${D}${sysconfdir}/resolv.conf
-}
+#do_install_append () {
+#	touch ${D}${sysconfdir}/resolv.conf
+#}
