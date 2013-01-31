@@ -11,7 +11,7 @@ SRCREV="c8fc96e8e51e1ef71e1709f9dd6f733007f9463e"
 SRCDATE="20110215"
 BRANCH="master"
 PV = "experimental-git${SRCDATE}"
-PR = "r7"
+PR = "r8"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
@@ -34,7 +34,8 @@ SRC_URI_append_vuplus = " \
 	   file://enigma2_plugins_gst_plugins_pkgname.patch;patch=1;pnum=1 \
            file://dreamboxweb.png \
            file://dreamboxwebtv.png \
-           file://favicon.ico"
+           file://favicon.ico \
+	   file://Makefile.am "
 
 FILES_${PN} += " /usr/share/enigma2 /usr/share/fonts "
 FILES_${PN}-meta = "${datadir}/meta"
@@ -84,6 +85,9 @@ do_unpack_append(){
 	modify_po()
 }
 
+do_install_prepend_vuplus() {
+	mv ${WORKDIR}/Makefile.am ${S}/easymedia/po
+}
 
 do_install_append_vuplus() {
 	install -m 0644 ${WORKDIR}/dreamboxweb.png ${D}/usr/lib/enigma2/python/Plugins/Extensions/WebInterface/web-data/img/
