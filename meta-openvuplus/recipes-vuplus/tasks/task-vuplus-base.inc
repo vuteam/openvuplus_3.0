@@ -2,7 +2,7 @@ SUMMARY = "Vuplus: Base Task for Vuplus."
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-INC_PR = "r3"
+INC_PR = "r4"
 
 inherit task
 
@@ -54,7 +54,7 @@ VUPLUS_BASE_RECOMMENDS = "\
   sambaserver \
   openvpn \
   zeroconf \
-  ${@base_contains("MACHINE_FEATURES", "vuplus-fpga-update", "vuplus-fpga-update", "", d)} \
+  ${@base_contains("VUPLUS_FEATURES", "vuplus-fpga-update", "vuplus-fpga-update", "", d)} \
 "
 
 VUPLUS_BASE_OPTIONAL_RECOMMENDS = "\

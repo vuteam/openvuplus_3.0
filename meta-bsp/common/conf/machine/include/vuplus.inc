@@ -5,7 +5,7 @@ GLIBC_EXTRA_OECONF = "--with-tls --with-__thread"
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "kernel-image"
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "vuplus-bootlogo"
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "vuplus-dvb-modules"
-MACHINE_FEATURES += "kernel26 alsa pci wifi vuwlan"
+MACHINE_FEATURES += "kernel26 alsa pci wifi"
 
 PREFERRED_PROVIDER_virtual/kernel = "linux-vuplus"
 
