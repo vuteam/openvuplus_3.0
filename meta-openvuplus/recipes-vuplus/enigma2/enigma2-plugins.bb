@@ -11,7 +11,7 @@ SRCREV="c8fc96e8e51e1ef71e1709f9dd6f733007f9463e"
 SRCDATE="20110215"
 BRANCH="master"
 PV = "experimental-git${SRCDATE}"
-PR = "r8"
+PR = "r9"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
@@ -85,8 +85,8 @@ do_unpack_append(){
 	modify_po()
 }
 
-do_install_prepend_vuplus() {
-	mv ${WORKDIR}/Makefile.am ${S}/easymedia/po
+do_configure_prepend_vuplus() {
+	cp -av ${WORKDIR}/Makefile.am ${S}/easymedia/po/
 }
 
 do_install_append_vuplus() {

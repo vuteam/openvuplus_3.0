@@ -24,7 +24,7 @@ default: $(DOMAIN).pot $(LANGPO) merge $(LANGMO)
 	done
 
 merge:
-	#for lang in $(LANGS); do msgmerge --no-location -s -N -U $$lang.po $(DOMAIN).pot; done
+	echo "dummy"
 
 
 # the TRANSLATORS: allows putting translation comments before the to-be-translated line.
