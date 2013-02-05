@@ -1,3 +1,5 @@
+PR.= "-bsp1"
+
 SRC_URI_append = " \
            file://analog.ttf \
            file://skin_user.xml \
