@@ -1,0 +1,14 @@
+diff --git a/tools/enigma2.sh.in b/tools/enigma2.sh.in
+index 2f9292a..170835e 100755
+--- a/tools/enigma2.sh.in
++++ b/tools/enigma2.sh.in
+@@ -24,6 +24,9 @@ if [ -e @libdir@/libpassthrough.so ]; then
+ 	LIBS="$LIBS @libdir@/libpassthrough.so"
+ fi
+ 
++(sleep 2; echo "enigma2 is the main pvr application... adjust oom score!"; PID=$(pidof enigma2); \
++        [ -e /proc/$PID/oom_score_adj ] && echo "-999" > /proc/$PID/oom_score_adj || echo "-17" > /proc/$PID/oom_adj;) &
++
+ LD_PRELOAD=$LIBS @bindir@/enigma2
+ 
+ # enigma2 exit codes:
