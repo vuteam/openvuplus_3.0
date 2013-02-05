@@ -1,9 +1,13 @@
-#! /bin/sh
-#
-# halt		Execute the halt command.
-#
-# Version:      @(#)halt  2.84-2  07-Jan-2002  miquels@cistron.nl
-#
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          halt
+# Required-Start:
+# Required-Stop:
+# Default-Start:
+# Default-Stop:      0
+# Short-Description: Execute the halt command.
+# Description:
+### END INIT INFO
 
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
@@ -19,8 +23,6 @@ if grep -qs '^md.*active' /proc/mdstat
 then
 	hddown=""
 fi
-
-showiframe /usr/share/switchoff.mvi
 
 /usr/bin/turnoff_power
 

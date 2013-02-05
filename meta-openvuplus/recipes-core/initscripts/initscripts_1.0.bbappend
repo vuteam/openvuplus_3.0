@@ -1,6 +1,4 @@
-PR .= "-vuplus5"
-
-BOOTUP = "bootup_3.1" 
+PR .= "-vuplus6"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${P}:"
 
@@ -8,7 +6,6 @@ SRC_URI_append = " \
 	file://turnoff_power \
 	file://hotplug_br \
 	file://make_mac_sector \
-	file://${BOOTUP} \
 	file://mountrun.sh \
 "
 
@@ -19,8 +16,6 @@ do_install_append() {
 	install -m 0755 ${WORKDIR}/turnoff_power     ${D}/usr/bin
 	install -m 0755 ${WORKDIR}/hotplug_br        ${D}/usr/bin
 	install -m 0755 ${WORKDIR}/make_mac_sector   ${D}/usr/bin
-	install -m 0755 ${WORKDIR}/${BOOTUP}         ${D}${sysconfdir}/init.d/bootup
-	ln      -sf     ../init.d/bootup             ${D}${sysconfdir}/rcS.d/S05bootup
 
 	install -m 0755 ${WORKDIR}/mountrun.sh ${D}${sysconfdir}/init.d
         ln -s ../init.d/mountrun.sh ${D}${sysconfdir}/rcS.d/S02mountrun.sh

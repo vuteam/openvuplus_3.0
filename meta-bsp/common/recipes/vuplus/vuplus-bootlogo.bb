@@ -1,29 +1,45 @@
 DESCRIPTION = "Bootlogo support"
 SECTION = "base"
+LICENSE = "CLOSED"
 PRIORITY = "required"
-LICENSE = "proprietary"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/Proprietary;md5=0557f9d92cf58f2ccdd50f62f8ac0b28"
 
 IMAGES_VERSION = "1"
 BINARY_VERSION = "7"
 
 PV = "${BINARY_VERSION}.${IMAGES_VERSION}"
-PR = "r5"
+PR = "r6"
 
-SRC_URI = "file://bootlogo.mvi file://backdrop.mvi file://bootlogo_wait.mvi file://switchoff.mvi"
+#SRC_URI = "file://bootlogo.mvi file://backdrop.mvi file://bootlogo_wait.mvi file://switchoff.mvi"
+SRC_URI = "file://bootlogo.mvi file://backdrop.mvi file://bootlogo_wait.mvi"
 
 S = "${WORKDIR}/"
-
-MVI = "bootlogo backdrop bootlogo_wait"
+PACKAGES = "${PN}"
+INHIBIT_PACKAGE_STRIP = "1"
 
 do_install() {
-	install -d ${D}/boot
+	install -d ${D}/boot ${D}${datadir}/${PN}
 	install -d ${D}/usr/share
-	for i in ${MVI}; do
-		install -m 0755 ${S}/$i.mvi ${D}/usr/share/$i.mvi;
-		ln -sf /usr/share/$i.mvi ${D}/boot/$i.mvi;
-	done;
+	for file in *.mvi; do
+                install -m 0644 $file ${D}${datadir}/${PN}
+                ln -s ${PN}/$file ${D}${datadir}
+		ln -sf ${datadir}/${PN}/$file ${D}/boot/$file;
+        done
 }
 
 PACKAGE_ARCH := "${MACHINE_ARCH}"
-FILES_${PN} = "/boot /usr/share"
+FILES_${PN} = "/boot ${datadir} ${sysconfdir}"
+
+inherit update-rc.d
+
+INITSCRIPT_PARAMS = "start 5 S . stop 89 0 ."
+INITSCRIPT_NAME = "${PN}"
+
+SRC_URI += "file://${INITSCRIPT_NAME}.sysvinit"
+
+do_install_append() {
+        if [ -f ${WORKDIR}/${INITSCRIPT_NAME}.sysvinit ]; then
+                install -d ${D}${INIT_D_DIR}
+                install -m 0755 ${WORKDIR}/${INITSCRIPT_NAME}.sysvinit ${D}${INIT_D_DIR}/${INITSCRIPT_NAME}
+        fi
+}
+
