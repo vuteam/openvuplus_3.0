@@ -2,7 +2,7 @@ SUMMARY = "Vuplus: Base Task for Vuplus."
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-INC_PR = "r4"
+INC_PR = "r5"
 
 inherit task
 
@@ -19,7 +19,11 @@ VUPLUS_BASE_ESSENTIAL = "\
   tuxbox-common \
   util-linux-sfdisk \
   vsftpd \
-  mtd-utils \
+  mtd-utils-mkfs.ubifs \
+  mtd-utils-mkfs.jffs2 \
+  mtd-utils-nandwrite \
+  mtd-utils-nanddump \
+  mtd-utils-flash-eraseall \
   hdparm \
   usbtunerhelper \
   ${VUPLUS_FIRMWARE_DVB} \
@@ -44,9 +48,6 @@ VUPLUS_FIRMWARE_DVB = " \
   firmware-dvb-usb-wt220u-zl0353 \
   firmware-drxd-a2 \
 "
-
-# chang : use inetd in busybox instead of netkit-base.
-# chang : mkfs-ubifs and mkfs-jffs2 are included in mtd-utils.
 
 VUPLUS_BASE_RECOMMENDS = "\
   dropbear \
