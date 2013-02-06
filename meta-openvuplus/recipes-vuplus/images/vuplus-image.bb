@@ -1,3 +1,5 @@
+IMAGE_PKGTYPE = "ipk"
+
 require vuplus-image.inc
 
 do_rootfs_append() {
