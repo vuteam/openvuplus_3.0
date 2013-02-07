@@ -3,9 +3,9 @@ LICENSE = "Proprietary"
 LIC_FILES_CHKSUM = "file://tuxtxt.c;endline=19;md5=4f3fd30feb71f556493f38c7a8b3ca4d"
 DEPENDS = "freetype tuxbox-libtuxtxt"
 RDEPENDS_${PN} = "enigma2"
-PR = "r6"
+PR = "r7"
 
-SRC_URI = "http://code.vuplus.com/git/support/apps.tuxbox.plugins.tuxtxt_cvs.tuxbox.org__20090130.tar.gz \
+SRC_URI = "git://code.vuplus.com/git/tuxbox-tuxtxt.git;protocol=git;tag=HEAD \
         file://makefiles.diff \
         file://nonblocking.diff \
         file://32bpp.diff \
@@ -16,7 +16,7 @@ SRC_URI = "http://code.vuplus.com/git/support/apps.tuxbox.plugins.tuxtxt_cvs.tux
 	file://tuxtxt_vuplus.patch;patch=1;pnum=1 \
 "
 
-S = "${WORKDIR}/tuxtxt"
+S = "${WORKDIR}/git"
 
 inherit autotools
 
@@ -28,7 +28,4 @@ do_configure_prepend() {
 FILES_${PN} += "${datadir}/fonts/tuxtxt.otb ${libdir}/enigma2 /etc/tuxtxt"
 
 CPPFLAGS += "-DHAVE_DREAMBOX_HARDWARE -DDREAMBOX -I${STAGING_INCDIR}/tuxbox/tuxtxt"
-
-SRC_URI[md5sum] = "395116a358bac2b7f23923454997cab1"
-SRC_URI[sha256sum] = "c26387820df3b49f4f40048f1adf4ed0a1fdbf74fc0950748e0785e60aba073f"
 
