@@ -1,4 +1,4 @@
-SRCDATE = "20130207"
+SRCDATE = "20130218"
 
 MODULES_NAME = "procmk\ndvb-bcm7356\nbrcmfb\nfpga_directc"
 
