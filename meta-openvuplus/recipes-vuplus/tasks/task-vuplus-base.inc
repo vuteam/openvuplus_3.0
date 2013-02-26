@@ -2,7 +2,7 @@ SUMMARY = "Vuplus: Base Task for Vuplus."
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-INC_PR = "r6"
+INC_PR = "r7"
 
 inherit task
 
@@ -33,6 +33,7 @@ VUPLUS_BASE_ESSENTIAL = "\
   usbtunerhelper \
   ${VUPLUS_FIRMWARE_DVB} \
   killall \
+  openresolv \
 "
 
 VUPLUS_FIRMWARE_DVB = " \
