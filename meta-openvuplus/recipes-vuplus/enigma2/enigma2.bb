@@ -85,7 +85,7 @@ RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-m
 RDEPENDS_enigma2-plugin-systemplugins-devicemanager = "util-linux-blkid ntfs-3g dosfstools"
 
 PN = "enigma2"
-PR = "r15"
+PR = "r16"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision

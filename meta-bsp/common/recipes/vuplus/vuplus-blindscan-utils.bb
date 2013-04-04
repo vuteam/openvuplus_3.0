@@ -5,7 +5,7 @@ RDEPENDS = "ncurses"
 
 LICENSE = "CLOSED"
 
-PV = "3.1"
+PV = "3.2"
 PR = "r0"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
