@@ -5,15 +5,17 @@ LICENSE = "CLOSED"
 DEPENDS = "tslib mpfr gmp"
 RDEPENS = "tslib-conf libts-1.0-0 libsysfs2 libgmp3 libmpfr1"
 
-SRC_DATE = "20130425_0"
+SRC_DATE = "20130502_0"
 
 PR = "r1_${SRC_DATE}"
 SRC_URI = "http://code.vuplus.com/download/build.fc3abf29fb03f797e78f907928125638/embedded/opera-sdk-build-package/opera-hbbtv_${SRC_DATE}.tar.gz"
 
 INHIBIT_PACKAGE_STRIP = "1"
 S = "${WORKDIR}/opera-hbbtv"
+
 do_compile() {
 }
+
 do_install() {
 	rm -f ${S}/opera/lib/libopera.so
         install -d ${D}/usr/local/hbb-browser
@@ -37,6 +39,5 @@ PACKAGES = "${PN}"
 
 FILES_${PN} = "/"
 
-SRC_URI[md5sum] = "2e16afc3db22f80cf99de3bfb891fa06"
-SRC_URI[sha256sum] = "41bbf4cda0b19ca7c79cb06ec4ab8cafee62fd9944d17e71978d4c9e6d72d264"
-
+SRC_URI[md5sum] = "7204505914945da89ace49556218f0ef"
+SRC_URI[sha256sum] = "d42d671dfebb3c5125dccf3b72e1cfbb957682d9e497c2dc7a26bdd119118d87"
