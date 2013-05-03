@@ -1,4 +1,4 @@
-PR .= "-vuplus7"
+PR .= "-vuplus8"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${P}:"
 
