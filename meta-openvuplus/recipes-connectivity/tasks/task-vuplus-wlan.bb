@@ -2,7 +2,7 @@ DESCRIPTION = "Vuplus: W-LAN Task for the Vuplus Distribution"
 SECTION = "vuplus/base"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
-PR = "r11"
+PR = "r12"
 
 inherit task
 
@@ -32,7 +32,6 @@ KERNEL_WIFI_MODULES = " \
 	kernel-module-prism2-usb \
 	kernel-module-rt73usb \
 	kernel-module-rt2500usb \
-	kernel-module-r8192u-usb \
 	kernel-module-rtl8187 \
 	kernel-module-r8712u \
 	kernel-module-w35und \
@@ -43,6 +42,8 @@ KERNEL_WIFI_MODULES = " \
 	kernel-module-bridge \
 	kernel-module-hostap \
 "
+
+KERNEL_WIFI_MODULES += "${@base_version_less_or_equal('VUPLUS_KERNEL_VERSION', '3.1.1', 'kernel-module-r8192u-usb', '', d)}"
 
 RDEPENDS_${PN}_append = "\
 	${WIFI_FIRMWARES} \

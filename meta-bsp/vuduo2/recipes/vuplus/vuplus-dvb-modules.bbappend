@@ -1,8 +1,6 @@
-SRCDATE = "20121116"
+SRCDATE = "20130508"
 
 MODULES_NAME = "procmk\ndvb-bcm7424\nbrcmfb\nfpga_directc"
 
-SRC_URI = "http://archive.vuplus.com/download/drivers/beta/private/vuplus-dvb-modules-${MACHINE}-${PV}-${PREFERRED_GCC_VERSION}-${SRCDATE}.tar.gz "
-
-SRC_URI[md5sum] = "3279ada92fb3116311b801e6b61c7b36"
-SRC_URI[sha256sum] = "713f2698365c1554be724fd195fe595a23dfdeb133350f819aededecac26ed17"
+SRC_URI[md5sum] = "72b69c5323bf04fe21d0c7d7e31065a5"
+SRC_URI[sha256sum] = "166a9454bede8b1546a9712c9013931d95c8c1696efd93ba9459e192ff7448d1"
