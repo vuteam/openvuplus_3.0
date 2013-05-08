@@ -58,6 +58,7 @@ RDEPENDS_${PN} += " \
   ${@base_contains("VUPLUS_FEATURES", "3gmodem", "enigma2-plugin-systemplugins-3gmodemmanager", "", d)} \
   ${@base_contains("VUPLUS_FEATURES", "autoshutdown", "enigma2-plugin-systemplugins-autoshutdown", "", d)} \
   ${@base_contains("VUPLUS_FEATURES", "transcoding", "enigma2-plugin-systemplugins-transcodingsetup enigma2-transtreamproxy", "", d)} \
+  ${@base_conditional("MACHINE", "vuduo2", "duo2lcd4linux", "", d)} \
 "
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
