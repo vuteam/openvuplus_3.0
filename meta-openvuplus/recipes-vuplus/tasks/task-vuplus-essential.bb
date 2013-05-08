@@ -7,9 +7,9 @@ RDEPENDS_${PN} = '${ESSENTIAL_RDEPENDS}'
 
 RRECOMMENDS_${PN} = '${ESSENTIAL_RRECOMMENDS}'
 
-RDEPENDS_${PN} += "${@base_contains('VUPLUS_KERNEL_VERSION', '3.3.6', '${KERNEL_DVB_MODULES_3.3.6}', '${KERNEL_DVB_MODULES}', d)}"
+RDEPENDS_${PN} += "${@base_contains('VUPLUS_KERNEL_VERSION', '3.3.8', '${KERNEL_DVB_MODULES_3.3.6}', '${KERNEL_DVB_MODULES}', d)}"
 
-PR = "r2"
+PR = "r3"
 
 inherit task
 
