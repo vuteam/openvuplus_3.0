@@ -8,11 +8,11 @@ SRC_URI = " \
 	file://duo2lcd4linux.patch;patch=1;pnum=1 \
 "
 
-RDEPENDS = "enigma2 python-codecs python-datetime python-imaging python-textutils python-shell python-ctypes python-pyusb lcd4linux"
+RDEPENDS_${PN} = "enigma2 python-codecs python-datetime python-imaging python-textutils python-shell python-ctypes python-pyusb lcd4linux"
 
 S = "${WORKDIR}/LCD4linux"
 
-PR = "r4"
+PR = "r5"
 
 PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/LCD4linux"
 

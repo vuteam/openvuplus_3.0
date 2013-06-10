@@ -1,12 +1,12 @@
 DESCRIPTION = "Utilities for transponder & dvb-s blindscan"
 SECTION = "base"
 PRIORITY = "optional"
-RDEPENDS = "ncurses"
+RDEPENDS_${PN} = "ncurses"
 
 LICENSE = "CLOSED"
 
 PV = "3.2"
-PR = "r0"
+PR = "r1"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 SRC_URI = "http://archive.vuplus.com/download/utils/vuplus-blindscan-utils-${MACHINE}-${PV}.tar.bz2"
