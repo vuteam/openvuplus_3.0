@@ -3,10 +3,10 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
 DEPENDS = "virtual/libusb0 ncurses readline jpeg"
-RDEPENDS = "jpeg"
+RDEPENDS_${PN} = "jpeg"
 
 PV = "0.11.0-SVN"
-PR = "r1"
+PR = "r2"
 
 EXTRA_OECONF = " --with-glib-prefix=${STAGING_LIBDIR}/.. \
 		--with-glib-exec-prefix=${STAGING_LIBDIR}/.. \

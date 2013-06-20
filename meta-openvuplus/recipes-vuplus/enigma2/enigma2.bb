@@ -18,7 +18,7 @@ RDEPENDS_GST= "gst-plugins-base-decodebin gst-plugins-base-decodebin2 gst-plugin
         	gst-plugins-good-apetag gst-plugins-good-icydemux gst-plugins-good-autodetect gst-plugins-good-flv \
 "
 
-RDEPENDS = "python-codecs python-core python-lang python-re python-threading \
+RDEPENDS_${PN} = "python-codecs python-core python-lang python-re python-threading \
 		python-xml python-fcntl python-stringold python-pickle python-netclient \
 		glibc-gconv-iso8859-15 ethtool \
 		${RDEPENDS_GST} \
@@ -85,7 +85,7 @@ RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-m
 RDEPENDS_enigma2-plugin-systemplugins-devicemanager = "util-linux-blkid ntfs-3g dosfstools"
 
 PN = "enigma2"
-PR = "r18"
+PR = "r19"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision

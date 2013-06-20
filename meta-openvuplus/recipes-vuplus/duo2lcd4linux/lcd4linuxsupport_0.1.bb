@@ -2,7 +2,7 @@ DESCRIPTION = "lcd4linux support for duo2"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
-RDEPENDS = "enigma2 png-util"
+RDEPENDS_${PN} = "enigma2 png-util"
 
 SRC_URI = " \
         file://plugin.py \
@@ -10,7 +10,7 @@ SRC_URI = " \
 
 S = "${WORKDIR}"
 
-PR = "r0"
+PR = "r1"
 
 PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/LCD4linuxSupport"
 

@@ -7,7 +7,7 @@ index 1cfafae..3231b23 100644
  	unsigned opt;
  	int rc;
 -	const char *opt_a = "d"; /* des */
-+	const char *opt_a = "m"; /* des */
++	const char *opt_a = "sha512"; /* sha512 */
  	const char *filename;
  	char *myname;
  	char *name;

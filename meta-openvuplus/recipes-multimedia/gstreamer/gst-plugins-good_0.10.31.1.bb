@@ -5,13 +5,13 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=a6f89e2100d9b6cdffcea4f398e37343 \
                     file://common/coverage/coverage-report.pl;beginline=2;endline=17;md5=622921ffad8cb18ab906c56052788a3f \
                     file://gst/replaygain/rganalysis.c;beginline=1;endline=23;md5=b60ebefd5b2f5a8e0cab6bfee391a5fe"
 
-DEPENDS += "cdparanoia cairo jpeg libpng gtk+ zlib libid3tag flac speex libsoup-2.4"
+DEPENDS += "cdparanoia cairo jpeg libpng zlib libid3tag flac speex libsoup-2.4"
 DEPENDS += "gst-plugins-base"
 
-PR = "r0"
+PR = "r2"
 GIT_PV = ""
 
-SRCREV = "967fc61715fa854dacaa200069437fe57d4d8390"
+SRCREV = "7768342230450559509e3e593b2ea33e81ea0ca4"
 
 EXTRA_OECONF = "--enable-orc --disable-esd --disable-aalib --disable-shout2 --disable-libcaca --disable-hal"
 

@@ -36,3 +36,7 @@ echo "Unmounting local filesystems..."
 unmount </proc/mounts
 
 mount -o remount,ro /
+
+# sync to flush pending writes for loop-mounted file system.
+sync
+

@@ -1,4 +1,4 @@
-PR .= "-vuplus9"
+PR .= "-vuplus11"
 
 SRC_URI += " \
             file://0001-ifupdown-support-post-up-pre-down-hooks.patch \
@@ -10,6 +10,7 @@ SRC_URI += " \
             file://0007-ifplugd-move-read_pid-to-libbb-pidfile.c-and-rename-.patch \
             file://0009-udhcpc-calculate-broadcast-address-if-not-given-by-s.patch \
             file://0010-udhcpc-obtain-hostname-from-OS-by-default.patch \
+            file://0011-mount-don-t-pass-option-auto-to-kernel.patch \
             file://0001-work-around-linux-ext2_fs.h-breakage.patch \
             file://0002-Create-and-use-our-own-copy-of-linux-ext2_fs.h.patch \
             file://0003-Drop-include-bb_linux_ext2_fs.h-use-existing-e2fspro.patch \
