@@ -5,7 +5,7 @@ LICENSE = "CLOSED"
 DEPENDS = "tslib mpfr gmp"
 RDEPENS = "tslib-conf libts-1.0-0 libsysfs2 libgmp3 libmpfr1"
 
-SRC_DATE = "20130618_0"
+SRC_DATE = "20130705_0"
 
 PR = "r1_${SRC_DATE}"
 SRC_URI = ""
