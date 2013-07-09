@@ -1,6 +1,5 @@
-SRC_DATE = "20130709_p0"
+SRC_DATE = "20130709_p1"
 IMAGE_DIR = "Vu+-Duo2-User-Manual_english_D0610-web-images"
 
-SRC_URI[md5sum] = "32ce9722ca8695813d32970f9e05d010"
-SRC_URI[sha256sum] = "84243dce53a382638eb03af7cc8b190cb403053adf1f1e0c95f15eb485dab9ac"
-
+SRC_URI[md5sum] = "ecd195a7a158aa062a8c18a7413e0e1b"
+SRC_URI[sha256sum] = "0c8b8fc0dc697245d2b28b44b5d09a61929ceddab9ca800a0aacea56c269a242"
