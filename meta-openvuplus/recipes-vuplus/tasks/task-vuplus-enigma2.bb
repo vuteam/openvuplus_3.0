@@ -1,4 +1,4 @@
-PR = "${INC_PR}.4"
+PR = "${INC_PR}.5"
 
 RDEPENDS_${PN} = " \
 "

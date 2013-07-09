@@ -1,0 +1,6 @@
+SRC_DATE = "20121018_p1"
+IMAGE_DIR = "image"
+
+SRC_URI[md5sum] = "099122a07aa40142c0dee5fd2bbf9cc2"
+SRC_URI[sha256sum] = "8e5b4857bae757e8ef28c88a290408ed59035298510ac0242cc959678babf4c3"
+
