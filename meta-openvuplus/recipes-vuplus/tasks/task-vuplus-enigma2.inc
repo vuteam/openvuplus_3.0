@@ -2,7 +2,7 @@ SUMMARY = "Enigma2 Task for Vuplus"
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-INC_PR = "r9"
+INC_PR = "r10"
 
 inherit task
 
@@ -58,6 +58,7 @@ RDEPENDS_${PN} += " \
   ${@base_contains("VUPLUS_FEATURES", "3gmodem", "enigma2-plugin-systemplugins-3gmodemmanager", "", d)} \
   ${@base_contains("VUPLUS_FEATURES", "autoshutdown", "enigma2-plugin-systemplugins-autoshutdown", "", d)} \
   ${@base_contains("VUPLUS_FEATURES", "transcoding", "enigma2-plugin-systemplugins-transcodingsetup enigma2-transtreamproxy", "", d)} \
+  ${@base_contains("VUPLUS_FEATURES", "wol", "enigma2-plugin-systemplugins-wolsetup", "", d)} \
   ${@base_conditional("MACHINE", "vuduo2", "duo2lcd4linux lcd4linuxsupport", "", d)} \
 "
 
