@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
 KV = "2.6.37"
 
-PR = "r2"
+PR = "r3"
 SRCREV = ""
 
 MODULE = "linux-2.6.37"
@@ -45,7 +45,7 @@ kernel_do_install_append() {
 
 pkg_postinst_kernel-image () {
         if [ -d /proc/stb ] ; then
-                flash_eraseall -j /dev/mtd2
+                flash_erase /dev/mtd2 0 0
                 nandwrite -p /dev/mtd2 /${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}.gz
         fi
         rm -f /${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}.gz
