@@ -1,13 +1,13 @@
 SUMMARY = "Plugin for gstreamer: dvbmediasink"
 SECTION = "multimedia"
 LICENSE = "MIT | LGPLv2.1"
-LIC_FILES_CHKSUM = "file://src/gstdvbaudiosink.c;md5=ff43a6c1ca9ddb6ccf04c23191984c95 \
-		    file://src/gstdvbvideosink.c;md5=47b480d423a11f2cef5ba7cf32ca5a91"
+LIC_FILES_CHKSUM = "file://src/gstdvbaudiosink.c;beginline=1;endline=45;md5=023ebb8eaef9b8cce8591a9d96638392 \
+                    file://src/gstdvbvideosink.c;beginline=1;endline=44;md5=b597d3f0a4e3b49db42d2b5140bd7004"
 
 DEPENDS = "gstreamer gst-plugins-base"
 BRANCH="master"
-SRCREV="c870a546eec7b84acb689775b23cf8f5b0489479"
-PR = "r8"
+SRCREV="91738211ef106ae7d14c1ccc5c4dd26c0f2dbf58"
+PR = "r9"
 
 inherit autotools pkgconfig git-project
 SRC_URI = "git://schwerkraft.elitedvb.net/dvbmediasink/dvbmediasink.git;protocol=git;branch=${BRANCH};tag=${SRCREV}"
