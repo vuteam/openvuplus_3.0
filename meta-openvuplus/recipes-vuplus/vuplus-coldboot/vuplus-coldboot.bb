@@ -4,7 +4,7 @@ LICENSE = "CLOSED"
 
 
 PV = "1.0"
-PR = "r1"
+PR = "r2"
 SRC_REV = ""
 
 SRC_URI = "file://coldboot \
