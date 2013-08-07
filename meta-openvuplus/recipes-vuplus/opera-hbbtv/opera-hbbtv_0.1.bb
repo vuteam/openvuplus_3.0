@@ -7,7 +7,7 @@ RDEPENS = "tslib-conf libts-1.0-0 libsysfs2 libgmp3 libmpfr1"
 
 SRC_DATE = "20130705_0"
 
-PR = "r1_${SRC_DATE}"
+PR = "r2_${SRC_DATE}"
 SRC_URI = ""
 
 INHIBIT_PACKAGE_STRIP = "1"
@@ -16,7 +16,7 @@ S = "${WORKDIR}/opera-hbbtv"
 SRC_FILE = "opera-hbbtv_${SRC_DATE}.tar.gz"
 do_fetch() {
 	if [ ! -e ${DL_DIR}/${SRC_FILE} -a -e /etc/vuplus_browser.pwd ]; then
-sshpass -f /etc/vuplus_browser.pwd sftp guestuser@code.vuplus.com << +
+sshpass -f /etc/vuplus_browser.pwd sftp -o StrictHostKeyChecking=no guestuser@code.vuplus.com << +
 get ${SRC_FILE}
 bye
 +
