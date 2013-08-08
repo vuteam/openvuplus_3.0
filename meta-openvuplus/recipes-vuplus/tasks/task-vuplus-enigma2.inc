@@ -2,7 +2,7 @@ SUMMARY = "Enigma2 Task for Vuplus"
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-INC_PR = "r12"
+INC_PR = "r13"
 
 inherit task
 
@@ -25,6 +25,7 @@ RDEPENDS_${PN} += " \
   enigma2-plugin-extensions-addstreamurl \
   enigma2-plugin-systemplugins-devicemanager \
   enigma2-plugin-systemplugins-videomode \
+  enigma2-plugin-systemplugins-netdrive \
 "
 
 RRECOMMENDS_${PN} += " \

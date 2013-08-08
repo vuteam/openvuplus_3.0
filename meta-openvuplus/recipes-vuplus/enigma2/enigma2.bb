@@ -85,7 +85,7 @@ RDEPENDS_enigma2-plugin-systemplugins-devicemanager = "util-linux-blkid ntfs-3g 
 RDEPENDS_enigma2-plugin-systemplugins-netdrive = "curlftpfs kernel-module-fuse libfuse2"
 
 PN = "enigma2"
-PR = "r29"
+PR = "r30"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision
