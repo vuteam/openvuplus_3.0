@@ -7,8 +7,7 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=59530bdf33659b29e73d4adb9f9f6552"
 
 DEPENDS = "glib-2.0 fuse curl"
-RDEPENDS_${PN} += " libcurl "
-PR = "r0"
+PR = "r1"
 
 SRC_URI = "${SOURCEFORGE_MIRROR}/curlftpfs/${P}.tar.gz"
 
