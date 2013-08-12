@@ -84,8 +84,11 @@ RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-m
 RDEPENDS_enigma2-plugin-systemplugins-devicemanager = "util-linux-blkid ntfs-3g dosfstools"
 RDEPENDS_enigma2-plugin-systemplugins-netdrive = "curlftpfs kernel-module-fuse libfuse2"
 
+RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd-utils-nanddump mtd-utils-ubinize"
+RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
+
 PN = "enigma2"
-PR = "r30"
+PR = "r31"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision
