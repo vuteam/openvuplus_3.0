@@ -88,7 +88,7 @@ RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd
 RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
 
 PN = "enigma2"
-PR = "r32"
+PR = "r33"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision
