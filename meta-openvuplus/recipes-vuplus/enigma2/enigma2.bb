@@ -20,7 +20,7 @@ RDEPENDS_GST= "gst-plugins-base-decodebin gst-plugins-base-decodebin2 gst-plugin
 
 RDEPENDS_${PN} = "python-codecs python-core python-lang python-re python-threading \
 		python-xml python-fcntl python-stringold python-pickle python-netclient \
-		glibc-gconv-iso8859-15 ethtool \
+		glibc-gconv-iso8859-15 ethtool parted \
 		${RDEPENDS_GST} \
 "
 
@@ -88,7 +88,7 @@ RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd
 RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
 
 PN = "enigma2"
-PR = "r40"
+PR = "r41"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision
