@@ -9,9 +9,11 @@ RDEPENDS_${PN} = "python-cheetah python-json python-unixadmin python-misc python
 inherit gitpkgv
 PV = "0.1+git${SRCPV}"
 PKGV = "0.1+git${GITPKGV}"
-PR = "r0.77"
+PR = "r0.78"
 
 require openplugins.inc
+
+SRC_URI += " file://openwebif-filestreamproxy-support.patch;apply=yes;striplevel=1 "
 
 # Just a quick hack to "compile" it
 do_compile() {
