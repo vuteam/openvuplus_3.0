@@ -5,11 +5,11 @@ RDEPENDS_${PN} = "ncurses"
 
 LICENSE = "CLOSED"
 
-PV = "3.2"
+PV = "3.3"
 PR = "r1"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-SRC_URI = "http://archive.vuplus.com/download/utils/vuplus-blindscan-utils-${MACHINE}-${PV}.tar.bz2"
+SRC_URI = "http://archive.vuplus.com/download/utils/vuplus-blindscan-utils-${PV}.tar.bz2"
 
 S = "${WORKDIR}/blindscan-utils"
 
@@ -19,3 +19,6 @@ do_install() {
 		install -m 0755 $i ${D}/${bindir}/;
 	done;
 }
+
+SRC_URI[md5sum] = "afbb378078b09369729862331f463c34"
+SRC_URI[sha256sum] = "4efc38f0c897ced6daa93f9de61a41be179048ff10183aa0900df2685061cf31"
