@@ -9,11 +9,9 @@ RDEPENDS_${PN} = "python-cheetah python-json python-unixadmin python-misc python
 inherit gitpkgv
 PV = "0.1+git${SRCPV}"
 PKGV = "0.1+git${GITPKGV}"
-PR = "r0.80"
+PR = "r0.81"
 
 require openplugins.inc
-
-SRC_URI += " file://openwebif-transcoding-support.patch;apply=yes;striplevel=1 "
 
 # Just a quick hack to "compile" it
 do_compile() {
