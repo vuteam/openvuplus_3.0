@@ -2,7 +2,7 @@ DESCRIPTION = "Vuplus: W-LAN Task for the Vuplus Distribution"
 SECTION = "vuplus/base"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
-PR = "r13"
+PR = "r14"
 
 inherit task
 
@@ -36,7 +36,6 @@ KERNEL_WIFI_MODULES = " \
 	kernel-module-r8712u \
 	kernel-module-w35und \
 	kernel-module-zd1211rw \
-	kernel-module-rt2800usb \
 	kernel-module-llc \
 	kernel-module-stp \
 	kernel-module-bridge \
