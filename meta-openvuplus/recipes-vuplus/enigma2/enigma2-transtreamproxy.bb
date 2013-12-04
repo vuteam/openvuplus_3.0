@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit gitpkgv
 
-PR = "r7"
+PR = "r8"
 
 PV = "0.1+git${SRCPV}"
 PKGV = "0.1+git${GITPKGV}"
