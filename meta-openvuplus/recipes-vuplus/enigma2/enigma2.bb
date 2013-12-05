@@ -16,6 +16,7 @@ RDEPENDS_GST= "gst-plugins-base-decodebin gst-plugins-base-decodebin2 gst-plugin
 		gst-plugins-good-flac gst-plugin-dvbmediasink gst-plugins-bad-mpegdemux gst-plugins-ugly-dvdsub \
 		gst-plugins-good-souphttpsrc gst-plugins-ugly-mpegaudioparse gst-plugins-base-subparse \
         	gst-plugins-good-apetag gst-plugins-good-icydemux gst-plugins-good-autodetect gst-plugins-good-flv \
+		gst-plugins-bad-mms gst-plugins-ugly-asf \
 "
 
 RDEPENDS_${PN} = "python-codecs python-core python-lang python-re python-threading \
@@ -88,7 +89,7 @@ RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd
 RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
 
 PN = "enigma2"
-PR = "r45"
+PR = "r46"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision

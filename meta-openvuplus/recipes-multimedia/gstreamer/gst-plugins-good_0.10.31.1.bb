@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=a6f89e2100d9b6cdffcea4f398e37343 \
 DEPENDS += "cdparanoia cairo jpeg libpng zlib libid3tag flac speex libsoup-2.4"
 DEPENDS += "gst-plugins-base"
 
-PR = "r2"
+PR = "r3"
 GIT_PV = ""
 
 SRCREV = "7768342230450559509e3e593b2ea33e81ea0ca4"
@@ -22,6 +22,7 @@ SRC_URI = "git://anongit.freedesktop.org/gstreamer/${PN}"
 SRC_URI += " \
 	file://orc.m4-fix-location-of-orcc-when-cross-compiling.patch \
 	file://0001-accept-substream-syncwords-DTS-HD.patch \
+	file://rtsp-check-all-protocols.patch;apply=yes;striplevel=1 \
 "
 
 do_common_update() {
