@@ -2,7 +2,7 @@ SUMMARY = "Enigma2 Task for Vuplus"
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-INC_PR = "r14"
+INC_PR = "r15"
 
 inherit task
 
@@ -67,6 +67,7 @@ RDEPENDS_${PN} += " \
   ${@base_contains("VUPLUS_FEATURES", "wol", "enigma2-plugin-systemplugins-wolsetup", "", d)} \
   ${@base_conditional("MACHINE", "vuduo2", "duo2lcd4linux lcd4linuxsupport", "", d)} \
   ${@base_conditional("MACHINE", "vuduo2", "vuplus-checkvfd", "", d)} \
+  ${@base_contains("VUPLUS_FEATURES", "audioeffect", "enigma2-plugin-systemplugins-audioeffect", "", d)} \
 "
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
