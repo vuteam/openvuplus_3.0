@@ -1,6 +1,6 @@
-SRCDATE = "20131212"
+SRCDATE = "20131216"
 
 MODULES_NAME = "procmk\ndvb-bcm7424\nbrcmfb\nfpga_directc"
 
-SRC_URI[md5sum] = "d4f31d95f05527ad9050bae07302f2b2"
-SRC_URI[sha256sum] = "5bffbc9e95796d15983a11bbda262bf5ea068d2460d9d604d36e25d2447b5475"
+SRC_URI[md5sum] = "e4111c67339955e93243242caa36d239"
+SRC_URI[sha256sum] = "94b6f24df98816e8971ffdac35bea20e87cb32511cfdc9bba7f366939d320a8f"
