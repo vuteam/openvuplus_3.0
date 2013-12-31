@@ -6,16 +6,16 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=0636e73ff0215e8d672dc4c32c317bb3 \
                     file://COPYING.LIB;md5=55ca817ccb7d5b5b66355690e9abc605 \
                     file://gst/tta/crc32.h;beginline=12;endline=29;md5=71a904d99ce7ae0c1cf129891b98145c"
 
-DEPENDS += "libmusicbrainz tremor curl libmms librtmp libmms"
+DEPENDS += "libmusicbrainz tremor curl libmms librtmp libmms faad2"
 DEPENDS += "gst-plugins-base"
 CONFLICTS = "librsvg"
 
-PR = "r4"
+PR = "r5"
 GIT_PV = ""
 
 SRCREV = "cef47d85294a0dca38631f938b81a3f0dd6891bd"
 
-EXTRA_OECONF += "--disable-examples --disable-experimental --disable-sdl --disable-cdaudio --disable-directfb \
+EXTRA_OECONF += "--disable-examples --disable-experimental --disable-sdl --disable-cdaudio --disable-directfb --enable-faad \
                  --disable-vdpau --disable-apexsink --enable-orc --disable-mpeg2enc --disable-mplex --disable-rsvg --disable-uvch264"
 
 ARM_INSTRUCTION_SET = "arm"
@@ -29,6 +29,7 @@ SRC_URI += " \
         file://0006-hlsdemux-backport.patch \
         file://0007-revert-rtmp-change.patch \
         file://orc.m4-fix-location-of-orcc-when-cross-compiling.patch \
+        file://Lower-rank-of-faad-to-prevent-using-it-if-not-necess.patch \
 "
 
 inherit autotools pkgconfig gettext git-project
