@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
 KV = "3.3.8"
 
-PR = "r1"
+PR = "r2"
 SRCREV = ""
 
 MODULE = "linux-3.3.8"
@@ -18,6 +18,7 @@ SRC_URI += "http://archive.vuplus.com/download/kernel/stblinux-3.3.6-2.0.tar.bz2
         file://dvb_backport.patch;patch=1;pnum=1 \
 	file://bmips-no-array-bounds.patch;patch=1;pnum=1 \
         file://${MACHINE}_defconfig \
+	file://rt5372_kernel_3.3.8.patch \
 	"
 
 S = "${WORKDIR}/linux"

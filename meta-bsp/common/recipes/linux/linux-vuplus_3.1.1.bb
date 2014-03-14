@@ -3,7 +3,7 @@ SECTION = "kernel"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
-PR = "r2"
+PR = "r3"
 KV = "3.1.1"
 SRCREV = "r2"
 
@@ -13,6 +13,7 @@ SRC_URI += "http://archive.vuplus.com/download/kernel/linux-${KV}_${SRCREV}.tar.
 	file://fix_cpu_proc.patch;patch=1;pnum=1 \
         file://${MACHINE}_defconfig \
 	file://igmp.patch;patch=1;pnum=1 \
+	file://rt5372_kernel_3.1.1.patch \
 "
 
 SRC_URI[md5sum] = "4dc3ac322453abbfaade7020cddea205"
