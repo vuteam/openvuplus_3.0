@@ -5,14 +5,15 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=80
 SRC_URI = " \
         file://LCD4linux.tar.gz \
         file://wetter.tar.gz \
-	file://duo2lcd4linux.patch;patch=1;pnum=1 \
+	file://duo2lcd4linux.patch \
+	file://duo2lcd4linux-fix-standby.patch \
 "
 
 RDEPENDS_${PN} = "enigma2 python-codecs python-datetime python-imaging python-textutils python-shell python-ctypes python-pyusb lcd4linux"
 
 S = "${WORKDIR}/LCD4linux"
 
-PR = "r5"
+PR = "r6"
 
 PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/LCD4linux"
 

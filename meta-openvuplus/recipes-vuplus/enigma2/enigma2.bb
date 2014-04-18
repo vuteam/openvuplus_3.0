@@ -89,7 +89,7 @@ RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd
 RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
 
 PN = "enigma2"
-PR = "r67"
+PR = "r68"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision
@@ -114,6 +114,8 @@ SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH};t
            file://enigma2_vuplus_addlibpythondeps.patch;patch=1;pnum=1 \
 	   file://enigma2_vuplus_pluginbrowser.patch;striplevel=1 \
            file://enigma2_vuplus_proc_oom_score_adj.patch;striplevel=1 \
+           file://enigma2_vuplus_fix_standby_name.patch \
+           file://enigma2_vuplus_fix_standby_name_skin.patch \
            file://MyriadPro-Regular.otf \
            file://MyriadPro-Semibold.otf \
            file://MyriadPro-SemiboldIt.otf \
