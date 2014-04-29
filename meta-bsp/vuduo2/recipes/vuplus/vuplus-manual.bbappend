@@ -1,4 +1,4 @@
-SRC_DATE = "20140409_p0"
+SRC_DATE = "20140429_p0"
 IMAGE_DIR = "Vu+-Duo2-User-Manual_english_D0610-web-images"
 
 SRC_URI[md5sum] = "8e7887f012e1cc88cac9338032dadc2e"

@@ -1,4 +1,4 @@
-SRC_DATE = "20140409_p0"
+SRC_DATE = "20140429_p0"
 IMAGE_DIR = "image"
 
 SRC_URI[md5sum] = "98a97b56af2b689484dbf713bd6b6eb0"
