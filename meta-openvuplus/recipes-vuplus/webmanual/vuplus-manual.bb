@@ -3,7 +3,7 @@ SECTION = "base"
 PRIORITY = "required"
 LICENSE = "CLOSED"
 
-PR = "${SRC_DATE}_r0"
+PR = "${SRC_DATE}_r1"
 SRC_URI = "http://code.vuplus.com/download/build.fc3abf29fb03f797e78f907928125638/embedded/vuplus_manual/${MACHINE}_${SRC_DATE}.tar.gz"
 
 INHIBIT_PACKAGE_STRIP = "1"
