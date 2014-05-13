@@ -2,7 +2,7 @@ SUMMARY = "Enigma2 Task for Vuplus"
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-INC_PR = "r15"
+INC_PR = "r16"
 
 inherit task
 
@@ -18,7 +18,6 @@ RDEPENDS_${PN} += " \
   enigma2-plugins-meta \
   enigma2-skins-meta \
   enigma2-plugin-extensions-mediascanner \
-  enigma2-plugin-systemplugins-factorytest \
   enigma2-plugin-systemplugins-crashreport \
   enigma2-plugin-extensions-remotestreamconvert \
   enigma2-plugin-systemplugins-zappingmodeselection \
@@ -44,7 +43,6 @@ RDEPENDS_${PN} += " \
   ${@base_contains("VUPLUS_FEATURES", "webmanual", "vuplus-manual", "", d)} \
   enigma2-plugin-extensions-mediaplayer \
   enigma2-plugin-extensions-pictureplayer \
-  enigma2-plugin-extensions-vuplusevent \
   enigma2-plugin-systemplugins-skinselector \
   enigma2-plugin-systemplugins-ui3dsetup \
   enigma2-plugin-systemplugins-uipositionsetup \
