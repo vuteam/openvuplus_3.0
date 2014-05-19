@@ -5,7 +5,7 @@ LICENSE = "CLOSED"
 DEPENDS = "tslib mpfr gmp"
 RDEPENS = "tslib-conf libts-1.0-0 libsysfs2 libgmp3 libmpfr1 vuplus-dvb-modules"
 
-SRC_DATE = "20140430_0"
+SRC_DATE = "20140519_1"
 
 PR = "r2_${SRC_DATE}"
 SRC_URI = ""
@@ -54,5 +54,5 @@ PACKAGES = "${PN}"
 
 FILES_${PN} = "/"
 
-SRC_URI[md5sum] = "7204505914945da89ace49556218f0ef"
-SRC_URI[sha256sum] = "d42d671dfebb3c5125dccf3b72e1cfbb957682d9e497c2dc7a26bdd119118d87"
+SRC_URI[md5sum] = "e2f6220403c2a946f8f9583aa084bc60"
+SRC_URI[sha256sum] = "f8ec235ca0368bdcaaac2b61634204e2c41558d23d8d7d43ff4f02edc00d6ddb"
