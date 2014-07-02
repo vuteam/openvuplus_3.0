@@ -22,7 +22,7 @@ LANGUAGES = "ar_AE cs_CZ da_DK de_DE el_GR es_ES et_EE fi_FI fr_FR fy_FY hr_HR \
 	hu_HU is_IS it_IT lt_LT nl_NL no_NO pl_PL pt_PT ro_RO ru_RU sk_SK sl_SI \
 	sr_YU sv_SE tr_TR ur_IN"
 
-RPROVIDES = "virtual-locale-ar virtual-locale-cs virtual-locale-da \
+RPROVIDES_{PN} = "virtual-locale-ar virtual-locale-cs virtual-locale-da \
 	virtual-locale-de virtual-locale-el virtual-locale-es virtual-locale-et \
 	virtual-locale-fi virtual-locale-fr virtual-locale-fy virtual-locale-hr \
 	virtual-locale-hu virtual-locale-is virtual-locale-it virtual-locale-lt \

@@ -1,4 +1,4 @@
 PR .= "-vuplus0"
 
-RPROVIDES += "python-pickle-native python-pprint-native"
+RPROVIDES_{PN} += "python-pickle-native python-pprint-native"
 
