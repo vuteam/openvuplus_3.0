@@ -7,7 +7,8 @@ DESCRIPTION = "WvStreams is a network programming library in C++"
 DEPENDS = "zlib openssl (>= 0.9.8)"
 
 SRC_URI = "http://wvstreams.googlecode.com/files/${PN}-${PV}.tar.gz \
-	file://vuplus-wvstreams-build-fix.patch;patch=1;pnum=1 \
+	file://vuplus-wvstreams-build-fix.patch \
+	file://vuplus-wvstreams-build-fix_getuid.patch \
 	"
 
 inherit autotools pkgconfig
