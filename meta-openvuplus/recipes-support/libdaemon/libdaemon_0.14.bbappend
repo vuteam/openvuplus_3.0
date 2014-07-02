@@ -1,0 +1,4 @@
+PR .= "-vuplus0"
+
+SRC_URI[md5sum] = "58109d5902e69bc2cbe647b9423d3218"
+SRC_URI[sha256sum] = "5b6aae9237966c40b5695ff44d848ed4270513487820d455d7a54ac879cfbd7f"
