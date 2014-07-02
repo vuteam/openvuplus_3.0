@@ -1,21 +1,20 @@
-Index: ethtool-4/ethtool.c
-===================================================================
---- ethtool-4/ethtool.c	(revision 3)
-+++ ethtool-4/ethtool.c	(working copy)
-@@ -1578,6 +1578,27 @@
+diff --git a/ethtool.c b/ethtool.c
+index acac32a..a47daaa 100644
+--- a/ethtool.c
++++ b/ethtool.c
+@@ -2253,6 +2253,25 @@ static int do_gset(struct cmd_context *ctx)
  	} else if (errno != EOPNOTSUPP) {
  		perror("Cannot get link status");
  	}
-+#if 1		/*	ikseong - check running flags	*/
-+	else
-+	{
-+		if(ioctl(fd, SIOCGIFFLAGS, ifr) < 0)
++	else{
++		err = send_ioctl(ctx, &edata);
++		if (err < 0)
 +		{
 +			fprintf(stdout,"SIOCGIFFLAGS error \n");
 +		}
 +		else
 +		{
-+			if((ifr->ifr_flags & IFF_RUNNING))
++			if((ctx->ifr.ifr_flags & IFF_RUNNING))
 +			{
 +				fprintf(stdout, "	Link detected: yes\n");
 +			}
@@ -23,10 +22,9 @@ Index: ethtool-4/ethtool.c
 +			{
 +				fprintf(stdout, "	Link detected: no\n");
 +			}
-+			allfail=0;
++			allfail = 0;
 +		}
 +	}
-+#endif
-
+ 
  	if (allfail) {
  		fprintf(stdout, "No data available\n");
