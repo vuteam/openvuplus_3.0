@@ -2,7 +2,7 @@ DESCRIPTION = "Xcrypt/Cnx daemon"
 SECTION = "base"
 PRIORITY = "required"
 LICENSE = "proprietary"
-LIC_FILES_CHKSUM = "file://${THISDIR}/${PN}/Proprietary;md5=0557f9d92cf58f2ccdd50f62f8ac0b28"
+LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/Proprietary;md5=0557f9d92cf58f2ccdd50f62f8ac0b28"
 
 PV = "1.1"
 PR = "r1"
