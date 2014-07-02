@@ -11,7 +11,7 @@ SRC_URI = "http://wvstreams.googlecode.com/files/${PN}-${PV}.tar.gz \
 	file://vuplus-wvstreams-build-fix_getuid.patch \
 	"
 
-inherit autotools pkgconfig
+inherit autotools-brokensep pkgconfig
 
 LDFLAGS_append = " -Wl,-rpath-link,${CROSS_DIR}/${TARGET_SYS}/lib"
 EXTRA_OECONF = " --without-tcl --without-qt --without-pam "

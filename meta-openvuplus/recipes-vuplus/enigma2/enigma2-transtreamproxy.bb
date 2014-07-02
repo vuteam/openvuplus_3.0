@@ -13,7 +13,7 @@ SRCREV_pn-${PN} ?= "${AUTOREV}"
 
 SRC_URI = "git://code.vuplus.com/git/filestreamproxy.git;protocol=git;branch=transtreamproxy"
 
-inherit autotools
+inherit autotools-brokensep
 
 S = "${WORKDIR}/git"
 

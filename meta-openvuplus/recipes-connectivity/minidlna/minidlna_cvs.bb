@@ -15,7 +15,7 @@ SRC_URI = "cvs://anonymous@minidlna.cvs.sourceforge.net/cvsroot/minidlna;module=
 
 S = "${WORKDIR}/${PN}"
 
-inherit autotools gettext 
+inherit autotools-brokensep gettext
 
 PACKAGES =+ "${PN}-utils"
 

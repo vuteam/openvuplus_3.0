@@ -19,7 +19,7 @@ FILES_${PN}-meta = "${datadir}/meta"
 PACKAGES += "${PN}-meta"
 PACKAGE_ARCH = "all"
 
-inherit autotools
+inherit autotools-brokensep
 
 S = "${WORKDIR}/git"
 

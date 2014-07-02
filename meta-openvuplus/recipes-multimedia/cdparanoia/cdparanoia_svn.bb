@@ -20,7 +20,7 @@ S = "${WORKDIR}/cdparanoia"
 
 PARALLEL_MAKE = ""
 
-inherit autotools pkgconfig
+inherit autotools-brokensep pkgconfig
 
 PACKAGES += "libcdparanoia libcdparanoia-dev libcdparanoia-static"
 
@@ -41,3 +41,4 @@ do_install() {
 		   PKGCONFIGDIR="${D}${libdir}/pkgconfig" \
 		   install
 }
+
