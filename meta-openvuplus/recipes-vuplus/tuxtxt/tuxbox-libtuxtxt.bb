@@ -4,7 +4,9 @@ LIC_FILES_CHKSUM = "file://libtuxtxt/libtuxtxt.c;endline=19;md5=75fd12b0664044ec
 DEPENDS = "dreambox-dvbincludes libpng freetype"
 PR = "r3"
 
-SRC_URI = "git://code.vuplus.com/git/tuxbox-libs.git;protocol=git;tag=HEAD \
+SRCREV = "master"
+
+SRC_URI = "git://code.vuplus.com/git/tuxbox-libs.git;protocol=git \
         file://acinclude.m4 \
         file://ignorelibs.patch \
         file://32bpp.diff \
@@ -12,6 +14,7 @@ SRC_URI = "git://code.vuplus.com/git/tuxbox-libs.git;protocol=git;tag=HEAD \
         file://allow_different_demux.diff \
         file://videodev2.patch \
         file://libz.patch \
+        file://libtuxtxt_buildfix.patch \
 "
 
 S = "${WORKDIR}/git"
@@ -24,4 +27,3 @@ do_configure_prepend() {
 }
 
 CPPFLAGS += "-DHAVE_DREAMBOX_HARDWARE -DDREAMBOX"
-
