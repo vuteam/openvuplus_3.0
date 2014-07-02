@@ -6,7 +6,7 @@ MAINTAINER = "Felix Domke <tmbinc@elitdvb.net>"
 PN = "tuxbox-common"
 PR = "r5"
 
-SRC_REV = "HEAD"
+SRC_REV = "12436bfb31dafdc4c73bc4bb5d4cb39a0855c95e"
 
 SRC_URI = "git://code.vuplus.com/git/dvbapp-meta.git;protocol=git;tag=${SRC_REV} "
 
