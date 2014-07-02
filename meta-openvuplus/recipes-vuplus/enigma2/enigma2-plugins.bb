@@ -25,17 +25,17 @@ EXTRA_OECONF = " \
 "
 
 SRC_URI_append_vuplus = " \
-	file://enigma2_plugins_mytube_tpm.patch;patch=1;pnum=1 \
-	file://enigma2_plugins_20121113.patch;patch=1;pnum=1 \
-	file://enigma2_plugins_webinterface_tpm.patch;patch=1;pnum=1 \
-	file://enigma2_plugins_ac3lipsync_dolby.patch;patch=1;pnum=1 \
-	file://enigma2_plugins_autoresolution_fix.patch;patch=1;pnum=1 \
-	file://enigma2_plugins_fancontrol2.patch;patch=1;pnum=1 \
-	file://enigma2_plugins_gst_plugins_pkgname.patch;patch=1;pnum=1 \
+	file://enigma2_plugins_mytube_tpm.patch \
+	file://enigma2_plugins_20121113.patch \
+	file://enigma2_plugins_webinterface_tpm.patch \
+	file://enigma2_plugins_ac3lipsync_dolby.patch \
+	file://enigma2_plugins_autoresolution_fix.patch \
+	file://enigma2_plugins_fancontrol2.patch \
+	file://enigma2_plugins_gst_plugins_pkgname.patch \
 	file://dreamboxweb.png \
 	file://dreamboxwebtv.png \
 	file://favicon.ico \
-	file://Makefile.am
+	file://Makefile.am \
 "
 
 FILES_${PN} += " /usr/share/enigma2 /usr/share/fonts "
@@ -43,7 +43,7 @@ FILES_${PN}-meta = "${datadir}/meta"
 PACKAGES += "${PN}-meta"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-inherit autotools
+inherit autotools pythonnative
 
 S = "${WORKDIR}/git"
 
@@ -83,7 +83,7 @@ def changeword2(file):
     os.system(cmd1)
 
 do_unpack_append(){
-	modify_po()
+    modify_po()
 }
 
 do_configure_prepend_vuplus() {
@@ -114,7 +114,14 @@ python populate_packages_prepend() {
             if name == 'Description':
                 d.setVar('DESCRIPTION_' + package, value)
             elif name == 'Depends':
-                d.setVar('RDEPENDS_' + package, ' '.join(value.split(', ')))
+                rdepends = []
+                for depend in value.split(','):
+                    depend = depend.strip()
+                    if depend.startswith('enigma2') and not depend.startswith('enigma2-'):
+                        rdepends.append('enigma2')
+                    else:
+                        rdepends.append(depend)
+                d.setVar('RDEPENDS_' + package, ' '.join(rdepends))
             elif name == 'Replaces':
                 d.setVar('RREPLACES_' + package, ' '.join(value.split(', ')))
             elif name == 'Conflicts':
