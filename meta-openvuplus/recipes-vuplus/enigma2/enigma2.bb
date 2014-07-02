@@ -1,28 +1,23 @@
 DESCRIPTION = "Enigma2 is an experimental, but useful framebuffer-based frontend for DVB functions"
-MAINTAINER = "Felix Domke <tmbinc@elitedvb.net>"
+MAINTAINER = "vuplus team"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=c9e255efa454e0155c1fd758df7dcaf3"
-DEPENDS = "jpeg libungif libmad libpng libsigc++-1.2 gettext-native \
-           dreambox-dvbincludes freetype libdvbsi++ python swig-native \
-           libfribidi libxmlccwrap libdreamdvd gstreamer gst-plugin-dvbmediasink \
-           gst-plugins-bad gst-plugins-good gst-plugins-ugly python-wifi \
-           hostap-daemon bridge-utils ntfs-3g dosfstools util-linux \
+
+DEPENDS = "jpeg giflib libmad libpng libsigc++-1.2 gettext-native \
+	dreambox-dvbincludes freetype libdvbsi++ python swig-native \
+	libfribidi libxmlccwrap libdreamdvd gstreamer gst-plugin-dvbmediasink \
+	gst-plugins-bad gst-plugins-good gst-plugins-ugly python-wifi \
+	hostap-daemon bridge-utils ntfs-3g dosfstools util-linux \
 "
 
-RDEPENDS_GST= "gst-plugins-base-decodebin gst-plugins-base-decodebin2 gst-plugins-base-app gst-plugins-bad-fragmented \
-               gst-plugins-good-id3demux gst-plugins-ugly-mad gst-plugins-base-ogg gst-plugins-base-playbin \
-               gst-plugins-base-typefindfunctions gst-plugins-base-audioconvert gst-plugins-base-audioresample \
-               gst-plugins-good-wavparse gst-plugins-ugly-mpegstream \
-               gst-plugins-good-flac gst-plugin-dvbmediasink gst-plugins-bad-mpegdemux gst-plugins-ugly-dvdsub \
-               gst-plugins-good-souphttpsrc gst-plugins-ugly-mpegaudioparse gst-plugins-base-subparse \
-               gst-plugins-good-apetag gst-plugins-good-icydemux gst-plugins-good-autodetect gst-plugins-good-flv \
-               gst-plugins-bad-mms gst-plugins-ugly-asf gst-plugins-bad-faad \
-"
-
-RDEPENDS_${PN} = "python-codecs python-core python-lang python-re python-threading \
-                  python-xml python-fcntl python-stringold python-pickle python-netclient \
-                  glibc-gconv-iso8859-15 ethtool parted \
-                  ${RDEPENDS_GST} \
+GST_RDEPENDS = "gst-plugins-base-decodebin gst-plugins-base-decodebin2 gst-plugins-base-app gst-plugins-bad-fragmented \
+	gst-plugins-good-id3demux gst-plugins-ugly-mad gst-plugins-base-ogg gst-plugins-base-playbin \
+	gst-plugins-base-typefindfunctions gst-plugins-base-audioconvert gst-plugins-base-audioresample \
+	gst-plugins-good-wavparse gst-plugins-ugly-mpegstream \
+	gst-plugins-good-flac gst-plugin-dvbmediasink gst-plugins-bad-mpegdemux gst-plugins-ugly-dvdsub \
+	gst-plugins-good-souphttpsrc gst-plugins-ugly-mpegaudioparse gst-plugins-base-subparse \
+	gst-plugins-good-apetag gst-plugins-good-icydemux gst-plugins-good-autodetect gst-plugins-good-flv \
+	gst-plugins-bad-mms gst-plugins-ugly-asf gst-plugins-good-avi gst-plugins-bad-faad \
 "
 
 GST_RTSP_RDEPENDS = "gst-plugins-good-udp gst-plugins-good-rtsp gst-plugins-good-rtp gst-plugins-good-rtpmanager"
@@ -31,7 +26,11 @@ GST_MISC_RDEPENDS = "gst-plugins-good-matroska gst-plugins-good-isomp4 gst-plugi
 GST_DVD_RDEPENDS  = "gst-plugins-bad-cdxaparse gst-plugins-ugly-cdio gst-plugins-bad-vcdsrc"
 GST_BASE_RDEPENDS = "${GST_ALSA_RDEPENDS} ${GST_MISC_RDEPENDS} ${GST_RTSP_RDEPENDS}"
 
-RDEPENDS_append_vuplus = " ${GST_BASE_RDEPENDS} ${GST_DVD_RDEPENDS} gst-plugins-good-avi"
+RDEPENDS_${PN} = "python-codecs python-core python-lang python-re python-threading \
+	python-xml python-fcntl python-stringold python-pickle python-netclient \
+	glibc-gconv-iso8859-15 ethtool parted \
+	${GST_RDEPENDS} ${GST_BASE_RDEPENDS} ${GST_DVD_RDEPENDS} \
+"
 
 # 'forward depends' - no two providers can have the same PACKAGES_DYNAMIC, however both
 # enigma2 and enigma2-plugins produce enigma2-plugin-*.
@@ -91,37 +90,36 @@ RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extension
 PN = "enigma2"
 PR = "r72"
 
-SRCDATE = "20121128"
-#SRCDATE is NOT used by git to checkout a specific revision
-#but we need it to build a ipk package version
-#when you like to checkout a specific revision of e2 you need
-#have to specify a commit id or a tag name in SRCREV
+inherit gitpkgv pythonnative
+
+PKGV = "git${GITPKGV}"
 
 ####################################################
 BRANCH = "vuplus_experimental"
-PV = "experimental-git${SRCDATE}"
+PV = "experimental-git${SRCPV}"
 SRCREV = ""
 ####################################################
 
 # enigma2_vuplus_mediaplayer.patch is for trick-play in media player
 
 SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH};tag=${SRCREV} \
-           file://enigma2_vuplus_skin.patch;patch=1;pnum=1 \
-           file://enigma2_vuplus_mediaplayer.patch;patch=1;pnum=1 \
-           file://enigma2_vuplus_mediaplayer_subtitle.patch;patch=1;pnum=1 \
-           file://enigma2_vuplus_remove_dreambox_enigma.patch;patch=1;pnum=1 \
-           file://enigma2_vuplus_vfd_mode.patch;patch=1;pnum=1 \
-           file://enigma2_vuplus_addlibpythondeps.patch;patch=1;pnum=1 \
-           file://enigma2_vuplus_pluginbrowser.patch;striplevel=1 \
-           file://enigma2_vuplus_proc_oom_score_adj.patch;striplevel=1 \
-           file://enigma2_vuplus_fix_standby_name.patch \
-           file://enigma2_vuplus_fix_standby_name_skin.patch \
-           file://MyriadPro-Regular.otf \
-           file://MyriadPro-Semibold.otf \
-           file://MyriadPro-SemiboldIt.otf \
-           file://750S \
-           file://Vu_HD \
-           file://number_key \
+	file://enigma2_vuplus_skin.patch \
+	file://enigma2_vuplus_mediaplayer.patch \
+	file://enigma2_vuplus_mediaplayer_subtitle.patch \
+	file://enigma2_vuplus_remove_dreambox_enigma.patch \
+	file://enigma2_vuplus_vfd_mode.patch \
+	file://enigma2_vuplus_addlibpythondeps.patch \
+	file://enigma2_vuplus_pluginbrowser.patch \
+	file://enigma2_vuplus_proc_oom_score_adj.patch \
+        file://enigma2_vuplus_fix_standby_name.patch \
+        file://enigma2_vuplus_fix_standby_name_skin.patch \
+	file://enigma2_vuplus_epng.patch \
+	file://MyriadPro-Regular.otf \
+	file://MyriadPro-Semibold.otf \
+	file://MyriadPro-SemiboldIt.otf \
+	file://750S \
+	file://Vu_HD \
+	file://number_key \
 "
 
 SRC_URI_append = " ${@base_contains("VUPLUS_FEATURES", "vuwlan", "file://enigma2_vuplus_networksetup.patch;patch=1;pnum=1", "", d)}"
@@ -149,7 +147,7 @@ def changeword(file):
     os.system(cmd1)
 
 do_unpack_append(){
-	change_po()
+    change_po()
 }
 
 S = "${WORKDIR}/git"
@@ -159,7 +157,7 @@ FILES_${PN}-meta = "${datadir}/meta"
 PACKAGES += "${PN}-meta"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-inherit autotools pkgconfig
+inherit autotools pkgconfig pythonnative
 
 do_configure_prepend() {
 	git checkout ${BRANCH}
@@ -201,7 +199,4 @@ python populate_packages_prepend() {
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/.*\.a$', 'enigma2-plugin-%s-staticdev', '%s (static development)', recursive=True, match_path=True, prepend=True)
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/(.*/)?\.debug/.*$', 'enigma2-plugin-%s-dbg', '%s (debug)', recursive=True, match_path=True, prepend=True)
 }
-
-RCONFLICTS_${PN} = "dreambox-keymaps"
-RREPLACES_${PN} = "dreambox-keymaps tuxbox-tuxtxt-32bpp (<= 0.0+cvs20090130-r1)"
 
