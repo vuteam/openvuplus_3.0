@@ -108,7 +108,6 @@ SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH};t
 	file://enigma2_vuplus_mediaplayer_subtitle.patch \
 	file://enigma2_vuplus_remove_dreambox_enigma.patch \
 	file://enigma2_vuplus_vfd_mode.patch \
-	file://enigma2_vuplus_addlibpythondeps.patch \
 	file://enigma2_vuplus_pluginbrowser.patch \
 	file://enigma2_vuplus_proc_oom_score_adj.patch \
         file://enigma2_vuplus_fix_standby_name.patch \
@@ -185,6 +184,7 @@ do_compile_prepend_vuplus() {
 }
 
 EXTRA_OECONF = " \
+        --enable-dependency-tracking \
 	${@base_contains("VUPLUS_FEATURES", "display-text-vfd", "--with-display-text-vfd" , "", d)} \
 	${@base_contains("VUPLUS_FEATURES", "display-graphic-vfd", "--with-display-graphic-vfd" , "", d)} \
 	${@base_contains("VUPLUS_FEATURES", "right-half-vfd-skin", "--with-set-right-half-vfd-skin" , "", d)} \
