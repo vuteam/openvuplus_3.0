@@ -10,10 +10,11 @@ SRCREV = "r2"
 MODULE = "linux-3.1.1"
 
 SRC_URI += "http://archive.vuplus.com/download/kernel/linux-${KV}_${SRCREV}.tar.bz2 \
-	file://fix_cpu_proc.patch;patch=1;pnum=1 \
+        file://fix_cpu_proc.patch \
+        file://igmp.patch \
+        file://rt5372_kernel_3.1.1.patch \
+        file://kernel_miscompilation_with_gcc_4_8.patch \
         file://${MACHINE}_defconfig \
-	file://igmp.patch;patch=1;pnum=1 \
-	file://rt5372_kernel_3.1.1.patch \
 "
 
 SRC_URI[md5sum] = "4dc3ac322453abbfaade7020cddea205"

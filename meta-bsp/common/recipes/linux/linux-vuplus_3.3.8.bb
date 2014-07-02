@@ -11,15 +11,16 @@ SRCREV = ""
 MODULE = "linux-3.3.8"
 
 SRC_URI += "http://archive.vuplus.com/download/kernel/stblinux-3.3.6-2.0.tar.bz2 \
-        file://brcm_3.3.patch;patch=1;pnum=1 \
-        file://fix_cpu_proc.patch;patch=1;pnum=1 \
-        file://brcm_mtd_mac.patch;patch=1;pnum=1 \
-        file://dvb_core_5.5.patch;patch=1;pnum=1 \
-        file://dvb_backport.patch;patch=1;pnum=1 \
-	file://bmips-no-array-bounds.patch;patch=1;pnum=1 \
+        file://brcm_3.3.patch \
+        file://fix_cpu_proc.patch \
+        file://brcm_mtd_mac.patch \
+        file://dvb_core_5.5.patch \
+        file://dvb_backport.patch \
+	file://bmips-no-array-bounds.patch \
         file://${MACHINE}_defconfig \
 	file://rt5372_kernel_3.3.8.patch \
-	"
+	file://kernel_miscompilation_with_gcc_4_8.patch \
+"
 
 S = "${WORKDIR}/linux"
 
