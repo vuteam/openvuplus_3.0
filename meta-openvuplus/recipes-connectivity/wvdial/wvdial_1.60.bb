@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://COPYING.LIB;md5=55ca817ccb7d5b5b66355690e9abc605"
 
 SRC_URI = "\
 	http://www.alumnit.ca/download/wvdial-1.60.tar.gz \
-	file://wvdial-vuplus_001.patch;patch=1 \
+	file://wvdial-vuplus_001.patch \
 	file://wvdial_fileselect.patch \
 	"
 

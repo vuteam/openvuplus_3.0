@@ -7,7 +7,7 @@ PR = "r1"
 inherit allarch
 
 SRC_URI = "http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-data-${PV}.tar.bz2 \
-	file://usb-modeswitch-data_20120215.patch;patch=1;pnum=1 \
+	file://usb-modeswitch-data_20120215.patch \
 	"
 
 do_install() {

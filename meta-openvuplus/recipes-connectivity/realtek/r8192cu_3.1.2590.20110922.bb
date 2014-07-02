@@ -7,8 +7,8 @@ inherit module
 
 SRC_URI = " \
 	file://rtl8192_8188CU_linux_v3.1.2590.20110922.tar.gz \
-	file://makefile.patch;patch=1 \
-	file://linux_3.1.patch;patch=1 \
+	file://makefile.patch \
+	file://linux_3.1.patch \
 "	
 
 S = "${WORKDIR}/rtl8192_8188CU_linux_v${PV}"

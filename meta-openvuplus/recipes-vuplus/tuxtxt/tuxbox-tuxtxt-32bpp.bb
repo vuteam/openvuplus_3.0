@@ -15,7 +15,7 @@ SRC_URI = "git://code.vuplus.com/git/tuxbox-tuxtxt.git;protocol=git \
         file://add_advanced_rc.diff \
         file://allow_different_demux.diff \
         file://plugin.py \
-	file://tuxtxt_vuplus.patch;patch=1;pnum=1 \
+	file://tuxtxt_vuplus.patch \
 "
 
 S = "${WORKDIR}/git"

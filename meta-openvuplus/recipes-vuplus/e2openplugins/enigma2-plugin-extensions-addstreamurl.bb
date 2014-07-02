@@ -7,7 +7,7 @@ require openplugins.inc
 
 require assume-gplv2.inc
 
-SRC_URI += "file://addstreamurl_uifix.patch;patch=1;pnum=1"
+SRC_URI += "file://addstreamurl_uifix.patch"
 
 PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/${MODULE}"
 
