@@ -13,7 +13,7 @@ SRC_URI += " \
 	   file://local.rules \
            file://init"
 
-inherit update-rc.d autotools pkgconfig
+inherit update-rc.d autotools-brokensep pkgconfig
 
 PARALLEL_MAKE = ""
 UDEV_DEVFS_RULES ?= "0"
