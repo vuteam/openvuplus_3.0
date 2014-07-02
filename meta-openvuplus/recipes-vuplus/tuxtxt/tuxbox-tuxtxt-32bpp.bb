@@ -5,7 +5,9 @@ DEPENDS = "freetype tuxbox-libtuxtxt"
 RDEPENDS_${PN} = "enigma2"
 PR = "r7"
 
-SRC_URI = "git://code.vuplus.com/git/tuxbox-tuxtxt.git;protocol=git;tag=HEAD \
+SRCREV = "master"
+
+SRC_URI = "git://code.vuplus.com/git/tuxbox-tuxtxt.git;protocol=git \
         file://makefiles.diff \
         file://nonblocking.diff \
         file://32bpp.diff \
