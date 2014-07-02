@@ -9,12 +9,13 @@ LIC_FILES_CHKSUM = "file://COPYING.LIB;md5=55ca817ccb7d5b5b66355690e9abc605"
 SRC_URI = "\
 	http://www.alumnit.ca/download/wvdial-1.60.tar.gz \
 	file://wvdial-vuplus_001.patch;patch=1 \
+	file://wvdial_fileselect.patch \
 	"
 
 DEPENDS = "wvstreams ppp"
 RDEPENDS_${PN} = "ppp wvstreams"
 
-inherit autotools pkgconfig
+inherit autotools-brokensep pkgconfig
 
 CFLAGS += " -Wno-write-strings "
 LDFLAGS = " -L ${CROSS_DIR}/${TARGET_SYS}/usr/lib -luniconf -lwvstreams -lwvbase -lwvutils "
