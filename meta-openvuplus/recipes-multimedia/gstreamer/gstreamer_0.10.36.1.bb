@@ -26,7 +26,7 @@ EXTRA_OECONF = "--disable-docs-build --disable-dependency-tracking --with-check=
 
 inherit autotools pkgconfig gettext git-project
 
-SRC_URI = "git://anongit.freedesktop.org/gstreamer/${PN}"
+SRC_URI = "git://anongit.freedesktop.org/gstreamer/${PN};branch=0.10"
 
 SRC_URI += " \
 	file://check_fix.patch \
