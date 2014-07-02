@@ -1,6 +1,8 @@
---- configure.in.org	2008-05-01 12:40:58.000000000 +0200
-+++ configure.in	2008-05-01 12:39:39.000000000 +0200
-@@ -998,7 +999,7 @@
+diff --git a/configure.in b/configure.in
+index d0c9f83..b565f95 100644
+--- a/configure.in
++++ b/configure.in
+@@ -1303,7 +1303,7 @@ then
  # so we need to run a program to see whether it really made the
  # function available.
  AC_MSG_CHECKING(whether $CC accepts -pthread)
@@ -8,8 +10,8 @@
 +AC_CACHE_VAL(ac_cv_pthread,
  [ac_save_cc="$CC"
  CC="$CC -pthread"
- AC_TRY_RUN([
-@@ -1023,11 +1024,11 @@
+ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+@@ -1325,11 +1325,11 @@ fi
  
  # If we have set a CC compiler flag for thread support then
  # check if it works for CXX, too.
@@ -23,7 +25,7 @@
  
  if test "$ac_cv_kpthread" = "yes"
  then
-@@ -1056,9 +1057,11 @@
+@@ -1358,9 +1358,11 @@ then
    fi
    rm -fr conftest*
  fi

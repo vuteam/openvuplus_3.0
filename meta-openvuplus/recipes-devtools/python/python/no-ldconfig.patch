@@ -1,9 +1,10 @@
 Fixes exception on 'import uuid' if ldconfig is unavailable.
 
-diff -Naur Python-2.6.7.orig/Lib/ctypes/util.py Python-2.6.7/Lib/ctypes/util.py
---- Python-2.6.7.orig/Lib/ctypes/util.py	2010-03-20 03:11:16.000000000 +0100
-+++ Python-2.6.7/Lib/ctypes/util.py	2012-01-12 15:26:37.562726637 +0100
-@@ -204,7 +204,16 @@
+diff --git a/Lib/ctypes/util.py b/Lib/ctypes/util.py
+index 7aee0ef..e03bb13 100644
+--- a/Lib/ctypes/util.py
++++ b/Lib/ctypes/util.py
+@@ -210,7 +210,16 @@ elif os.name == "posix":
              return res.group(1)
  
          def find_library(name):

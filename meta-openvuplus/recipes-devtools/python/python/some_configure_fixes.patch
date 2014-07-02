@@ -1,7 +1,9 @@
---- configure.in	2008-02-13 20:17:17.000000000 +0100
-+++ configure.in	2008-10-21 22:45:31.000000000 +0200
-@@ -3369,27 +3369,9 @@
-   AC_MSG_RESULT(no)
+diff --git a/configure.in b/configure.in
+index 2d997dc..d0c9f83 100644
+--- a/configure.in
++++ b/configure.in
+@@ -4167,27 +4167,9 @@ AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[#include <curses.h>]], [[void *x=resizeterm
+   [AC_MSG_RESULT(no)]
  )
  
 -AC_MSG_CHECKING(for /dev/ptmx)
@@ -28,5 +30,5 @@
 -fi
 +AC_CHECK_FILE(/dev/ptc, AC_DEFINE(HAVE_DEV_PTC, 1, [Define if we have /dev/ptc.]))
  
- case $MACHDEP in
- darwin)	
+ if test "$have_long_long" = yes
+ then

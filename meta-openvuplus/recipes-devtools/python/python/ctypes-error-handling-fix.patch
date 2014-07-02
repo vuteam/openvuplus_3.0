@@ -1,6 +1,8 @@
---- a/Modules/_ctypes/_ctypes.c	2012-01-26 15:41:30.000000000 +0100
-+++ b/Modules/_ctypes/_ctypes.c	2012-01-26 15:44:41.046977137 +0100
-@@ -602,10 +602,16 @@
+diff --git a/Modules/_ctypes/_ctypes.c b/Modules/_ctypes/_ctypes.c
+index 4ae2c41..ebd9960 100644
+--- a/Modules/_ctypes/_ctypes.c
++++ b/Modules/_ctypes/_ctypes.c
+@@ -602,10 +602,16 @@ CDataType_in_dll(PyObject *type, PyObject *args)
  #ifdef __CYGWIN__
  /* dlerror() isn't very helpful on cygwin */
          PyErr_Format(PyExc_ValueError,
@@ -19,7 +21,7 @@
  #endif
          return NULL;
      }
-@@ -3290,10 +3296,16 @@
+@@ -3343,10 +3349,16 @@ PyCFuncPtr_FromDll(PyTypeObject *type, PyObject *args, PyObject *kwds)
  #ifdef __CYGWIN__
  /* dlerror() isn't very helpful on cygwin */
          PyErr_Format(PyExc_AttributeError,
