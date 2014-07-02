@@ -1,14 +1,13 @@
-PR .= "-vuplus6"
+PR .= "-vuplus0"
 
 do_install_append() {
-        ln -s media/hdd ${D}/hdd
+	rm -rf ${D}/hdd
+        rm -rf ${D}/mnt
+        ln -sf media/hdd ${D}/hdd
+        ln -sf media ${D}/mnt
 
-        rm -r ${D}/mnt
-        ln -s media ${D}/mnt
-
-        ln -s var/run ${D}/run
+        ln -sf var/run ${D}/run
 }
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-
 
