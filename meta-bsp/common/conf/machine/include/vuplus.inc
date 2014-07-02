@@ -7,6 +7,8 @@ MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "vuplus-bootlogo"
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS += "vuplus-dvb-modules"
 MACHINE_FEATURES += "kernel26 alsa pci wifi"
 
+MACHINE_FEATURES_BACKFILL_CONSIDERED = "rtc"
+
 PREFERRED_PROVIDER_virtual/kernel = "linux-vuplus"
 
 PREFERRED_VERSION_linux-vuplus = "${VUPLUS_KERNEL_VERSION}"
