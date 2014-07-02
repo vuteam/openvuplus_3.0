@@ -114,6 +114,9 @@ SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH};t
         file://enigma2_vuplus_fix_standby_name.patch \
         file://enigma2_vuplus_fix_standby_name_skin.patch \
 	file://enigma2_vuplus_epng.patch \
+	file://enigma2_vuplus_eptrlist_insert.patch \
+	file://enigma2_vuplus_conversion_error.patch \
+	file://enigma2_vuplus_default_arg_error.patch \
 	file://MyriadPro-Regular.otf \
 	file://MyriadPro-Semibold.otf \
 	file://MyriadPro-SemiboldIt.otf \
@@ -157,7 +160,7 @@ FILES_${PN}-meta = "${datadir}/meta"
 PACKAGES += "${PN}-meta"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-inherit autotools pkgconfig pythonnative
+inherit autotools-brokensep pkgconfig pythonnative
 
 do_configure_prepend() {
 	git checkout ${BRANCH}

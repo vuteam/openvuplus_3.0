@@ -8,7 +8,7 @@ index 9e17547..840b1eb 100644
  	
 +	if(string && string[0]){
 +		char *ptr;
-+		ptr = string;  
++		ptr = (char *)string;
 +		while(1)
 +		{
 +			char *enigma = strcasestr(ptr, "enigma");
@@ -21,7 +21,7 @@ index 9e17547..840b1eb 100644
 +				break;
 +		}
 +	
-+		ptr = string;  
++		ptr = (char *)string;
 +		while(1)
 +		{
 +			char *dreambox = strcasestr(ptr, "dreambox");
