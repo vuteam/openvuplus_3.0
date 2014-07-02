@@ -1,5 +1,5 @@
 DEPENDS += "cdparanoia orc orc-native"
-PR .= "-vuplus1"
+PR .= "-vuplus0"
 
 SRC_URI += "file://orc.m4-fix-location-of-orcc-when-cross-compiling.patch \
             file://disable-vorbis-encoder.patch"

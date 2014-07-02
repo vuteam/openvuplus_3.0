@@ -1,6 +1,6 @@
 require recipes-connectivity/openssl/openssl.inc
 
-PR = "${INC_PR}.1"
+PR .= "-vuplus0"
 
 LIC_FILES_CHKSUM = "file://LICENSE;md5=f9a8f968107345e0b75aa8c2ecaa7ec8"
 
