@@ -15,3 +15,6 @@ do_install() {
 
 FILES_${PN} = "${base_libdir}/firmware/"
 PACKAGE_ARCH = "all"
+
+SRC_URI[md5sum] = "0612338acc553d6809fed0632ab6619d"
+SRC_URI[sha256sum] = "5e075817e70db189674ef725502b7e6ac31426b0ac6066773438cc7bb7fff930"
