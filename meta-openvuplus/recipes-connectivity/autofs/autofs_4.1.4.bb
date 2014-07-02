@@ -50,7 +50,7 @@ SRC_URI[sha256sum] = "e25caa0e9639ea54dd7c4f21e8146ac9859a61fa126f397edf874b5fdc
 
 S = "${WORKDIR}/${BP}"
 
-inherit autotools update-rc.d
+inherit autotools-brokensep update-rc.d
 
 do_configure_prepend () {
         if [ ! -e acinclude.m4 ]; then
