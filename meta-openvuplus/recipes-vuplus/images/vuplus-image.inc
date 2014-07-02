@@ -22,18 +22,16 @@ DEPENDS += " \
 #BAD_RECOMMENDATIONS += "libnss-mdns wpa-supplicant-passphrase"
 BAD_RECOMMENDATIONS += "libnss-mdns"
 
-TASK_CORE_BOOT ?= "task-core-boot"
-TASK_VUPLUS_BASE ?= "task-vuplus-base"
-TASK_VUPLUS_ENIGMA ?= "task-vuplus-enigma2"
-TASK_ESSENCIAL ?= "task-vuplus-essential"
-TASK_VUPLUS_DVBAPI ?= "task-vuplus-dvbapi"
+PACKAGEGROUP_CORE_BOOT ?= "packagegroup-core-boot"
+PACKAGEGROUP_VUPLUS_BASE ?= "packagegroup-vuplus-base"
+PACKAGEGROUP_VUPLUS_ENIGMA ?= "packagegroup-vuplus-enigma2"
+PACKAGEGROUP_ESSENCIAL ?= "packagegroup-vuplus-essential"
 
 IMAGE_INSTALL = " \
-	${TASK_CORE_BOOT} ${ROOTFS_PKGMANAGE} \
-	${TASK_VUPLUS_BASE} \
-	${TASK_VUPLUS_DVBAPI} \
-	${TASK_VUPLUS_ENIGMA} \
-	${TASK_ESSENCIAL} \
+	${PACKAGEGROUP_CORE_BOOT} ${ROOTFS_PKGMANAGE} \
+	${PACKAGEGROUP_VUPLUS_BASE} \
+	${PACKAGEGROUP_VUPLUS_ENIGMA} \
+	${PACKAGEGROUP_ESSENCIAL} \
 "
 
 # enable online package management

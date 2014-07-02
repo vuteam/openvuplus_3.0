@@ -9,9 +9,9 @@ RRECOMMENDS_${PN} = '${ESSENTIAL_RRECOMMENDS}'
 
 RDEPENDS_${PN} += "${@base_version_less_or_equal('VUPLUS_KERNEL_VERSION', '3.3.1', '${KERNEL_DVB_MODULES}', '${KERNEL_DVB_MODULES_3.3.6}', d)}"
 
-PR = "r4"
+PR = "r0"
 
-inherit task
+inherit packagegroup
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
