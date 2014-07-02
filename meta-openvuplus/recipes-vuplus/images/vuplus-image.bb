@@ -17,4 +17,4 @@ do_rootfs_append() {
         echo "MD5: $MD5" >> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfo
         echo "SHA256: $SHA256" >> ${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.nfo
     fi
-}
+                   }
