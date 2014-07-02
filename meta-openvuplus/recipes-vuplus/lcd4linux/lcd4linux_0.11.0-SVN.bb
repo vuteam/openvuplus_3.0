@@ -12,7 +12,7 @@ EXTRA_OECONF = " --with-glib-prefix=${STAGING_LIBDIR}/.. \
 		--with-glib-exec-prefix=${STAGING_LIBDIR}/.. \
 		--with-ncurses=${STAGING_LIBDIR}/.."
 
-SRC_URI = "svn://ssl.bulix.org/svn/lcd4linux/;module=trunk;proto=https;rev=1200 \
+SRC_URI = "svn://ssl.bulix.org/svn/lcd4linux/;module=trunk;protocol=https;rev=1200 \
 		file://lcd4linux.init \
 "
 
