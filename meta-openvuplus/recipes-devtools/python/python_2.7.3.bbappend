@@ -1,12 +1,14 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-PR .= "-vuplus0"
+PR .= "-vuplus1"
 
 SRC_URI += " \
         file://some_configure_fixes.patch \
         file://fix_pthread_site.patch \
         file://no-ldconfig.patch \
         file://ctypes-error-handling-fix.patch \
+        file://04-default-is-optimized.patch \
+        file://99-ignore-optimization-flag.patch \
 "
 
 EXTRA_OECONF += " \
