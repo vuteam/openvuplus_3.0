@@ -3,7 +3,7 @@ DESCRIPTION = "automated power off for STB"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit gitpkgv
-SRCREV="406e54cb250fecb5040dba844098140982186668"
+SRCREV_pn-${PN} = "406e54cb250fecb5040dba844098140982186668"
 PV = "0.3+git${SRCPV}"
 PKGV = "0.3+git${GITPKGV}"
 PR = "r3"
