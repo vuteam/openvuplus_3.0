@@ -23,3 +23,5 @@ do_install() {
         ln -sf   ../init.d/coldboot.sh ${D}${sysconfdir}/rc0.d/S30coldboot.sh
         ln -sf   ../init.d/ethwol.sh ${D}${sysconfdir}/rc0.d/K32ethwol.sh
 }
+
+INHIBIT_PACKAGE_STRIP = "1"
