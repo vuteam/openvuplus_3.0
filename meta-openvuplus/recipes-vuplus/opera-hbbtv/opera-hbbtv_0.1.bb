@@ -5,12 +5,13 @@ LICENSE = "CLOSED"
 DEPENDS = "tslib mpfr gmp"
 RDEPENS = "tslib-conf libts-1.0-0 libsysfs2 libgmp3 libmpfr1 vuplus-dvb-modules"
 
-SRC_DATE = "20140519_1"
+SRC_DATE = "20140711_0"
 
 PR = "r2_${SRC_DATE}"
 SRC_URI = ""
 
 INHIBIT_PACKAGE_STRIP = "1"
+PRIVATE_LIBS_${PN} = "1"
 S = "${WORKDIR}/opera-hbbtv"
 
 SRC_FILE = "opera-hbbtv_${SRC_DATE}.tar.gz"
