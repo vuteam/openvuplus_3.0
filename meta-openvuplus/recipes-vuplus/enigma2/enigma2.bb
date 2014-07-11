@@ -74,8 +74,9 @@ DEPENDS += "djmount minidlna"
 RDEPENDS_enigma2-plugin-extensions-dlnaserver = "minidlna "
 RDEPENDS_enigma2-plugin-extensions-dlnabrowser = "djmount kernel-module-fuse fuse-utils"
 
-DEPENDS += "opera-hbbtv"
+DEPENDS += "vbrowser"
 RDEPENDS_enigma2-plugin-extensions-hbbtv = "opera-hbbtv"
+RDEPENDS_enigma2-plugin-extensions-vbrowser = "vbrowser"
 
 DEPENDS += "wvdial wvstreams ppp usb-modeswitch usb-modeswitch-data"
 RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-modeswitch-data wvdial wvstreams \

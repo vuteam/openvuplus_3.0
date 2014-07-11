@@ -11,7 +11,26 @@ PR = "r2_${SRC_DATE}"
 SRC_URI = ""
 
 INHIBIT_PACKAGE_STRIP = "1"
-PRIVATE_LIBS_${PN} = "1"
+PRIVATE_LIBS_${PN} = "libopera_hbbtv.so \
+libdsmcc.so \
+libvuplus.so \
+libdirect-1.4.so.0 \
+libfusion-1.4.so.0 \
+libdirectfb-1.4.so.0 \
+libdirectfbwm_default.so \
+libdirectfb_linux_input.so \
+libdirectfb_devmem.so \
+libdirectfb_fbdev.so \
+libidirectfbfont_dgiff.so \
+libidirectfbfont_ft2.so \
+libidirectfbvideoprovider_v4l.so \
+libidirectfbvideoprovider_gif.so \
+libidirectfbimageprovider_dfiff.so \
+libidirectfbimageprovider_gif.so \
+libidirectfbimageprovider_jpeg.so \
+libidirectfbimageprovider_png.so \
+libdirectfb_vuplus.so"
+
 S = "${WORKDIR}/opera-hbbtv"
 
 SRC_FILE = "opera-hbbtv_${SRC_DATE}.tar.gz"
