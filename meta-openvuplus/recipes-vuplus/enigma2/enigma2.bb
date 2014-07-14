@@ -74,9 +74,8 @@ DEPENDS += "djmount minidlna"
 RDEPENDS_enigma2-plugin-extensions-dlnaserver = "minidlna "
 RDEPENDS_enigma2-plugin-extensions-dlnabrowser = "djmount kernel-module-fuse fuse-utils"
 
-DEPENDS += "vbrowser"
+DEPENDS += "opera-hbbtv"
 RDEPENDS_enigma2-plugin-extensions-hbbtv = "opera-hbbtv"
-RDEPENDS_enigma2-plugin-extensions-vbrowser = "vbrowser"
 
 DEPENDS += "wvdial wvstreams ppp usb-modeswitch usb-modeswitch-data"
 RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-modeswitch-data wvdial wvstreams \
@@ -90,7 +89,7 @@ RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd
 RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
 
 PN = "enigma2"
-PR = "r74"
+PR = "r75"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision

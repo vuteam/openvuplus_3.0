@@ -1,10 +1,11 @@
-DESCRIPTION = "vbrowser"
+DESCRIPTION = "opera-hbbtv"
 PRIORITY = "required"
 LICENSE = "CLOSED"
 
+DEPENDS = "mpfr gmp"
 RDEPENDS = "sysfsutils vuplus-dvb-modules"
 
-SRC_DATE = "20140711_0"
+SRC_DATE = "20140714_0"
 
 PR = "r1_${SRC_DATE}"
 SRC_URI = ""
@@ -29,9 +30,9 @@ libidirectfbimageprovider_jpeg.so \
 libicoreresourcemanager_test.so \
 libdirectfb_vuplus.so"
 
-S = "${WORKDIR}/vbrowser"
+S = "${WORKDIR}/opera-hbbtv"
 
-SRC_FILE = "vbrowser_${SRC_DATE}.tar.gz"
+SRC_FILE = "opera-hbbtv_${SRC_DATE}.tar.gz"
 do_fetch() {
 	if [ ! -e ${DL_DIR}/${SRC_FILE} -a -e /etc/vuplus_browser.pwd ]; then
 sshpass -f /etc/vuplus_browser.pwd sftp -o StrictHostKeyChecking=no guestuser@code.vuplus.com << +
@@ -50,8 +51,17 @@ do_compile() {
 }
 
 do_install() {
-	install -d ${D}/usr/local/vbrowser
-	mv ${S}/* ${D}/usr/local/vbrowser/
+	install -d ${D}/usr/local/hbb-browser
+	mv ${S}/opera/* ${D}/usr/local/hbb-browser/
+	install -d ${D}/usr/lib
+	mv ${S}/dfb/usr/lib/* ${D}/usr/lib/
+}
+
+package_do_shlibs_append() {
+	deps = "${PKGDEST}/${PN}.shlibdeps"
+	tmp = "/tmp/.${PN}.shlibdeps"
+	os.system("sed -e '/vbrowser/d' %s > %s" % (deps, tmp))
+	os.system("cp %s %s" % (tmp, deps))
 }
 
 do_package_qa() {
@@ -61,6 +71,6 @@ PACKAGES = "${PN}"
 
 FILES_${PN} = "/"
 
-SRC_URI[md5sum] = "4bfb6efd0eb24ed78c12d9b62064a657"
-SRC_URI[sha256sum] = "a23e65491089df3e77b8d63b6a023a6a6bc7e82d03d58f36f1a07b6ca8f60379"
+SRC_URI[md5sum] = "3f28e2f90b2e596c2d5137baeb1d7444"
+SRC_URI[sha256sum] = "5514aefb8a753d8ee9da6bc35ff7d7df8b74edbafcbc0fbd1b177b587a202ba8"
 
