@@ -1,0 +1,4 @@
+SRC_DATE = "20140623_p1"
+
+SRC_URI[md5sum] = "11a6cdfb4eec194b5ac2f1d20e88b35b"
+SRC_URI[sha256sum] = "2c7a6de410045e87685aaeccd17c590a31aa3266c51e8bf27399dc70cc312581"

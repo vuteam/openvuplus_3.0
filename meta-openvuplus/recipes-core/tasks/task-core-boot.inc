@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3
 inherit task
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-INC_PR = "r1"
+INC_PR = "r2"
 
 #
 # Set by the machine configuration with packages essential for device bootup

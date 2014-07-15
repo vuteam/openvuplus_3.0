@@ -4,11 +4,12 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${THISDIR}/${PN}/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
 PV = "1.0+git${SRCPV}"
-PR = "r2"
+PR = "r3"
 SRC_REV = ""
 
 SRC_URI = " \
 	git://code.vuplus.com/git/vtuner.git;protocol=git;tag=${SRC_REV} \
+	file://no_usb_device.patch;striplevel=1 \
 	file://${PN}.sh \
 	"
 

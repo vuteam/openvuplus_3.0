@@ -9,7 +9,7 @@ RDEPENDS_${PN} = "python-cheetah python-json python-unixadmin python-misc python
 inherit gitpkgv
 PV = "0.1+git${SRCPV}"
 PKGV = "0.1+git${GITPKGV}"
-PR = "r0.81"
+PR = "r0.82"
 
 require openplugins.inc
 
@@ -31,6 +31,7 @@ python do_package_prepend () {
 		('vuduo2', 'duo2.jpg', 'vu_normal.png'),
 		('vusolo', 'solo.jpg', 'vu_normal.png'),
 		('vusolo2', 'solo2.jpg', 'vu_normal.png'),
+		('vusolose', 'solose.jpg', 'vu_normal.png'),
 		('vuultimo', 'ultimo.jpg', 'vu_ultimo.png'),
 		('vuuno', 'uno.jpg', 'vu_normal.png'),
 	]
