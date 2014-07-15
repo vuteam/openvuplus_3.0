@@ -67,6 +67,9 @@ package_do_shlibs_append() {
 do_package_qa() {
 }
 
+sysroot_stage_all() {
+}
+
 PACKAGES = "${PN}"
 
 FILES_${PN} = "/"
