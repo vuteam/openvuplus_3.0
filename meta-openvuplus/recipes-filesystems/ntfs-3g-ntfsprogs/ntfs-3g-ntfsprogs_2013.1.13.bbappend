@@ -1,6 +1,6 @@
 # Remove util-linux-mount from RRECOMMENDS
 
-PR .= "-vuplus0"
+PR .= "-vuplus1"
 
-RRECOMMENDS_${PN} = ""
+RRECOMMENDS_ntfs-3g = ""
 
