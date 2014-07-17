@@ -1,6 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${P}:"
 
-PR .= "-bsp9"
+PR .= "-bsp10"
 
 SRC_URI += "\
         file://linux_3.1.1_vusolo.patch \

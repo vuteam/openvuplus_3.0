@@ -1,6 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${P}:"
 
-PR .= "-bsp11"
+PR .= "-bsp12"
 
 SRC_URI += "\
         file://linux_3.1.1_vuuno.patch \
