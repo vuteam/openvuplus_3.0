@@ -5,7 +5,7 @@ LICENSE = "CLOSED"
 DEPENDS = "mpfr gmp"
 RDEPENDS = "sysfsutils vuplus-dvb-modules"
 
-SRC_DATE = "20140714_0"
+SRC_DATE = "20140717_0"
 
 PR = "r1_${SRC_DATE}"
 SRC_URI = ""
