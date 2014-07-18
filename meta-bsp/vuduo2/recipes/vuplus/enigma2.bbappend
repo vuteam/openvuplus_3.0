@@ -1,6 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-PR.= "-bsp2"
+PR .= "-bsp2"
 
 SRC_URI_append = " \
 		file://skin_user_vuduo2.xml \
