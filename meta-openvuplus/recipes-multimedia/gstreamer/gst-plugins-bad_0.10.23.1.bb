@@ -10,7 +10,7 @@ DEPENDS += "libmusicbrainz tremor curl libmms librtmp libmms faad2"
 DEPENDS += "gst-plugins-base"
 CONFLICTS = "librsvg"
 
-PR = "r5"
+PR = "r6"
 GIT_PV = ""
 
 SRCREV = "cef47d85294a0dca38631f938b81a3f0dd6891bd"
