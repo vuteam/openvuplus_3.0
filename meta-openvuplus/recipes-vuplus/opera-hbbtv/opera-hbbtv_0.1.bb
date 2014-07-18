@@ -3,7 +3,7 @@ PRIORITY = "required"
 LICENSE = "CLOSED"
 
 DEPENDS = "tslib mpfr gmp"
-RDEPENS = "tslib-conf libts-1.0-0 libsysfs2 libgmp3 libmpfr1 vuplus-dvb-modules"
+RDEPENS_${PN} = "tslib-conf libts-1.0-0 libsysfs2 libgmp3 libmpfr1 vuplus-dvb-modules"
 
 SRC_DATE = "20140711_0"
 
@@ -73,8 +73,6 @@ do_package_qa() {
 PACKAGES = "${PN}"
 
 FILES_${PN} = "/"
-
-PRIVATE_LIBS_${PN} = "libdirectfbwm_default.so libdirectfb_fbdev.so libdirectfb_devmem.so libidirectfbvideoprovider_gif.so libidirectfbvideoprovider_v4l.so libidirectfbfont_dgiff.so libidirectfbfont_ft2.so libidirectfbimageprovider_png.so libidirectfbimageprovider_gif.so libidirectfbimageprovider_jpeg.so libidirectfbimageprovider_dfiff.so libdirectfb_linux_input.so"
 
 SRC_URI[md5sum] = "e2f6220403c2a946f8f9583aa084bc60"
 SRC_URI[sha256sum] = "f8ec235ca0368bdcaaac2b61634204e2c41558d23d8d7d43ff4f02edc00d6ddb"

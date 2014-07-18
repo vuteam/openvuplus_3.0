@@ -3,7 +3,7 @@ PRIORITY = "required"
 LICENSE = "CLOSED"
 
 DEPENDS = "mpfr gmp"
-RDEPENDS = "sysfsutils vuplus-dvb-modules"
+RDEPENDS_${PN} = "sysfsutils vuplus-dvb-modules"
 
 SRC_DATE = "20140717_0"
 
@@ -58,10 +58,10 @@ do_install() {
 }
 
 package_do_shlibs_append() {
-	deps = "${PKGDEST}/${PN}.shlibdeps"
-	tmp = "/tmp/.${PN}.shlibdeps"
-	os.system("sed -e '/vbrowser/d' %s > %s" % (deps, tmp))
-	os.system("cp %s %s" % (tmp, deps))
+    deps = "${PKGDEST}/${PN}.shlibdeps"
+    tmp = "/tmp/.${PN}.shlibdeps"
+    os.system("sed -e '/vbrowser/d' %s > %s" % (deps, tmp))
+    os.system("cp %s %s" % (tmp, deps))
 }
 
 do_package_qa() {
