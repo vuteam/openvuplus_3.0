@@ -1,0 +1,120 @@
+diff --git a/usbtunerhelper.c b/usbtunerhelper.c
+index 94519dc..93ae110 100644
+--- a/usbtunerhelper.c
++++ b/usbtunerhelper.c
+@@ -66,7 +66,6 @@ struct vtuner_message
+ 	} body;
+ };
+ 
+-#define SYS_USB_DEVICES_DIR "/sys/class/usb_device"
+ #define VTUNER_PATH "/dev/misc"
+ #define MAX_ADAPTERS 8
+ #define BUFFER_SIZE ((188 / 4) * 4096) /* multiple of ts packet and page size */
+@@ -130,64 +129,42 @@ void sort_adapters()
+ 
+ int scan_adapters()
+ {
+-	DIR *dirusb, *dirdev, *dirvtun;
+-	struct dirent *edirusb, *edirdev, *edirvtun;
++	char filename[256];
+ 	int i;
++	DIR *dirvtun;
++	struct dirent *edirvtun;
+ 
+-	/* adapters detect */
+-	dirusb = opendir(SYS_USB_DEVICES_DIR);
+-	if (!dirusb) return -1;
+-
+-	while ((edirusb = readdir(dirusb)) != NULL && adaptercount < MAX_ADAPTERS)
++	int nr = 1;
++	while(adaptercount < MAX_ADAPTERS)
+ 	{
+-		char devdir[256];
+-		if (edirusb->d_name[0] == '.') continue;
+-
+-		sprintf(devdir, "%s/%s/device/dvb", SYS_USB_DEVICES_DIR, edirusb->d_name);
+-		dirdev = opendir(devdir);
+-		if (!dirdev)
++		FILE *fd;
++		snprintf(filename, sizeof(filename), "/sys/class/dvb/dvb%d.frontend0/device/product", nr);
++		fd = fopen(filename, "r");
++		if (!fd)
+ 		{
+-			sprintf(devdir, "%s/%s/device", SYS_USB_DEVICES_DIR, edirusb->d_name);
+-			dirdev = opendir(devdir);
+-			if (!dirdev) continue;
++			snprintf(filename, sizeof(filename), "/sys/class/dvb/dvb%d.frontend0/device/manufacturer", nr);
++			fd = fopen(filename, "r");
+ 		}
+ 
+-		while ((edirdev = readdir(dirdev)) != NULL && adaptercount < MAX_ADAPTERS)
++		if (fd)
+ 		{
+-			FILE *fd;
+-			char filename[256];
+-			int namelen = strlen(edirdev->d_name);
+-
+-			if (namelen < 14) continue;
+-			if (strcmp(edirdev->d_name + (namelen - 9), "frontend0")) continue;
+-
+-			sprintf(filename, "%s/%s/device/product", SYS_USB_DEVICES_DIR, edirusb->d_name);
+-			fd = fopen(filename, "r");
+-			if (!fd)
+-			{
+-				sprintf(filename, "%s/%s/device/manufacturer", SYS_USB_DEVICES_DIR, edirusb->d_name);
+-				fd = fopen(filename, "r");
+-			}
+-
+-			if (fd)
+-			{
+-				char *tmp = adapters[adaptercount].name;
+-				fread(tmp, 63, 1, fd);
+-				tmp[63] = 0;
+-				while (strlen(tmp) > 0 && (tmp[strlen(tmp) - 1] == '\n' || tmp[strlen(tmp) - 1] == ' ')) tmp[strlen(tmp) - 1] = 0;
+-				fclose(fd);
+-			}
+-			else
+-			{
+-				strcpy(adapters[adaptercount].name, "unknown frontend");
+-			}
+-
+-			adapters[adaptercount].index = edirdev->d_name[namelen - 11] - '0';
+-			adaptercount++;
++			char *tmp = adapters[adaptercount].name;
++			fread(tmp, 63, 1, fd);
++			tmp[63] = 0;
++			while (strlen(tmp) > 0 && (tmp[strlen(tmp) - 1] == '\n' || tmp[strlen(tmp) - 1] == ' ')) tmp[strlen(tmp) - 1] = 0;
++			fclose(fd);
++		}
++		else
++		{
++			strcpy(adapters[adaptercount].name, "unknown frontend");
++			break;
+ 		}
+-		closedir(dirdev);
++
++		adapters[adaptercount].index = nr;
++		adaptercount++;
++		nr++;
++		
+ 	}
+-	closedir(dirusb);
+ 
+ 	dirvtun = opendir(VTUNER_PATH);
+ 	if (dirvtun)
+@@ -200,7 +177,6 @@ int scan_adapters()
+ 		closedir(dirvtun);
+ 	}
+ 
+-	sort_adapters();
+ 
+ 	for (i = 0; i < adaptercount; i++)
+ 	{
+@@ -216,6 +192,7 @@ int scan_adapters()
+ 		}
+ 	}
+ 	return adaptercount;
++
+ }
+ 
+ 

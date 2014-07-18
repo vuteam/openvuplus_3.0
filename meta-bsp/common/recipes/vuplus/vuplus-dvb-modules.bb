@@ -6,9 +6,7 @@ KV = "${VUPLUS_KERNEL_VERSION}"
 PV = "${KV}"
 PR = "r22-${SRCDATE}"
 
-PREFERRED_GCC_VERSION = "4.4.3"
-
-SRC_URI = "http://archive.vuplus.com/download/drivers/vuplus-dvb-modules-${MACHINE}-${PV}-${PREFERRED_GCC_VERSION}-${SRCDATE}.tar.gz "
+SRC_URI = "http://archive.vuplus.com/download/drivers/vuplus-dvb-modules-${MACHINE}-${PV}-${SRCDATE}.tar.gz "
 
 DEPENDS += "virtual/kernel module-init-tools"
 RDEPENDS_${PN} += "module-init-tools-depmod"

@@ -2,7 +2,7 @@ DESCRIPTION = "Vuplus: W-LAN package group for the Vuplus Distribution"
 SECTION = "vuplus/base"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
-PR = "r15"
+PR = "r16"
 
 inherit packagegroup
 
@@ -36,13 +36,13 @@ KERNEL_WIFI_MODULES = " \
 	kernel-module-stp \
 	kernel-module-bridge \
 	kernel-module-hostap \
-	${@base_contains('VUPLUS_FEATURES', 'ralink-kmod', 'kernel-module-rt2800usb', ' ', d)} \
+	kernel-module-rt2800usb \
 "
 
 KERNEL_WIFI_MODULES += "${@base_version_less_or_equal('VUPLUS_KERNEL_VERSION', '3.1.1', 'kernel-module-r8192u-usb', '', d)}"
 
 LEGACY_MODULES = " \
-	${@base_contains('VUPLUS_FEATURES', 'ralink-legacy', 'rt3070', ' ', d)} \
+	rt3070 \
 	r8192cu \
 "
 

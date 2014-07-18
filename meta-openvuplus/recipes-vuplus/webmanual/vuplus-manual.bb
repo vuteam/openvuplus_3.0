@@ -13,21 +13,8 @@ do_compile() {
 }
 
 do_install() {
-        install -d ${D}/usr/local/manual
-        install -d ${D}/usr/local/manual/${IMAGE_DIR}
-	for f in *.html; do
-                install -m 0644 ${WORKDIR}/${MACHINE}/$f ${D}/usr/local/manual/;
-        done
-
-	for f in *.jpeg; do
-                install -m 0644 ${WORKDIR}/${MACHINE}/${IMAGE_DIR}/$f ${D}/usr/local/manual/${IMAGE_DIR}/;
-	done
-	for f in *.jpg; do
-                install -m 0644 ${WORKDIR}/${MACHINE}/${IMAGE_DIR}/$f ${D}/usr/local/manual/${IMAGE_DIR}/;
-	done
-        for f in *.png; do
-                install -m 0644 ${WORKDIR}/${MACHINE}/${IMAGE_DIR}/$f ${D}/usr/local/manual/${IMAGE_DIR}/;
-        done
+	install -d ${D}/usr/local/manual;
+	cp -a ${S}/* ${D}/usr/local/manual;
 }
 
 PACKAGE_ARCH := "${MACHINE_ARCH}"
