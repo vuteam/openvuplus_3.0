@@ -87,16 +87,14 @@ RDEPENDS_enigma2-plugin-systemplugins-netdrive = "curlftpfs kernel-module-fuse l
 RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd-utils-nanddump mtd-utils-ubinize"
 RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
 
-PN = "enigma2"
-PR = "r78"
 
 inherit gitpkgv pythonnative
 
-PKGV = "git${GITPKGV}"
-
 ####################################################
+PR = "r78"
+PV = "experimental-gitr${SRCPV}"
+PKGV = "experimental-gitr${GITPKGV}"
 BRANCH = "vuplus_experimental"
-PV = "experimental-git${SRCPV}"
 SRCREV = ""
 ####################################################
 
