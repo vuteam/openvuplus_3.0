@@ -5,7 +5,7 @@ LICENSE = "CLOSED"
 DEPENDS = "mpfr gmp"
 RDEPENDS = "sysfsutils vuplus-dvb-modules"
 
-SRC_DATE = "20140721_0"
+SRC_DATE = "20140725_0"
 
 PR = "r1_${SRC_DATE}"
 SRC_URI = ""
@@ -74,6 +74,6 @@ PACKAGES = "${PN}"
 
 FILES_${PN} = "/"
 
-SRC_URI[md5sum] = "a47c373ab7f132c388bc3f74891fc80a"
-SRC_URI[sha256sum] = "81a6285dde9809a9d6c4b4dfd67bd4b09b54d01ba24fc82688509c3bda595b33"
+SRC_URI[md5sum] = "1ba7691c826856431c0dba1d4251f32e"
+SRC_URI[sha256sum] = "0bc932152a3eda86c3e871a87ea58e0a8693aa707b93c8cf174c29663ec00d5c"
 
