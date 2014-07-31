@@ -1,15 +1,15 @@
-PR .= "-splash2"
+PR .= "-splash3"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-# TODO_NEW
-SRC_URI_append = " file://vmlinuz-initrd-7241b0 file://splash_cfe_auto.bin"
+SRCDATE = "20140728"
+SRC_URI_append = " http://archive.vuplus.com/download/kernel/vmlinuz-initrd_${MACHINE}_${SRCDATE}.tar.gz file://splash_cfe_auto.bin"
 
 do_install_append() {
 	install -m 0755 ${S}/vmlinuz-initrd-7241b0 ${D}/boot/initrd_cfe_auto.bin
         install -m 0755 ${S}/splash_cfe_auto.bin ${D}/boot/splash_cfe_auto.bin
 }
 
-#SRC_URI[md5sum] = "3b45489e7902cbf98e9abdddea14567a"
-#SRC_URI[sha256sum] = "e7a7e747dcd7240c5d36c2235d11b2d0e703ed55be1120d6109220478d23fb09"
+SRC_URI[md5sum] = "908f5bd70cb3d6be3b002393fc7e797a"
+SRC_URI[sha256sum] = "cf0d93b11468636c3a1d3f6a3beea50f6027a59aabf0f73109367755bcd00add"
 
