@@ -5,13 +5,14 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
 KV = "3.13.5"
 
-PR = "r3"
+PR = "r4"
 SRCREV = ""
 
 MODULE = "linux-3.13.5"
 
 SRC_URI += "http://archive.vuplus.com/download/kernel/stblinux-${KV}.tar.bz2 \
         file://rt2800usb_fix_warn_tx_status_timeout_to_dbg.patch \
+        file://linux-tcp_output.patch \
         file://${MACHINE}_defconfig \
 	"
 
