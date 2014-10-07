@@ -4,7 +4,7 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=80
 MAINTAINER = "Felix Domke <tmbinc@elitdvb.net>"
 
 PN = "tuxbox-common"
-PR = "r5"
+PR = "r6"
 
 SRC_REV = "HEAD"
 
