@@ -5,8 +5,8 @@ RDEPENDS_${PN} = "ncurses"
 
 LICENSE = "CLOSED"
 
-PV = "3.5"
-PR = "r3"
+PV = "3.6"
+PR = "r0"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 SRC_URI = "http://archive.vuplus.com/download/utils/vuplus-blindscan-utils-${PV}.tar.bz2"
@@ -55,6 +55,6 @@ do_install_vusolose() {
 	done
 }
 
-SRC_URI[md5sum] = "2d977dcee29c8b93d04cd818410be293"
-SRC_URI[sha256sum] = "549c6aa1f480d072e2f37ce3f6a767c24a9b8be24a533f1340e491a3f71f7453"
+SRC_URI[md5sum] = "b10ee7d7896611fa2c710ba002bcf678"
+SRC_URI[sha256sum] = "7ee73c4ed84a8e11ae2e34d7e5ce8ef55f4a9f41f692e6b614317c27868d6991"
 
