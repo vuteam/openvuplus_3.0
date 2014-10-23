@@ -6,15 +6,30 @@ RDEPENDS_${PN} = "ncurses"
 LICENSE = "CLOSED"
 
 PV = "3.6"
-PR = "r0"
+PR = "r1"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 SRC_URI = "http://archive.vuplus.com/download/utils/vuplus-blindscan-utils-${PV}.tar.bz2"
 
 S = "${WORKDIR}/blindscan-utils"
 
-PLUGABLE_MODEL_BLINDSCAN = "tda1002x vuplus_blindscan vuplus_6211_blindscan vuplus_6222_blindscan ssh108 ssh108_t2_scan"
-PLUGABLE_SOLOSE_BLINDSCAN = "tda1002x vuplus_blindscan vuplus_6211_blindscan ssh108 ssh108_t2_scan"
+PLUGABLE_MODEL_BLINDSCAN = " \
+	tda1002x \
+	vuplus_blindscan \
+	vuplus_6211_blindscan \
+	vuplus_6222_blindscan \
+	ssh108 \
+	ssh108_t2_scan \
+	tt3l10 \
+	tt3l10_t2_scan \
+"
+PLUGABLE_SOLOSE_BLINDSCAN = " \
+	tda1002x \
+	vuplus_blindscan \
+	vuplus_6211_blindscan \
+	ssh108 \
+	ssh108_t2_scan \
+"
 
 do_install() {
 	install -d "${D}/${bindir}"
