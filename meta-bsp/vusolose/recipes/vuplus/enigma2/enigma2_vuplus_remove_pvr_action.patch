@@ -98,9 +98,18 @@ index f9c4065..5817a49 100644
  SystemInfo["DeepstandbySupport"] = HardwareInfo().get_device_name() != "dm800"
 +SystemInfo["PVRSupport"] = HardwareInfoVu().get_device_name() != "solose"
 diff --git a/lib/python/Screens/InfoBarGenerics.py b/lib/python/Screens/InfoBarGenerics.py
-index 80cc196..68e99dc 100755
+index 80cc196..d635eac 100755
 --- a/lib/python/Screens/InfoBarGenerics.py
 +++ b/lib/python/Screens/InfoBarGenerics.py
+@@ -233,7 +233,7 @@ class InfoBarNumberZap:
+ 			else:
+ 				self.servicelist.recallPrevService()
+ 		else:
+-			if self.has_key("TimeshiftActions") and not self.timeshift_enabled:
++			if not (self.has_key("TimeshiftActions") and self.timeshift_enabled):
+ 				self.session.openWithCallback(self.numberEntered, NumberZap, number)
+ 
+ 	def numberEntered(self, retval):
 @@ -1181,11 +1181,12 @@ class InfoBarShowMovies:
  
  class InfoBarTimeshift:
