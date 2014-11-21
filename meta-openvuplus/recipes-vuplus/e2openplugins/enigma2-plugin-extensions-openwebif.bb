@@ -32,6 +32,7 @@ python do_package_prepend () {
         ('vusolo', 'solo.jpg', 'vu_normal.png'),
         ('vusolo2', 'solo2.jpg', 'vu_normal.png'),
         ('vusolose', 'solose.jpg', 'vu_normal.png'),
+        ('vuzero', 'zero.jpg', 'vu_normal.png'),
         ('vuultimo', 'ultimo.jpg', 'vu_ultimo.png'),
         ('vuuno', 'uno.jpg', 'vu_normal.png'),
     ]
