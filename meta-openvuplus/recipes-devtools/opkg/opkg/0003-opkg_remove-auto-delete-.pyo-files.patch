@@ -1,0 +1,21 @@
+diff --git a/libopkg/opkg_remove.c b/libopkg/opkg_remove.c
+index 23cec55..9ef6dc9 100644
+--- a/libopkg/opkg_remove.c
++++ b/libopkg/opkg_remove.c
+@@ -394,8 +394,15 @@ remove_data_files_and_list(pkg_t *pkg)
+ 	  }
+ 
+ 	  if (!conf->noaction) {
+-	  	opkg_msg(INFO, "Deleting %s.\n", file_name);
++	       size_t l = strlen(file_name);
++	       opkg_msg(INFO, "Deleting %s.\n", file_name);
+ 	       unlink(file_name);
++	       if (l >= 3 && !strcmp(&file_name[l - 3], ".py")) {
++	            char pyo_file_name[l + 2];
++	            strcpy(pyo_file_name, file_name);
++	            strcat(pyo_file_name, "o");
++	            unlink(pyo_file_name);
++	       }
+ 	  } else
+ 	  	opkg_msg(INFO, "Not deleting %s. (noaction)\n",
+ 				file_name);

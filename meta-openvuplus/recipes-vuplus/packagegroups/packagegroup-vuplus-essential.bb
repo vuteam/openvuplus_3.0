@@ -10,9 +10,9 @@ RRECOMMENDS_${PN} += '${KERNEL_DVB_MODULES}'
 
 PR = "r5"
 
-inherit packagegroup
-
 PACKAGE_ARCH = "${MACHINE_ARCH}"
+
+inherit packagegroup
 
 ESSENTIAL_RDEPENDS = " \
 "
