@@ -11,6 +11,6 @@ SRC_URI = " \
 
 S = "${WORKDIR}/git"
 
-inherit autotools git-project
+inherit autotools git-project pkgconfig
 
 

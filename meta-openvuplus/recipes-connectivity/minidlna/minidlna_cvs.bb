@@ -15,6 +15,10 @@ SRC_URI = "cvs://anonymous@minidlna.cvs.sourceforge.net/cvsroot/minidlna;module=
 
 S = "${WORKDIR}/${PN}"
 
+do_configure_prepend() {
+        sed -i 's/AM_INIT_AUTOMAKE.*$/AM_INIT_AUTOMAKE([foreign subdir-objects])/' ${S}/configure.ac
+}
+
 inherit autotools-brokensep gettext
 
 PACKAGES =+ "${PN}-utils"

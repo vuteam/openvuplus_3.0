@@ -20,11 +20,12 @@ SRC_URI = "git://code.vuplus.com/git/tuxbox-tuxtxt.git;protocol=git \
 
 S = "${WORKDIR}/git"
 
-inherit autotools
+inherit autotools pkgconfig
 
 do_configure_prepend() {
         touch ${S}/python/__init__.py
         install -m 0644 ${WORKDIR}/plugin.py ${S}/python
+        sed -i 's/AM_INIT_AUTOMAKE.*$/AM_INIT_AUTOMAKE([foreign subdir-objects])/' ${S}/configure.ac
 }
 
 FILES_${PN} += "${datadir}/fonts/tuxtxt.otb ${libdir}/enigma2 /etc/tuxtxt"

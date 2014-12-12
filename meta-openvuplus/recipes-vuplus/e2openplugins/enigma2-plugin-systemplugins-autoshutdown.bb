@@ -15,7 +15,7 @@ SRC_URI += " \
         file://autoshutdown-fix-standby_20140407.patch \
 "
 
-inherit autotools-brokensep
+inherit autotools-brokensep pkgconfig
 
 FILES_${PN} = "/"
 

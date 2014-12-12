@@ -13,6 +13,10 @@ SRC_URI = " \
 	file://${PN}.sh \
 	"
 
+do_configure_prepend() {
+        sed -i 's/AM_INIT_AUTOMAKE.*$/AM_INIT_AUTOMAKE([foreign subdir-objects])/' ${S}/configure.ac
+}
+
 S = "${WORKDIR}/git"
 
 inherit autotools update-rc.d

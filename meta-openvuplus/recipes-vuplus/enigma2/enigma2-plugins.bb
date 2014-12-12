@@ -43,7 +43,7 @@ FILES_${PN}-meta = "${datadir}/meta"
 PACKAGES += "${PN}-meta"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-inherit autotools-brokensep pythonnative
+inherit autotools-brokensep pythonnative pkgconfig
 
 S = "${WORKDIR}/git"
 

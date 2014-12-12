@@ -25,7 +25,7 @@ do_setlibtool (){
 }
 
 INITSCRIPT_PARAMS_vuplus = "stop 10 0 6 ."
-inherit autotools update-rc.d
+inherit autotools update-rc.d gettext pkgconfig
 
 INITSCRIPT_NAME = "lcd4linux"
 CONFFILES_${PN} += "${sysconfdir}/lcd4linux.conf"

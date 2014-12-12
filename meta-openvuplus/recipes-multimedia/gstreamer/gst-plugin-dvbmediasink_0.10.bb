@@ -19,6 +19,13 @@ SRC_URI_append_vuplus = " \
                 file://Set-only-by-hardware-supported-audio-mpeg-4-profile.patch \
                 "
 
+S = "${WORKDIR}/git"
+
+do_configure_prepend() {
+        sed -i 's/AC_INIT.*$/AC_INIT(gst-plugin-dreambox-dvbmediasink, 0.10, @openvuplus)/' ${S}/configure.ac
+        sed -i 's/AM_INIT_AUTOMAKE.*$/AM_INIT_AUTOMAKE([foreign subdir-objects])/' ${S}/configure.ac
+}
+
 FILES_${PN} = "${libdir}/gstreamer-0.10/*.so"
 FILES_${PN}-dev += "${libdir}/gstreamer-0.10/*.la"
 FILES_${PN}-staticdev += "${libdir}/gstreamer-0.10/*.a"
