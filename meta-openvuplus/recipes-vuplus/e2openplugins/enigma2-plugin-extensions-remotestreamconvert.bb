@@ -5,16 +5,11 @@ RDEPENDS_${PN} = "python-shell"
 
 PR="r0"
 
-require openplugins.inc
+inherit gitpkgv
+PV = "2.0+git${SRCPV}"
+PKGV = "2.0+git${GITPKGV}"
+PR = "r0"
+
+require openplugins-distutils.inc
 
 require assume-gplv2.inc
-
-PLUGINPATH = "/usr/lib/enigma2/python/Plugins/Extensions/${MODULE}"
-
-do_install() {
-        install -d ${D}${PLUGINPATH}
-        cp -rp ${S}/plugin/* ${D}${PLUGINPATH}
-}
-
-FILES_${PN} = "${PLUGINPATH}"
-PACKAGES = "${PN}"
