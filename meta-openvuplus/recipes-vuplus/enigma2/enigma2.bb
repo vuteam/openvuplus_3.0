@@ -88,7 +88,7 @@ RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd
 RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
 
 PN = "enigma2"
-PR = "r90"
+PR = "r91"
 
 inherit gitpkgv pythonnative
 
@@ -115,6 +115,7 @@ SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH};t
 	file://enigma2_vuplus_eptrlist_insert.patch \
 	file://enigma2_vuplus_conversion_error.patch \
 	file://enigma2_vuplus_default_arg_error.patch \
+	file://enigma2_vuplus_wrong_boolean_type.patch \
 	file://MyriadPro-Regular.otf \
 	file://MyriadPro-Semibold.otf \
 	file://MyriadPro-SemiboldIt.otf \
