@@ -11,11 +11,10 @@ PR = "r0"
 require openplugins.inc
 
 SRC_URI += " \
-        file://autoshutdown-default-time_20121207.patch \
-        file://autoshutdown-fix-standby_20140407.patch \
+        file://autoshutdown-fix-standby_20141218.patch \
 "
 
-inherit autotools
+inherit autotools-brokensep pkgconfig
 
 FILES_${PN} = "/"
 
