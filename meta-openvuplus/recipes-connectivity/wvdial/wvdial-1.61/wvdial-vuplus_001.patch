@@ -1,5 +1,5 @@
 diff --git a/wvmodemscan.cc b/wvmodemscan.cc
-index bf59924..ef5ab87 100644
+index de1c34a..17687aa 100644
 --- a/wvmodemscan.cc
 +++ b/wvmodemscan.cc
 @@ -485,6 +485,7 @@ const char *WvModemScan::is_isdn() const
@@ -23,4 +23,4 @@ index bf59924..ef5ab87 100644
 +#endif
  }
  
- 
+ #if defined(__GLIBC__) && __GLIBC_PREREQ(2, 10)
