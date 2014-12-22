@@ -1,4 +1,4 @@
-PR .= "-vuplus9"
+PR .= "-vuplus10"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${P}:"
 
@@ -8,6 +8,10 @@ SRC_URI_append = " \
 	file://make_mac_sector \
 	file://mountrun.sh \
 "
+
+do_configure_prepend() {
+        sed -i 's/tty0/ttyS0/' ${WORKDIR}/banner.sh
+}
 
 do_install_append() {
 	rm ${D}${sysconfdir}/*.d/*save-rtc.sh
