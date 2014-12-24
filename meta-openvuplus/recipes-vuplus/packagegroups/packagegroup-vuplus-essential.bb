@@ -8,7 +8,7 @@ RDEPENDS_${PN} = '${ESSENTIAL_RDEPENDS}'
 RRECOMMENDS_${PN} = '${ESSENTIAL_RRECOMMENDS}'
 RRECOMMENDS_${PN} += '${KERNEL_DVB_MODULES}'
 
-PR = "r5"
+PR = "r6"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -87,7 +87,12 @@ KERNEL_MEDIA_USB_ADAPTERS = " \
   ${DVB_USB_V2} \
   kernel-module-dvb-ttusb-budget \
   kernel-module-smsusb \
+  kernel-module-smsdvb \
+  kernel-module-smsmdtv \
+  kernel-module-b2c2-flexcop \
   kernel-module-b2c2-flexcop-usb \
+  kernel-module-tveeprom \
+  kernel-module-cypress-firmware \
 "
 
 KERNEL_MEDIA_CUSTOMIZE_TV_TUNER = " \
