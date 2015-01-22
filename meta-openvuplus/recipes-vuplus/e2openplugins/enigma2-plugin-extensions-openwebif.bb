@@ -8,6 +8,7 @@ RDEPENDS_${PN} = "python-cheetah python-json python-unixadmin python-misc python
 		python-shell aio-grab python-compression python-numbers python-zopeinterface \
 "
 
+SRCREV_pn-${PN}="c30a9aefcf87387e90f0ddbac61ef1aada8cbd6c"
 inherit gitpkgv
 PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"

@@ -8,7 +8,7 @@ RDEPENDS_${PN} = '${ESSENTIAL_RDEPENDS}'
 RRECOMMENDS_${PN} = '${ESSENTIAL_RRECOMMENDS}'
 RRECOMMENDS_${PN} += '${KERNEL_DVB_MODULES}'
 
-PR = "r6"
+PR = "r7"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -81,6 +81,21 @@ DVB_USB_V2 = " \
   kernel-module-dvb-usb-rtl28xxu \
 "
 
+KERNEL_MEDIA_ANALOG_USB_ADAPTERS = " \
+  kernel-module-pvrusb2 \
+  kernel-module-hdpvr \
+  kernel-module-usbvision \
+  kernel-module-stk1160 \
+  kernel-module-poseidon \
+"
+
+KERNEL_MEDIA_ANALOG_DIGITAL_USB_ADAPTERS = " \
+  kernel-module-au0828 \
+  kernel-module-cx231xx \
+  kernel-module-tm6000 \
+  kernel-module-em28xx \
+"
+
 KERNEL_MEDIA_USB_ADAPTERS = " \
   kernel-module-au0828 \
   ${DVB_USB_V1} \
@@ -93,6 +108,9 @@ KERNEL_MEDIA_USB_ADAPTERS = " \
   kernel-module-b2c2-flexcop-usb \
   kernel-module-tveeprom \
   kernel-module-cypress-firmware \
+  kernel-module-dvb-usb-cypress-firmware \
+  ${KERNEL_MEDIA_ANALOG_USB_ADAPTERS} \
+  ${KERNEL_MEDIA_ANALOG_DIGITAL_USB_ADAPTERS} \
 "
 
 KERNEL_MEDIA_CUSTOMIZE_TV_TUNER = " \
