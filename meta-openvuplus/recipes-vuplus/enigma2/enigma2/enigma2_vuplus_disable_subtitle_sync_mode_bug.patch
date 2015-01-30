@@ -1,0 +1,13 @@
+diff --git a/lib/service/servicemp3.cpp b/lib/service/servicemp3.cpp
+index d27ce4f..4da7762 100755
+--- a/lib/service/servicemp3.cpp
++++ b/lib/service/servicemp3.cpp
+@@ -19,8 +19,6 @@
+ #include <gst/pbutils/missing-plugins.h>
+ #include <sys/stat.h>
+ 
+-#define GSTREAMER_SUBTITLE_SYNC_MODE_BUG
+-
+ #define SUBTITLE_DEBUG
+ 
+ #define HTTP_TIMEOUT 10

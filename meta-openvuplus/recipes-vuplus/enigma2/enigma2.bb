@@ -3,34 +3,134 @@ MAINTAINER = "vuplus team"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=c9e255efa454e0155c1fd758df7dcaf3"
 
-DEPENDS = "jpeg giflib libmad libpng libsigc++-1.2 gettext-native \
-	dreambox-dvbincludes freetype libdvbsi++ python swig-native \
-	libfribidi libxmlccwrap libdreamdvd gstreamer gst-plugin-dvbmediasink \
-	gst-plugins-bad gst-plugins-good gst-plugins-ugly python-wifi \
-	hostapd bridge-utils ntfs-3g dosfstools util-linux \
-"
+DEPENDS = " \
+        jpeg \
+        giflib \
+        libmad \
+        libpng \
+        libsigc++-1.2 \
+        gettext-native \
+        dreambox-dvbincludes \
+        freetype \
+        libdvbsi++ \
+        python \
+        swig-native \
+        libfribidi \
+        libxml2 \
+        libxmlccwrap \
+        libdreamdvd \
+        ${@base_contains("GST_VERSION", "1.0", "gstreamer1.0-plugins-base gstreamer1.0", "gst-plugins-base gstreamer", d)} \
+        python-wifi \
+        hostapd \
+        bridge-utils \
+        ntfs-3g \
+        dosfstools \
+        util-linux \
+	"
 
-GST_RDEPENDS = "gst-plugins-base-decodebin gst-plugins-base-decodebin2 gst-plugins-base-app gst-plugins-bad-fragmented \
-	gst-plugins-good-id3demux gst-plugins-ugly-mad gst-plugins-base-ogg gst-plugins-base-playbin \
-	gst-plugins-base-typefindfunctions gst-plugins-base-audioconvert gst-plugins-base-audioresample \
-	gst-plugins-good-wavparse gst-plugins-ugly-mpegstream \
-	gst-plugins-good-flac gst-plugin-dvbmediasink gst-plugins-bad-mpegdemux gst-plugins-ugly-dvdsub \
-	gst-plugins-good-souphttpsrc gst-plugins-ugly-mpegaudioparse gst-plugins-base-subparse \
-	gst-plugins-good-apetag gst-plugins-good-icydemux gst-plugins-good-autodetect gst-plugins-good-flv \
-	gst-plugins-bad-mms gst-plugins-ugly-asf gst-plugins-good-avi gst-plugins-bad-faad \
-"
+RDEPENDS_${PN} = " \
+	alsa-conf \
+        ethtool \
+	glibc-gconv-iso8859-15 \
+        parted \
+	${PYTHON_RDEPS} \
+	${GST_RDEPENDS} \
+	"
 
-GST_RTSP_RDEPENDS = "gst-plugins-good-udp gst-plugins-good-rtsp gst-plugins-good-rtp gst-plugins-good-rtpmanager"
-GST_ALSA_RDEPENDS = "gst-plugins-base-alsa alsa-conf"
-GST_MISC_RDEPENDS = "gst-plugins-good-matroska gst-plugins-good-isomp4 gst-plugins-base-vorbis gst-plugins-good-audioparsers"
-GST_DVD_RDEPENDS  = "gst-plugins-bad-cdxaparse gst-plugins-ugly-cdio gst-plugins-bad-vcdsrc"
-GST_BASE_RDEPENDS = "${GST_ALSA_RDEPENDS} ${GST_MISC_RDEPENDS} ${GST_RTSP_RDEPENDS}"
+PYTHON_RDEPS = " \
+        python-codecs \
+        python-core \
+        python-lang \
+        python-re \
+        python-threading \
+        python-xml \
+        python-fcntl \
+        python-stringold \
+        python-pickle \
+        python-netclient \
+	"
 
-RDEPENDS_${PN} = "python-codecs python-core python-lang python-re python-threading \
-	python-xml python-fcntl python-stringold python-pickle python-netclient \
-	glibc-gconv-iso8859-15 ethtool parted \
-	${GST_RDEPENDS} ${GST_BASE_RDEPENDS} ${GST_DVD_RDEPENDS} \
-"
+GST_RDEPENDS = "${@base_contains('GST_VERSION', '1.0', ' \
+	gstreamer1.0-plugin-dvbmediasink \
+	gstreamer1.0-plugin-subsink \
+	gstreamer1.0-plugins-base-alsa \
+	gstreamer1.0-plugins-base-app \
+	gstreamer1.0-plugins-base-audioconvert \
+	gstreamer1.0-plugins-base-audioresample \
+	gstreamer1.0-plugins-base-ogg \
+	gstreamer1.0-plugins-base-playback \
+	gstreamer1.0-plugins-base-subparse \
+	gstreamer1.0-plugins-base-typefindfunctions \
+	gstreamer1.0-plugins-base-vorbis \
+	gstreamer1.0-plugins-good-apetag \
+	gstreamer1.0-plugins-good-audioparsers \
+	gstreamer1.0-plugins-good-autodetect \
+	gstreamer1.0-plugins-good-avi \
+	gstreamer1.0-plugins-good-flac \
+	gstreamer1.0-plugins-good-flv \
+	gstreamer1.0-plugins-good-icydemux \
+	gstreamer1.0-plugins-good-id3demux \
+	gstreamer1.0-plugins-good-isomp4 \
+	gstreamer1.0-plugins-good-matroska \
+	gstreamer1.0-plugins-good-rtp \
+	gstreamer1.0-plugins-good-rtpmanager \
+	gstreamer1.0-plugins-good-rtsp \
+	gstreamer1.0-plugins-good-souphttpsrc \
+	gstreamer1.0-plugins-good-udp \
+	gstreamer1.0-plugins-good-wavparse \
+	gstreamer1.0-plugins-bad-faad \
+	gstreamer1.0-plugins-bad-fragmented \
+	gstreamer1.0-plugins-bad-videoparsersbad \
+	gstreamer1.0-plugins-bad-mms \
+	gstreamer1.0-plugins-bad-mpegpsdemux \
+	gstreamer1.0-plugins-bad-mpegtsdemux \
+	gstreamer1.0-plugins-ugly-asf \
+	gstreamer1.0-plugins-ugly-cdio \
+	gstreamer1.0-plugins-ugly-dvdsub \
+	gstreamer1.0-plugins-ugly-mad \
+	', ' \
+	gst-plugin-dvbmediasink \
+	gst-plugin-subsink \
+	gst-plugins-base-alsa \
+	gst-plugins-base-app \
+	gst-plugins-base-audioconvert \
+	gst-plugins-base-audioresample \
+	gst-plugins-base-decodebin \
+	gst-plugins-base-decodebin2 \
+	gst-plugins-base-ogg \
+	gst-plugins-base-playbin \
+	gst-plugins-base-subparse \
+	gst-plugins-base-typefindfunctions \
+	gst-plugins-base-vorbis \
+	gst-plugins-good-apetag \
+	gst-plugins-good-audioparsers \
+	gst-plugins-good-autodetect \
+	gst-plugins-good-avi \
+	gst-plugins-good-flac \
+	gst-plugins-good-flv \
+	gst-plugins-good-icydemux \
+	gst-plugins-good-id3demux \
+	gst-plugins-good-isomp4 \
+	gst-plugins-good-matroska \
+	gst-plugins-good-rtp \
+	gst-plugins-good-rtpmanager \
+	gst-plugins-good-rtsp \
+	gst-plugins-good-souphttpsrc \
+	gst-plugins-good-udp \
+	gst-plugins-good-wavparse \
+	gst-plugins-bad-cdxaparse \
+	gst-plugins-bad-faad \
+	gst-plugins-bad-mms \
+	gst-plugins-bad-mpegdemux \
+	gst-plugins-bad-vcdsrc \
+	gst-plugins-bad-fragmented \
+	gst-plugins-ugly-asf \
+	gst-plugins-ugly-cdio \
+	gst-plugins-ugly-dvdsub \
+	gst-plugins-ugly-mad \
+	gst-plugins-ugly-mpegstream \
+	gst-plugins-ugly-mpegaudioparse \
+	', d)}"
 
 # 'forward depends' - no two providers can have the same PACKAGES_DYNAMIC, however both
 # enigma2 and enigma2-plugins produce enigma2-plugin-*.
@@ -67,7 +167,10 @@ SUMMARY_enigma2-plugin-systemplugins-crashreport = "automatically send crashlogs
 RDEPENDS_enigma2-plugin-systemplugins-crashreport = "python-twisted-mail python-twisted-names python-compression python-mime python-email"
 RDEPENDS_enigma2-plugin-systemplugins-wirelessaccesspoint = "hostapd bridge-utils"
 
-RDEPENDS_enigma2-plugin-extensions-streamtv = "librtmp0 gst-plugins-bad-rtmp "
+RDEPENDS_enigma2-plugin-extensions-streamtv = " \
+	librtmp1 \
+	${@base_contains("GST_VERSION", "1.0", "gstreamer1.0-plugins-bad-rtmp", "gst-plugins-bad-rtmp", d)} \
+"
 
 DEPENDS += "djmount minidlna"
 RDEPENDS_enigma2-plugin-extensions-dlnaserver = "minidlna "
@@ -88,23 +191,23 @@ RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd
 RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
 
 PN = "enigma2"
-PR = "r93"
+PR = "r94"
 
 inherit gitpkgv pythonnative
 
 ####################################################
 PV = "experimental-gitr${SRCPV}"
 PKGV = "experimental-gitr${GITPKGV}"
-BRANCH = "vuplus_experimental"
+BRANCH = "gst10"
 SRCREV = ""
 ####################################################
 
 # enigma2_vuplus_mediaplayer.patch is for trick-play in media player
 
-SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH};tag=${SRCREV} \
+#SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH};tag=${SRCREV} 
+SRC_URI = "git:///home/joseph/work2/work/enigma2;protocol=file;branch=${BRANCH};tag=${SRCREV} \
 	file://enigma2_vuplus_skin.patch \
 	file://enigma2_vuplus_mediaplayer.patch \
-	file://enigma2_vuplus_mediaplayer_subtitle.patch \
 	file://enigma2_vuplus_remove_dreambox_enigma.patch \
 	file://enigma2_vuplus_vfd_mode.patch \
 	file://enigma2_vuplus_pluginbrowser.patch \
@@ -116,6 +219,7 @@ SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH};t
 	file://enigma2_vuplus_conversion_error.patch \
 	file://enigma2_vuplus_default_arg_error.patch \
 	file://enigma2_vuplus_wrong_boolean_type.patch \
+	file://enigma2_vuplus_disable_subtitle_sync_mode_bug.patch \
 	file://MyriadPro-Regular.otf \
 	file://MyriadPro-Semibold.otf \
 	file://MyriadPro-SemiboldIt.otf \
@@ -124,7 +228,11 @@ SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH};t
 	file://number_key \
 "
 
+SRC_URI_append = " ${@base_contains('GST_VERSION', '1.0', '', 'file://enbalesubtitleshack.patch', d)}"
+
 SRC_URI_append = " ${@base_contains("VUPLUS_FEATURES", "vuwlan", "file://enigma2_vuplus_networksetup.patch", "", d)}"
+
+LDFLAGS_prepend = "${@base_contains('GST_VERSION', '1.0', ' -lxml2 ', '', d)}"
 
 def change_po():
     import os
@@ -185,6 +293,7 @@ do_compile_prepend_vuplus() {
 
 EXTRA_OECONF = " \
         --enable-dependency-tracking \
+	${@base_contains("GST_VERSION", "1.0", "--with-gstversion=1.0", "", d)} \
 	${@base_contains("VUPLUS_FEATURES", "display-text-vfd", "--with-display-text-vfd" , "", d)} \
 	${@base_contains("VUPLUS_FEATURES", "display-graphic-vfd", "--with-display-graphic-vfd" , "", d)} \
 	${@base_contains("VUPLUS_FEATURES", "right-half-vfd-skin", "--with-set-right-half-vfd-skin" , "", d)} \

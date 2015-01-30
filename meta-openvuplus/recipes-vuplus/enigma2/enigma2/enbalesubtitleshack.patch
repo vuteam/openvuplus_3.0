@@ -1,0 +1,13 @@
+diff --git a/lib/service/servicemp3.cpp b/lib/service/servicemp3.cpp
+index 14c224f..55156b4 100755
+--- a/lib/service/servicemp3.cpp
++++ b/lib/service/servicemp3.cpp
+@@ -23,6 +23,8 @@
+ 
+ #define HTTP_TIMEOUT 10
+ 
++#define GSTREAMER_SUBTITLE_SYNC_MODE_BUG
++
+ typedef enum
+ {
+ 	GST_PLAY_FLAG_VIDEO         = 0x00000001,

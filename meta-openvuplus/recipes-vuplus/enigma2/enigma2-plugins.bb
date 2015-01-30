@@ -11,7 +11,7 @@ SRCREV="c8fc96e8e51e1ef71e1709f9dd6f733007f9463e"
 SRCDATE="20110215"
 BRANCH="master"
 PV = "experimental-git${SRCDATE}"
-PR = "r10"
+PR = "r11"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
@@ -22,6 +22,7 @@ EXTRA_OECONF = " \
         HOST_SYS=${HOST_SYS} \
         STAGING_INCDIR=${STAGING_INCDIR} \
         STAGING_LIBDIR=${STAGING_LIBDIR} \
+	--with-gstversion=1.0 \
 "
 
 SRC_URI_append_vuplus = " \
@@ -32,6 +33,7 @@ SRC_URI_append_vuplus = " \
 	file://enigma2_plugins_autoresolution_fix.patch \
 	file://enigma2_plugins_fancontrol2.patch \
 	file://enigma2_plugins_gst_plugins_pkgname.patch \
+	file://enigma2_plugins_gst10_support.patch \
 	file://dreamboxweb.png \
 	file://dreamboxwebtv.png \
 	file://favicon.ico \

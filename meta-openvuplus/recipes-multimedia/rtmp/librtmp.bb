@@ -1,19 +1,19 @@
 DESCRIPTION = "librtmp Real-Time Messaging Protocol API"
-LICENSE = "GPLv2"
+LICENSE = "LGPLv2"
+
 LIC_FILES_CHKSUM = "file://COPYING;md5=e344c8fa836c3a41c4cbd79d7bd3a379"
 
-DEPENDS = "openssl"
+DEPENDS = "openssl zlib"
 
 inherit gitpkgv
 
+SRCREV = "a1900c3e152085406ecb87c1962c55ec9c6e4016"
+
 PKGV = "2.4+git${GITPKGV}"
 PV = "2.4+git${SRCPV}"
-PR = "r2"
+PR = "r3"
 
-BRANCH=""
-SRCREV="7340f6dbc6b3c8e552baab2e5a891c2de75cddcc"
-
-SRC_URI = "git://git.ffmpeg.org/rtmpdump;protocol=git;branch=${BRANCH};tag=${SRCREV}"
+SRC_URI = "git://git.ffmpeg.org/rtmpdump;protocol=git"
 
 S = "${WORKDIR}/git/librtmp"
 
@@ -22,6 +22,6 @@ do_compile() {
 }
 
 do_install() {
-	install -d ${D}/usr/lib
+	install -d ${D}${libdir}
 	oe_runmake DESTDIR=${D} install
 }

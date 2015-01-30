@@ -1,0 +1,67 @@
+commit c5618b4c1fb10d9bb8a6128857aa2e8a7cf396b2
+Author: hschang <chang@dev3>
+Date:   Thu Jan 22 15:52:21 2015 +0900
+
+    gst10 patch
+
+diff --git a/configure.ac b/configure.ac
+index 106756e..f03a743 100755
+--- a/configure.ac
++++ b/configure.ac
+@@ -22,8 +22,13 @@ AX_PTHREAD
+ 
+ TUXBOX_APPS_DVB
+ 
++dnl versions of gstreamer and plugins-base
++AC_ARG_WITH(gstversion,
++        AS_HELP_STRING([--with-gstversion],[use gstreamer version (major.minor)]),
++        [GST_MAJORMINOR=$withval],[GST_MAJORMINOR=0.10])
++
+ PKG_CHECK_MODULES(ENIGMA2, enigma2)
+-PKG_CHECK_MODULES(GSTREAMER, gstreamer-0.10 gstreamer-pbutils-0.10)
++PKG_CHECK_MODULES(GSTREAMER, gstreamer-$GST_MAJORMINOR gstreamer-pbutils-$GST_MAJORMINOR)
+ PKG_CHECK_MODULES(LIBCRYPTO, libcrypto)
+ 
+ AC_ARG_WITH(debug,
+diff --git a/merlinmusicplayer/src/merlinmp3player/merlinmp3player.cpp b/merlinmusicplayer/src/merlinmp3player/merlinmp3player.cpp
+index 0f25e41..56b3760 100644
+--- a/merlinmusicplayer/src/merlinmp3player/merlinmp3player.cpp
++++ b/merlinmusicplayer/src/merlinmp3player/merlinmp3player.cpp
+@@ -123,7 +123,11 @@ eServiceMerlinMP3Player::eServiceMerlinMP3Player(eServiceReference ref):  m_ref(
+ 		g_object_set (G_OBJECT (source), "location", m_filename.c_str(), NULL);
+ 		gst_bin_add_many (GST_BIN (m_gst_pipeline), source, decoder, sink, NULL);
+ 		gst_element_link_many (source, decoder, sink, NULL);
++#if GST_VERSION_MAJOR < 1
+ 		gst_bus_set_sync_handler(gst_pipeline_get_bus (GST_PIPELINE (m_gst_pipeline)), gstBusSyncHandler, this);
++#else
++		gst_bus_set_sync_handler(gst_pipeline_get_bus (GST_PIPELINE (m_gst_pipeline)), gstBusSyncHandler, this, NULL);
++#endif
+ 		gst_element_set_state (m_gst_pipeline, GST_STATE_PLAYING);
+ 	}
+ 	else
+@@ -240,8 +244,11 @@ RESULT eServiceMerlinMP3Player::getLength(pts_t &pts)
+ 	
+ 	GstFormat fmt = GST_FORMAT_TIME;
+ 	gint64 len;
+-	
++#if GST_VERSION_MAJOR < 1
+ 	if (!gst_element_query_duration(m_gst_pipeline, &fmt, &len))
++#else
++	if (!gst_element_query_duration(m_gst_pipeline, fmt, &len))
++#endif
+ 		return -1;
+ 	
+ 		/* len is in nanoseconds. we have 90 000 pts per second. */
+@@ -295,8 +302,11 @@ RESULT eServiceMerlinMP3Player::getPlayPosition(pts_t &pts)
+ 	
+ 	GstFormat fmt = GST_FORMAT_TIME;
+ 	gint64 len;
+-	
++#if GST_VERSION_MAJOR < 1	
+ 	if (!gst_element_query_position(m_gst_pipeline, &fmt, &len))
++#else
++	if (!gst_element_query_position(m_gst_pipeline, fmt, &len))
++#endif
+ 		return -1;
+ 	
+ 		/* len is in nanoseconds. we have 90 000 pts per second. */
