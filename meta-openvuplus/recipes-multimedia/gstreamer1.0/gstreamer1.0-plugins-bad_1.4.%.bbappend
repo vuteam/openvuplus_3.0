@@ -1,5 +1,5 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
-DEPENDS += "librtmp libdca"
+DEPENDS += "librtmp"
 EXTRA_OECONF := "${@bb.data.getVar('EXTRA_OECONF',d,1).replace('--disable-rtmp', '--enable-rtmp --enable-mpegdemux').replace('--disable-dts', '--enable-dts')}"
 PACKAGECONFIG += "faac faad libmms hls dash smoothstreaming webp rtmp"
 SRC_URI += "file://0001-rtmp-fix-seeking-and-potential-segfault.patch"
