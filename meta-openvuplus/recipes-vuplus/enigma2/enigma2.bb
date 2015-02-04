@@ -191,21 +191,21 @@ RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd
 RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
 
 PN = "enigma2"
-PR = "r94"
+PR = "r95"
 
 inherit gitpkgv pythonnative
 
 ####################################################
-PV = "experimental-gitr${SRCPV}"
-PKGV = "experimental-gitr${GITPKGV}"
+PV = "experimental-git${SRCPV}"
+PKGV = "experimental-git${GITPKGV}"
 BRANCH = "gst10"
-SRCREV = ""
+SRCREV = "${AUTOREV}"
 ####################################################
 
 # enigma2_vuplus_mediaplayer.patch is for trick-play in media player
 
-#SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH};tag=${SRCREV} 
-SRC_URI = "git:///home/joseph/work2/work/enigma2;protocol=file;branch=${BRANCH};tag=${SRCREV} \
+#SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH} 
+SRC_URI = "git:///home/joseph/work2/work/enigma2;protocol=file;branch=${BRANCH} \
 	file://enigma2_vuplus_skin.patch \
 	file://enigma2_vuplus_mediaplayer.patch \
 	file://enigma2_vuplus_remove_dreambox_enigma.patch \
