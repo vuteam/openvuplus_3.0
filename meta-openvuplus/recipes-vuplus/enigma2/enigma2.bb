@@ -88,6 +88,8 @@ GST_RDEPENDS = "${@base_contains('GST_VERSION', '1.0', ' \
 	gstreamer1.0-plugins-ugly-cdio \
 	gstreamer1.0-plugins-ugly-dvdsub \
 	gstreamer1.0-plugins-ugly-mad \
+	gstreamer1.0-plugins-ugly-amrnb \
+	gstreamer1.0-plugins-ugly-amrwbdec \
 	', ' \
 	gst-plugin-dvbmediasink \
 	gst-plugin-subsink \
@@ -130,6 +132,8 @@ GST_RDEPENDS = "${@base_contains('GST_VERSION', '1.0', ' \
 	gst-plugins-ugly-mad \
 	gst-plugins-ugly-mpegstream \
 	gst-plugins-ugly-mpegaudioparse \
+	gst-plugins-ugly-amrnb \
+	gst-plugins-ugly-amrwbdec \
 	', d)}"
 
 # 'forward depends' - no two providers can have the same PACKAGES_DYNAMIC, however both
@@ -191,7 +195,7 @@ RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd
 RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
 
 PN = "enigma2"
-PR = "r95"
+PR = "r96"
 
 inherit gitpkgv pythonnative
 
