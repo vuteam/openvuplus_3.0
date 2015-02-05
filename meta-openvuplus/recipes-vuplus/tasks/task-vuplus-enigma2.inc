@@ -66,6 +66,7 @@ RDEPENDS_${PN} += " \
   ${@base_conditional("MACHINE", "vuduo2", "duo2lcd4linux lcd4linuxsupport", "", d)} \
   ${@base_conditional("MACHINE", "vuduo2", "vuplus-checkvfd", "", d)} \
   ${@base_contains("VUPLUS_FEATURES", "audioeffect", "enigma2-plugin-systemplugins-audioeffect", "", d)} \
+  ${@base_contains("VUPLUS_FEATURES", "uianimation", "enigma2-plugin-systemplugins-animationsetup", "", d)} \
 "
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"

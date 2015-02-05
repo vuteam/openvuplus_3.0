@@ -2,7 +2,7 @@ SUMMARY = "Vuplus: Base Task for Vuplus."
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-INC_PR = "r10"
+INC_PR = "r12"
 
 inherit task
 
@@ -35,6 +35,7 @@ VUPLUS_BASE_ESSENTIAL = "\
   ${VUPLUS_FIRMWARE_DVB} \
   killall \
   openresolv \
+  ${@base_contains("VUPLUS_FEATURES", "dvbproxy", "libgles vuplus-platform-util", "", d)} \
 "
 
 VUPLUS_FIRMWARE_DVB = " \
@@ -64,6 +65,7 @@ VUPLUS_BASE_RECOMMENDS = "\
   zeroconf \
   ${@base_contains("VUPLUS_FEATURES", "vuplus-fpga-update", "vuplus-fpga-update", "", d)} \
   ${@base_contains("VUPLUS_FEATURES", "wol", "vuplus-coldboot", "", d)} \
+  ${@base_contains("VUPLUS_FEATURES", "xbmc", "enigma2-plugin-extensions-xbmc", "", d)} \
 "
 
 VUPLUS_BASE_OPTIONAL_RECOMMENDS = "\

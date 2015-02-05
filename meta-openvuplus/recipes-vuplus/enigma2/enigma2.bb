@@ -88,8 +88,11 @@ RDEPENDS_enigma2-plugin-systemplugins-netdrive = "curlftpfs kernel-module-fuse l
 RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd-utils-nanddump mtd-utils-ubinize"
 RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
 
+DEPENDS += "${@base_contains("VUPLUS_FEATURES", "uianimation", "libgles libvugles2" , "", d)}"
+RDEPENDS_append_vuplus += "${@base_contains("VUPLUS_FEATURES", "uianimation", "libgles libvugles2" , "", d)}"
+
 PN = "enigma2"
-PR = "r93"
+PR = "r94"
 
 SRCDATE = "20121128"
 #SRCDATE is NOT used by git to checkout a specific revision
@@ -188,6 +191,7 @@ EXTRA_OECONF = " \
 	${@base_contains("VUPLUS_FEATURES", "display-graphic-vfd", "--with-display-graphic-vfd" , "", d)} \
 	${@base_contains("VUPLUS_FEATURES", "right-half-vfd-skin", "--with-set-right-half-vfd-skin" , "", d)} \
 	${@base_contains("VUPLUS_FEATURES", "enable-rc-kbd", "--with-remote-keyboard" , "", d)} \
+	${@base_contains("VUPLUS_FEATURES", "uianimation", "--with-libvugles2" , "", d)} \
         BUILD_SYS=${BUILD_SYS} \
         HOST_SYS=${HOST_SYS} \
         STAGING_INCDIR=${STAGING_INCDIR} \
