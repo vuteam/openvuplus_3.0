@@ -43,7 +43,7 @@ XSUM ?= md5sum
 
 BUILD_DIR = $(CURDIR)/build
 TOPDIR = $(BUILD_DIR)/$(MACHINE)
-DL_DIR = $(CURDIR)/resource/sources
+DL_DIR = $(CURDIR)/sources
 
 ifeq ($(MULTI_TEMPORARILY), YES)
 SSTATE_DIR = $(TOPDIR)/sstate-cache
@@ -90,6 +90,7 @@ $(BBLAYERS):
 	[ -d $@ ] || $(MAKE) $(MFLAGS) update
 
 init: $(BBLAYERS) $(CONFFILES)
+	@if [ ! -e $(CURDIR)/sources ]; then mkdir -p $(CURDIR)/sources; fi
 
 help:
 	@echo "Your options:"

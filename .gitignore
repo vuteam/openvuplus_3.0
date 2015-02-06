@@ -9,3 +9,4 @@
 bblayers.conf
 /tmp/
 /bitbake.env
+sources
