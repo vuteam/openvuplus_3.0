@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
 KV = "3.9.6"
 
-PR = "r3"
+PR = "r4"
 SRCREV = ""
 
 MODULE = "linux-3.9.6"
@@ -16,9 +16,9 @@ SRC_URI += "http://archive.vuplus.com/download/kernel/stblinux-${KV}.tar.bz2 \
         file://${MACHINE}_defconfig \
 	"
 
-S = "${WORKDIR}/linux"
-
 inherit kernel
+
+S = "${WORKDIR}/linux"
 
 export OS = "Linux"
 KERNEL_IMAGETYPE = "vmlinux"
@@ -29,8 +29,7 @@ KERNEL_IMAGEDEST = "tmp"
 FILES_kernel-image = "/${KERNEL_IMAGEDEST}/vmlinux.gz /${KERNEL_IMAGEDEST}/autoexec.bat"
 
 do_configure_prepend() {
-        oe_machinstall -m 0644 ${WORKDIR}/${MACHINE}_defconfig ${S}/.config
-        oe_runmake oldconfig
+        oe_machinstall -m 0644 ${WORKDIR}/${MACHINE}_defconfig ${WORKDIR}/defconfig
 }
 
 kernel_do_install_append() {
