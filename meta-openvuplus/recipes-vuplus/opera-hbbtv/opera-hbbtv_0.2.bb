@@ -3,11 +3,11 @@ PRIORITY = "required"
 LICENSE = "CLOSED"
 
 DEPENDS = "mpfr gmp"
-RDEPENDS_${PN} = "sysfsutils vuplus-dvb-modules"
+RDEPENDS_${PN} = "sysfsutils"
 
 SRC_DATE = "20150106_0"
 
-PR = "r1_${SRC_DATE}"
+PR = "r2_${SRC_DATE}"
 SRC_URI = ""
 
 INHIBIT_PACKAGE_STRIP = "1"

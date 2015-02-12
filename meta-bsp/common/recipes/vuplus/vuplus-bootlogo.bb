@@ -7,7 +7,7 @@ IMAGES_VERSION = "1"
 BINARY_VERSION = "7"
 
 PV = "${BINARY_VERSION}.${IMAGES_VERSION}"
-PR = "r6"
+PR = "r7"
 
 #SRC_URI = "file://bootlogo.mvi file://backdrop.mvi file://bootlogo_wait.mvi file://switchoff.mvi"
 SRC_URI = "file://bootlogo.mvi file://backdrop.mvi file://bootlogo_wait.mvi"
@@ -31,7 +31,7 @@ FILES_${PN} = "/boot ${datadir} ${sysconfdir}"
 
 inherit update-rc.d
 
-INITSCRIPT_PARAMS = "start 5 S . stop 89 0 ."
+INITSCRIPT_PARAMS = "start 70 S . stop 89 0 ."
 INITSCRIPT_NAME = "${PN}"
 
 SRC_URI += "file://${INITSCRIPT_NAME}.sysvinit"
