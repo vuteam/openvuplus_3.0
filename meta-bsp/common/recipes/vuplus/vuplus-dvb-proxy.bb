@@ -8,9 +8,6 @@ PR = "${SRCDATE}.${SRCDATE_PR}"
 
 SRC_URI = "http://archive.vuplus.com/download/build_support/vuplus/vuplus-dvb-proxy-${MACHINE}-${PV}-${PR}.tar.gz "
 
-DEPENDS += "virtual/kernel module-init-tools"
-RDEPENDS_${PN} += "module-init-tools-depmod"
-
 S = "${WORKDIR}"
 
 inherit module-base

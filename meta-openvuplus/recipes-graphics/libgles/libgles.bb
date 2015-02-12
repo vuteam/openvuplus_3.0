@@ -22,5 +22,6 @@ do_package_qa() {
 }
 
 PACKAGE_ARCH := "${MACHINE_ARCH}"
-FILES_${PN}="/"
+PACKAGES = "${PN}"
+FILES_${PN}="/usr/lib /usr/include"
 

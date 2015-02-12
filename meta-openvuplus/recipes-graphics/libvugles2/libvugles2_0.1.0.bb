@@ -2,7 +2,7 @@ DESCRIPTION = "shared library for E2 animation"
 SECTION = "libs"
 LICENSE = "CLOSED"
 
-RDEPENDS = "libgles"
+RDEPENDS_${PN} = "libgles"
 
 SRCDATE = "20150109"
 SRCDATE_PR = "r1"
@@ -22,6 +22,9 @@ do_install() {
 	cp -a ${S}/lib/*.so ${D}${libdir}/
 	install -d ${D}${libdir}/pkgconfig
 	cp -a ${S}/lib/pkgconfig/*.pc ${D}${libdir}/pkgconfig/
+}
+
+do_package_qa() {
 }
 
 PACKAGE_ARCH := "${MACHINE_ARCH}"

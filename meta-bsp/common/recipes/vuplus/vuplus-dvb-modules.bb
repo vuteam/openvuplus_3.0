@@ -8,9 +8,6 @@ PR = "r22-${SRCDATE}"
 
 SRC_URI = "http://archive.vuplus.com/download/drivers/vuplus-dvb-modules-${MACHINE}-${PV}-${SRCDATE}.tar.gz "
 
-DEPENDS += "virtual/kernel module-init-tools"
-RDEPENDS_${PN} += "module-init-tools-depmod"
-
 S = "${WORKDIR}"
 
 inherit module-base

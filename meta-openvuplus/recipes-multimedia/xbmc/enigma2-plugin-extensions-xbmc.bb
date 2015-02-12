@@ -7,7 +7,7 @@ PV="1.0"
 PR="${PKG_DATE}_r0"
 
 DEPENDS += "enigma2 xbmc"
-RDEPENDS += "xbmc"
+RDEPENDS_${PN} += "xbmc"
 
 SRC_URI = "http://archive.vuplus.com/download/build_support/e2xbmc-plugin_${PKG_DATE}.tar.gz"
 

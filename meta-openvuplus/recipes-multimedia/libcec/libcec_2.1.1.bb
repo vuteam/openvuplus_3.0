@@ -6,7 +6,7 @@ DEPENDS = "udev"
 SRCREV = "605d913ae656ef9707a7f9cbca41f78d180d79dc"
 PR = "r2"
 
-SRC_URI = "git://github.com/Pulse-Eight/libcec.git"
+SRC_URI = "git://github.com/Pulse-Eight/libcec.git;branch=release"
 
 S = "${WORKDIR}/git"
 

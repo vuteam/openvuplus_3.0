@@ -7,6 +7,6 @@ INC_PR = "r5"
 S="${WORKDIR}/git"
 SRC_URI = "git://git.videolan.org/libbluray.git;branch=master;protocol=git \
 		"
-inherit autotools
+inherit autotools-brokensep
 
 FILES_${PN} = "/"

@@ -1,8 +1,8 @@
 SRCDATE = "20150113"
 SRCDATE_PR = "r0"
 
-do_install_append(){
-  ln -s /lib/modules/${KERNEL_VERSION}/extra/dvb-bcm7241.ko ${D}/lib/modules/${KERNEL_VERSION}/extra/dvb-bcm.ko
+pkg_postinst_${PN}_append () {
+  ln -s /lib/modules/${KERNEL_VERSION}/extra/dvb-bcm7241.ko $D/lib/modules/${KERNEL_VERSION}/extra/dvb-bcm.ko
 }
 
 SRC_URI[md5sum] = "af6a79ba8c1df1b6c502c5891ace8186"

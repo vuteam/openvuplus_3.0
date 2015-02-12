@@ -1,0 +1,15 @@
+diff --git a/configure.ac b/configure.ac
+index 466f7f9..48490df 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -145,10 +145,6 @@ CC_CHECK_CFLAGS_APPEND([-Wall -Wdisabled-optimization -Wpointer-arith ]dnl
+ [-Wredundant-decls -Wcast-qual -Wwrite-strings -Wtype-limits -Wundef ]dnl
+ [-Wmissing-prototypes -Wshadow])
+ 
+-CC_CHECK_CFLAGS_APPEND([-Werror=implicit-function-declaration ]dnl
+-                       [-Werror-implicit-function-declaration],
+-                       [break;])
+-
+ CC_CHECK_WERROR
+ AS_IF([test "x$enable_werror" = "xyes"], [
+   CFLAGS="${CFLAGS} $cc_cv_werror"

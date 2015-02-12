@@ -1,7 +1,7 @@
 require libbluray.inc
 
 DEPENDS += "libaacs libdca libdvdcss"
-RDEPENDS += "libaacs libdca libdvdcss"
+RDEPENDS_${PN} += "libaacs libdca libdvdcss"
 
 SRCREV="491c7e8501d7e7ea853700a2f35a18f11ad40a5b"
 LIC_FILES_CHKSUM="file://COPYING;md5=435ed639f84d4585d93824e7da3d85da"

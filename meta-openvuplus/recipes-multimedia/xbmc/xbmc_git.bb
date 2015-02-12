@@ -1,4 +1,4 @@
-DESCRIPTION = "XBMC Media Center"
+SUMMARY = "XBMC Media Center"
 
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://LICENSE.GPL;md5=6eb631b6da7fdb01508a80213ffc35ff"
@@ -18,7 +18,7 @@ SRC_URI = "git://github.com/xbmc/xbmc.git;branch=eden;protocol=git \
            file://configure.in-Avoid-running-code.patch \
           "
 
-inherit autotools gettext python-dir
+inherit autotools-brokensep gettext python-dir
 
 S = "${WORKDIR}/git"
 
@@ -48,7 +48,7 @@ export STAGING_INCDIR
 export PYTHON_DIR
 
 do_configure() {
-	sh bootstrap
+	./bootstrap
 	oe_runconf
 }
 
