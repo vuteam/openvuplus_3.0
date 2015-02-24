@@ -5,7 +5,7 @@ LICENSE = "CLOSED"
 DEPENDS = "mpfr gmp"
 RDEPENDS_${PN} = "sysfsutils"
 
-SRC_DATE = "20150106_0"
+SRC_DATE = "20150224_0"
 
 PR = "r2_${SRC_DATE}"
 SRC_URI = ""
@@ -32,7 +32,7 @@ libdirectfb_vuplus.so"
 
 S = "${WORKDIR}/opera-hbbtv"
 
-SRC_FILE = "opera-hbbtv_${SRC_DATE}.tar.gz"
+SRC_FILE = "opera-hbbtv_${SRC_DATE}_OE30.tar.gz"
 do_fetch() {
 	if [ ! -e ${DL_DIR}/${SRC_FILE} -a -e /etc/vuplus_browser.pwd ]; then
 sshpass -f /etc/vuplus_browser.pwd sftp -o StrictHostKeyChecking=no guestuser@code.vuplus.com << +
@@ -74,6 +74,6 @@ PACKAGES = "${PN}"
 
 FILES_${PN} = "/"
 
-SRC_URI[md5sum] = "531bb6c69f682b04b563a17160773014"
-SRC_URI[sha256sum] = "3f8f885b3679db592acd09120dc8f29911bf34ac811df41e6abb87440e394b94"
+SRC_URI[md5sum] = "e85fd1a4ccdd93a06a9110ec17c07689"
+SRC_URI[sha256sum] = "e19f43c78b178faed1ce92fa45ca88b868f3c667b97028cb2e59d6a9852b2f1b"
 
