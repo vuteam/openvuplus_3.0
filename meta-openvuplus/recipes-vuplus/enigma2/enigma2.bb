@@ -198,15 +198,15 @@ DEPENDS += "${@base_contains("VUPLUS_FEATURES", "uianimation", "libgles libvugle
 RDEPENDS_${PN}_append_vuplus += "${@base_contains("VUPLUS_FEATURES", "uianimation", "libgles libvugles2" , "", d)}"
 
 PN = "enigma2"
-PR = "r99"
+PR = "r100"
 
 inherit gitpkgv pythonnative
 
 ####################################################
-PV = "experimental-git${SRCPV}"
-PKGV = "experimental-git${GITPKGV}"
+SRCDATE = "20121128"
+PV = "experimental-git${SRCDATE}"
 BRANCH = "vuplus_experimental_oe30"
-SRCREV = "${AUTOREV}"
+SRCREV = ""
 ####################################################
 
 # enigma2_vuplus_mediaplayer.patch is for trick-play in media player
