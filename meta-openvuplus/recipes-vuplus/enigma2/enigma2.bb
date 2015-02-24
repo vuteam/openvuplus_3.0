@@ -205,14 +205,13 @@ inherit gitpkgv pythonnative
 ####################################################
 SRCDATE = "20121128"
 PV = "experimental-git${SRCDATE}"
-BRANCH = "vuplus_experimental_oe30"
+BRANCH = "vuplus_experimental_gst10"
 SRCREV = ""
 ####################################################
 
 # enigma2_vuplus_mediaplayer.patch is for trick-play in media player
 
-#SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH} 
-SRC_URI = "git:///home/joseph/work2/work/enigma2;protocol=file;branch=${BRANCH} \
+SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH};rev=${SRCREV} \
 	file://enigma2_vuplus_skin.patch \
 	file://enigma2_vuplus_mediaplayer.patch \
 	file://enigma2_vuplus_remove_dreambox_enigma.patch \
