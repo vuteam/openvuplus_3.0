@@ -1,0 +1,54 @@
+diff --git a/usbtunerhelper.c b/usbtunerhelper.c
+index 93ae110..77b8728 100644
+--- a/usbtunerhelper.c
++++ b/usbtunerhelper.c
+@@ -533,7 +533,6 @@ int init_adapter(int id)
+ 	ioctl(adapter->vtuner, VTUNER_SET_NAME, adapter->name);
+ 	ioctl(adapter->vtuner, VTUNER_SET_TYPE, type);
+ 	ioctl(adapter->vtuner, VTUNER_SET_FE_INFO, &fe_info);
+-	ioctl(adapter->vtuner, VTUNER_SET_HAS_OUTPUTS, "no");
+ #if DVB_API_VERSION > 5 || DVB_API_VERSION == 5 && DVB_API_VERSION_MINOR >= 5
+ 	{
+ 		struct dtv_properties props;
+@@ -541,12 +540,14 @@ int init_adapter(int id)
+ 		props.num = 1;
+ 		props.props = p;
+ 		p[0].cmd = DTV_ENUM_DELSYS;
++		memset(p[0].u.buffer.data, 0, sizeof(p[0].u.buffer.data));
+ 		if (ioctl(adapter->frontend, FE_GET_PROPERTY, &props) >= 0)
+ 		{
+ 			ioctl(adapter->vtuner, VTUNER_SET_DELSYS, p[0].u.buffer.data);
+ 		}
+ 	}
+ #endif
++	ioctl(adapter->vtuner, VTUNER_SET_HAS_OUTPUTS, "no");
+ 
+ 	memset(adapter->pidlist, 0xff, sizeof(adapter->pidlist));
+ 	adapter->buffer = malloc(BUFFER_SIZE);
+@@ -599,6 +600,8 @@ int main(int argc, char *argv[])
+ 	int i;
+ 	int ok = 0;
+ 	int debug = 0;
++	int scan_inverval = 1;
++	int scan_count = 60;
+ 
+ 	char option;
+ 	while ((option = getopt(argc, argv, "dh")) >= 0)
+@@ -621,8 +624,15 @@ int main(int argc, char *argv[])
+ 
+ 	while (running)
+ 	{
+-		if (scan_adapters() > 0) break;
+-		sleep(5);
++		if (scan_adapters() > 0)
++			break;
++
++		if (scan_count > 0)
++			scan_count--;
++		else
++			scan_inverval = 5;
++
++		sleep(scan_inverval);
+ 	}
+ 
+ 	for (i = 0; i < adaptercount; i++)
