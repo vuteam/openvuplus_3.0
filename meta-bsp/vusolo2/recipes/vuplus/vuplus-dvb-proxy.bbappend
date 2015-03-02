@@ -1,4 +1,4 @@
-SRCDATE = "20150226"
+SRCDATE = "20150302"
 SRCDATE_PR = "r0"
 
 do_install_append(){
@@ -6,5 +6,5 @@ do_install_append(){
 }
 
 
-SRC_URI[md5sum] = "9af5eda260d4f8413fd63841cf3b70d3"
-SRC_URI[sha256sum] = "3ce7522b358a1b439221e533ec2bb993991928127d855e2d180880e841854a2b"
+SRC_URI[md5sum] = "9d3c926e9452e0ed922b7cd4f3d8bdb9"
+SRC_URI[sha256sum] = "ab684371e5fdf365d19ac602e903c5f355d09fcd595814b13cb54118a4bf129e"
