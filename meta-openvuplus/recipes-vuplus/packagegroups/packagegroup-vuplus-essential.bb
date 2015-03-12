@@ -8,13 +8,14 @@ RDEPENDS_${PN} = '${ESSENTIAL_RDEPENDS}'
 RRECOMMENDS_${PN} = '${ESSENTIAL_RRECOMMENDS}'
 RRECOMMENDS_${PN} += '${KERNEL_DVB_MODULES}'
 
-PR = "r7"
+PR = "r8"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 inherit packagegroup
 
 ESSENTIAL_RDEPENDS = " \
+	vuplus-tuner-turbo \
 "
 
 KERNEL_FS_MODULES = " \
