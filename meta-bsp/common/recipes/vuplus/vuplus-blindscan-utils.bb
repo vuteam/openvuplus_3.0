@@ -5,7 +5,7 @@ RDEPENDS_${PN} = "ncurses"
 
 LICENSE = "CLOSED"
 
-PV = "3.7"
+PV = "3.8"
 PR = "r1"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -70,6 +70,6 @@ do_install_vusolose() {
 	done
 }
 
-SRC_URI[md5sum] = "94873fcb634bf4f9519c39bceb4b5a6f"
-SRC_URI[sha256sum] = "70c4dc7afba1f70bc7be51ad7a0785b99d12cf874b43a653deddcf86ef736c71"
+SRC_URI[md5sum] = "0efbbfd6816d00bd808d2897995a87a6"
+SRC_URI[sha256sum] = "486a22c76e051e98dcc54129ca62ad05d41c2fb78a5cdf9324ca161fece00cd7"
 

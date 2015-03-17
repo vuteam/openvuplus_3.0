@@ -1,4 +1,4 @@
-SRCDATE = "20150113"
+SRCDATE = "20150317"
 SRCDATE_PR = "r0"
 
 pkg_postinst_${PN}_append () {
@@ -6,5 +6,5 @@ pkg_postinst_${PN}_append () {
 }
 
 
-SRC_URI[md5sum] = "53e47f210025250f95b314c8deb83302"
-SRC_URI[sha256sum] = "9775def1dfb10ed5856ba53787c337878608e16180cf1470a2e1d897b59f5d53"
+SRC_URI[md5sum] = "630c5b0a6737e650e6ec6e049081ece2"
+SRC_URI[sha256sum] = "aa3ac0d8bb1b4c9cf94a2da5bc98fcc592af277c846a62493661d051166a2462"
