@@ -1,7 +1,6 @@
 # vuplus-mips32el.inc
 
-VUPLUS_KERNEL_VERSION ?= "3.1.1"
-LINUXLIBCVERSION ?= "3.1"
+VUPLUS_KERNEL_VERSION ?= "3.13.5"
 
 TARGET_ARCH = "mipsel"
 DEFAULTTUNE = "mips32el"
