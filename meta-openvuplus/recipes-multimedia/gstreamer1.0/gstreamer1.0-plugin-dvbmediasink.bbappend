@@ -2,10 +2,9 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += "\
 	file://gstreamer10_dvbmediasink_vuplus.patch \
-	file://gstreamer10_dvbmediasink_vuplus_wmv.patch \
 "
 
-PR .= "-vuplus0"
+PR .= "-vuplus1"
 
 DVBMEDIASINK_CONFIG = "--with-wmv --with-pcm --with-eac3"
 

@@ -150,24 +150,6 @@ index a6b0a10..903432c 100644
  		break;
  	}
  
-@@ -614,6 +625,8 @@ static int video_write(GstBaseSink *sink, GstDVBVideoSink *self, GstBuffer *buff
- 				}
- 				else if (evt.type == VIDEO_EVENT_FRAME_RATE_CHANGED)
- 				{
-+					self->framerate = evt.u.frame_rate;
-+					GST_INFO_OBJECT(self, "decoder framerate %d", self->framerate);
- 					s = gst_structure_new ("eventFrameRateChanged",
- 						"frame_rate", G_TYPE_INT, evt.u.frame_rate, NULL);
- 					msg = gst_message_new_element (GST_OBJECT(sink), s);
-@@ -1289,6 +1302,8 @@ static gboolean gst_dvbvideosink_set_caps(GstBaseSink *basesink, GstCaps *caps)
- 	GstStructure *structure = gst_caps_get_structure (caps, 0);
- 	const char *mimetype = gst_structure_get_name (structure);
- 	self->stream_type = STREAMTYPE_UNKNOWN;
-+	self->framerate = -1;
-+	self->no_header = 0;
- 
- 	GST_INFO_OBJECT (self, "caps = %" GST_PTR_FORMAT, caps);
- 
 @@ -1557,6 +1572,10 @@ static gboolean gst_dvbvideosink_set_caps(GstBaseSink *basesink, GstCaps *caps)
  					gst_buffer_ref (self->codec_data);
  				}
@@ -179,21 +161,3 @@ index a6b0a10..903432c 100644
  			break;
  			case 6:
  			case 5:
-@@ -1622,10 +1641,17 @@ static gboolean gst_dvbvideosink_set_caps(GstBaseSink *basesink, GstCaps *caps)
- 						best = i;
- 					}
- 				}
-+				self->framerate = valid_framerates[best];
-+
-+				GST_INFO_OBJECT(self, "framerate %d", self->framerate);
-+
- 				fprintf(f, "%d", valid_framerates[best]);
- 				fclose(f);
- 			}
- 		}
-+		else if (self->framerate == -1)
-+			GST_INFO_OBJECT(self, "no framerate given!");
-+
- 		if (self->playing)
- 		{
- 			if (self->fd >= 0) ioctl(self->fd, VIDEO_STOP, 0);
