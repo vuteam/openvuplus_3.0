@@ -56,8 +56,7 @@ DEPDIR = $(BUILD_DIR)/.deps
 endif
 
 BBLAYERS ?= \
-	$(CURDIR)/meta-bsp/$(MACHINE) \
-	$(CURDIR)/meta-bsp/common \
+	$(CURDIR)/meta-bsp \
 	$(CURDIR)/meta-openvuplus \
 	$(CURDIR)/meta-openembedded/meta-oe \
 	$(CURDIR)/meta-openembedded/meta-networking \
