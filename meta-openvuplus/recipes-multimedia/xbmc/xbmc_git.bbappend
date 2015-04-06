@@ -36,7 +36,7 @@ RDEPENDS_${PN} += "\
 	nfs-utils-client \
 	libshairport \
 	glibc-gconv-utf-32 \
-	lzma \
+	xz \
 	tiff \
 	yajl \
 	libxslt \
@@ -47,7 +47,7 @@ RDEPENDS_${PN} += "\
 	libnfs \
 "
 
-BUILD_PR="r2"
+BUILD_PR="r3"
 NATIVEGLES_PR="20141202_p0"
 
 BRANCH = "gotham_vuplus"
