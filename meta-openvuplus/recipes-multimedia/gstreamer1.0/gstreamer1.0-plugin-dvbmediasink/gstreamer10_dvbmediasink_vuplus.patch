@@ -1,18 +1,8 @@
 diff --git a/gstdvbaudiosink.c b/gstdvbaudiosink.c
-index 2725def..a51d28c 100644
+index 2b87caa..afd5fb6 100644
 --- a/gstdvbaudiosink.c
 +++ b/gstdvbaudiosink.c
-@@ -125,8 +125,7 @@ static guint gst_dvbaudiosink_signals[LAST_SIGNAL] = { 0 };
- 		"framed =(boolean) true; "
- 
- #define LPCMCAPS \
--		"audio/x-private1-lpcm, " \
--		"framed =(boolean) true; "
-+		"audio/x-private1-lpcm; "
- 
- #define DTSCAPS \
- 		"audio/x-dts, " \
-@@ -271,7 +270,9 @@ static void gst_dvbaudiosink_class_init(GstDVBAudioSinkClass *self)
+@@ -270,7 +270,9 @@ static void gst_dvbaudiosink_class_init(GstDVBAudioSinkClass *self)
  	gstbasesink_class->event = GST_DEBUG_FUNCPTR(gst_dvbaudiosink_event);
  	gstbasesink_class->unlock = GST_DEBUG_FUNCPTR(gst_dvbaudiosink_unlock);
  	gstbasesink_class->unlock_stop = GST_DEBUG_FUNCPTR(gst_dvbaudiosink_unlock_stop);
@@ -22,7 +12,7 @@ index 2725def..a51d28c 100644
  	gstbasesink_class->get_caps = GST_DEBUG_FUNCPTR(gst_dvbaudiosink_get_caps);
  
  	element_class->change_state = GST_DEBUG_FUNCPTR(gst_dvbaudiosink_change_state);
-@@ -426,6 +427,11 @@ static gboolean gst_dvbaudiosink_set_caps(GstBaseSink *basesink, GstCaps *caps)
+@@ -425,6 +427,11 @@ static gboolean gst_dvbaudiosink_set_caps(GstBaseSink *basesink, GstCaps *caps)
  	const char *type = gst_structure_get_name(structure);
  	t_audio_type bypass = AUDIOTYPE_UNKNOWN;
  
@@ -34,59 +24,8 @@ index 2725def..a51d28c 100644
  	self->skip = 0;
  	self->aac_adts_header_valid = FALSE;
  
-@@ -775,7 +781,9 @@ static gboolean gst_dvbaudiosink_event(GstBaseSink *sink, GstEvent *event)
- 		self->flushing = TRUE;
- 		/* wakeup the poll */
- 		write(self->unlockfd[1], "\x01", 1);
-+#if GST_VERSION_MAJOR >= 1
- 		if(self->paused) ret = GST_BASE_SINK_CLASS(parent_class)->event(sink, event);
-+#endif
- 		break;
- 	case GST_EVENT_FLUSH_STOP:
- 		if (self->fd >= 0) ioctl(self->fd, AUDIO_CLEAR_BUFFER);
-@@ -793,7 +801,9 @@ static gboolean gst_dvbaudiosink_event(GstBaseSink *sink, GstEvent *event)
- 			self->cache = NULL;
- 		}
- 		GST_OBJECT_UNLOCK(self);
-+#if GST_VERSION_MAJOR >= 1
- 		if(self->paused) ret = GST_BASE_SINK_CLASS(parent_class)->event(sink, event);
-+#endif
- 		break;
- 	case GST_EVENT_EOS:
- 	{
-@@ -828,7 +838,9 @@ static gboolean gst_dvbaudiosink_event(GstBaseSink *sink, GstEvent *event)
- 			if (pfd[1].revents & POLLIN)
- 			{
- 				GST_DEBUG_OBJECT(self, "got buffer empty from driver!\n");
-+#if GST_VERSION_MAJOR >= 1
- 				ret = GST_BASE_SINK_CLASS(parent_class)->event(sink, event);
-+#endif
- 				break;
- 			}
- 
-@@ -899,6 +911,7 @@ static gboolean gst_dvbaudiosink_event(GstBaseSink *sink, GstEvent *event)
- 		}
- 		break;
- 	}
-+#if GST_VERSION_MAJOR >= 1
- 	case GST_EVENT_CAPS:
- 	{
- 		GstCaps *caps;
-@@ -913,9 +926,12 @@ static gboolean gst_dvbaudiosink_event(GstBaseSink *sink, GstEvent *event)
- 			}
- 		}
- 	}
-+#endif
- 
- 	default:
-+#if GST_VERSION_MAJOR >= 1
- 		ret = GST_BASE_SINK_CLASS(parent_class)->event(sink, event);
-+#endif
- 		break;
- 	}
- 
 diff --git a/gstdvbvideosink.c b/gstdvbvideosink.c
-index a6b0a10..903432c 100644
+index fbebd11..657006e 100644
 --- a/gstdvbvideosink.c
 +++ b/gstdvbvideosink.c
 @@ -299,8 +299,9 @@ static void gst_dvbvideosink_class_init(GstDVBVideoSinkClass *self)
@@ -100,57 +39,7 @@ index a6b0a10..903432c 100644
  	element_class->change_state = GST_DEBUG_FUNCPTR (gst_dvbvideosink_change_state);
  
  	gst_dvb_videosink_signals[SIGNAL_GET_DECODER_TIME] =
-@@ -402,7 +403,9 @@ static gboolean gst_dvbvideosink_event(GstBaseSink *sink, GstEvent *event)
- 		self->flushing = TRUE;
- 		/* wakeup the poll */
- 		write(self->unlockfd[1], "\x01", 1);
-+#if GST_VERSION_MAJOR >= 1
- 		if(self->paused) ret = GST_BASE_SINK_CLASS(parent_class)->event(sink, event);
-+#endif
- 		break;
- 	case GST_EVENT_FLUSH_STOP:
- 		if (self->fd >= 0) ioctl(self->fd, VIDEO_CLEAR_BUFFER);
-@@ -414,7 +417,9 @@ static gboolean gst_dvbvideosink_event(GstBaseSink *sink, GstEvent *event)
- 		}
- 		self->flushing = FALSE;
- 		GST_OBJECT_UNLOCK(self);
-+#if GST_VERSION_MAJOR >= 1
- 		if(self->paused) ret = GST_BASE_SINK_CLASS(parent_class)->event(sink, event);
-+#endif
- 		break;
- 	case GST_EVENT_EOS:
- 	{
-@@ -449,7 +454,9 @@ static gboolean gst_dvbvideosink_event(GstBaseSink *sink, GstEvent *event)
- 			if (pfd[1].revents & POLLIN)
- 			{
- 				GST_DEBUG_OBJECT (self, "got buffer empty from driver!\n");
-+#if GST_VERSION_MAJOR >= 1
- 				ret = GST_BASE_SINK_CLASS(parent_class)->event(sink, event);
-+#endif
- 				break;
- 			}
- 
-@@ -513,6 +520,7 @@ static gboolean gst_dvbvideosink_event(GstBaseSink *sink, GstEvent *event)
- 		}
- 		break;
- 	}
-+#if GST_VERSION_MAJOR >= 1
- 	case GST_EVENT_CAPS:
- 	{
- 		GstCaps *caps;
-@@ -524,8 +532,11 @@ static gboolean gst_dvbvideosink_event(GstBaseSink *sink, GstEvent *event)
- 		}
- 		break;
- 	}
-+#endif
- 	default:
-+#if GST_VERSION_MAJOR >= 1
- 		ret = GST_BASE_SINK_CLASS(parent_class)->event(sink, event);
-+#endif
- 		break;
- 	}
- 
-@@ -1557,6 +1572,10 @@ static gboolean gst_dvbvideosink_set_caps(GstBaseSink *basesink, GstCaps *caps)
+@@ -1556,6 +1557,10 @@ static gboolean gst_dvbvideosink_set_caps(GstBaseSink *basesink, GstCaps *caps)
  					gst_buffer_ref (self->codec_data);
  				}
  				GST_INFO_OBJECT (self, "MIMETYPE video/x-divx vers. 4 -> STREAMTYPE_MPEG4_Part2");
