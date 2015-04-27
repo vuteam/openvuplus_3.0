@@ -11,7 +11,7 @@ SRCREV="c8fc96e8e51e1ef71e1709f9dd6f733007f9463e"
 SRCDATE="20110215"
 BRANCH="master"
 PV = "experimental-git${SRCDATE}"
-PR = "r11"
+PR = "r12"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
@@ -32,8 +32,8 @@ SRC_URI_append_vuplus = " \
 	file://enigma2_plugins_ac3lipsync_dolby.patch \
 	file://enigma2_plugins_autoresolution_fix.patch \
 	file://enigma2_plugins_fancontrol2.patch \
-	file://enigma2_plugins_gst_plugins_pkgname.patch \
 	file://enigma2_plugins_gst10_support.patch \
+	file://enigma2_plugins_fix_depends_pkgname.patch \
 	file://dreamboxweb.png \
 	file://dreamboxwebtv.png \
 	file://favicon.ico \
@@ -49,8 +49,16 @@ inherit autotools-brokensep pythonnative pkgconfig
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "python-pyopenssl python-gdata streamripper python-mutagen python-daap"
-DEPENDS += "enigma2"
+DEPENDS = " \
+	enigma2 \
+	python-pyopenssl \
+	python-gdata \
+	streamripper \
+	python-mutagen \
+	python-daap \
+	enigma2-plugin-extensions-openwebif \
+	gstreamer1.0-plugins-bad \
+	"
 
 def modify_po():
     import os
