@@ -62,21 +62,18 @@ SRC_URI = "git://code.vuplus.com/git/xbmc.git;protocol=http;branch=${BRANCH};tag
 S = "${WORKDIR}/git"
 
 EXTRA_OECONF = " \
-	--disable-rpath \
 	--enable-gles \
 	--enable-libusb \
 	--enable-airplay \
 	--disable-optical-drive \
 	--enable-external-libraries \
 	--disable-ssh \
-	--enable-external_ffmpeg \
 	--disable-x11 \
 	--disable-sdl \
 	--disable-joystick \
 	--disable-alsa \
 	--disable-libcec \
 	--enable-rtmp	\
-	--disable-gnutls \
 	--disable-texturepacker \
 	--with-platform=dvbbox \
 "
@@ -99,4 +96,6 @@ FILES_${PN} += "/usr/bin /usr/share /usr/lib"
 
 SRC_URI[xbmc-support.md5sum] = "9d0c73505484823e3816b5577f28a8a8"
 SRC_URI[xbmc-support.sha256sum] = "5483e24db81efca03120dbf0ef4cc423d2665ebc4d52149be15d75a0ae9b626d"
+
+INSANE_SKIP_${PN} = "already-stripped"
 

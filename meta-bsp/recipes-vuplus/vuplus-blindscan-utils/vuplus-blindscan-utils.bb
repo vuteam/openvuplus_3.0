@@ -73,3 +73,5 @@ do_install_vusolose() {
 SRC_URI[md5sum] = "0efbbfd6816d00bd808d2897995a87a6"
 SRC_URI[sha256sum] = "486a22c76e051e98dcc54129ca62ad05d41c2fb78a5cdf9324ca161fece00cd7"
 
+INSANE_SKIP_${PN} = "already-stripped"
+

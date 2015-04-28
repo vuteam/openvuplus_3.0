@@ -28,3 +28,4 @@ PACKAGE_ARCH := "${MACHINE_ARCH}"
 PACKAGES = "${PN}"
 FILES_${PN}="/usr/lib /usr/include"
 
+INSANE_SKIP_${PN} = "already-stripped"
