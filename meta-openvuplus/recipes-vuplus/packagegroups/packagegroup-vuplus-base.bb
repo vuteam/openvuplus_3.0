@@ -2,12 +2,13 @@ SUMMARY = "Vuplus: Base set of packages for Vuplus."
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-PR = "r2"
+PR = "r3"
 
 inherit packagegroup
 
 VUPLUS_BASE_ESSENTIAL = "\
     autofs \
+    procps \
     vuplus-compat \
     e2fsprogs-e2fsck \
     e2fsprogs-mke2fs \
