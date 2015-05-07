@@ -5,7 +5,7 @@ LICENSE = "CLOSED"
 DEPENDS = "mpfr gmp"
 RDEPENDS_${PN} = "sysfsutils"
 
-SRC_DATE = "20150224_0"
+SRC_DATE = "20150410_1"
 
 PR = "r2_${SRC_DATE}"
 SRC_URI = ""
@@ -32,7 +32,7 @@ libdirectfb_vuplus.so"
 
 S = "${WORKDIR}/opera-hbbtv"
 
-SRC_FILE = "opera-hbbtv_${SRC_DATE}_OE30.tar.gz"
+SRC_FILE = "opera-hbbtv_${SRC_DATE}.tar.gz"
 do_fetch() {
 	if [ ! -e ${DL_DIR}/${SRC_FILE} -a -e /etc/vuplus_browser.pwd ]; then
 sshpass -f /etc/vuplus_browser.pwd sftp -o StrictHostKeyChecking=no guestuser@code.vuplus.com << +
@@ -57,6 +57,15 @@ do_install() {
 	mv ${S}/dfb/usr/lib/* ${D}/usr/lib/
 }
 
+do_install_append() {
+	GST_REQUIRED_VERSION=$(pkg-config --list-all | grep gstreamer-[0-9].* | awk -F "-| " '{print $2}')
+	GST_VERSION=$(pkg-config --modversion "gstreamer-$GST_REQUIRED_VERSION >= $GST_REQUIRED_VERSION")
+	mv ${D}/usr/local/hbb-browser/root/jsplugins/ooif-gst-$GST_VERSION.so ${D}/usr/local/hbb-browser/root/jsplugins/ooif.so
+	rm -f ${D}/usr/local/hbb-browser/root/jsplugins/ooif-gst*.so
+	mv ${D}/usr/local/hbb-browser/root/video/videobackend-gst-$GST_VERSION.so ${D}/usr/local/hbb-browser/root/video/videobackend.so
+	rm -f ${D}/usr/local/hbb-browser/root/video/videobackend-gst*.so
+}
+
 package_do_shlibs_append() {
     deps = "${PKGDEST}/${PN}.shlibdeps"
     tmp = "/tmp/.${PN}.shlibdeps"
@@ -74,6 +83,6 @@ PACKAGES = "${PN}"
 
 FILES_${PN} = "/"
 
-SRC_URI[md5sum] = "e85fd1a4ccdd93a06a9110ec17c07689"
-SRC_URI[sha256sum] = "e19f43c78b178faed1ce92fa45ca88b868f3c667b97028cb2e59d6a9852b2f1b"
+SRC_URI[md5sum] = "d29ca7a0b7f6c9071300cd8dc66f1278"
+SRC_URI[sha256sum] = "4c08c9e3605eb6f4b7d3c3e49f59291883e89701794e5dec92e4085106182742"
 
