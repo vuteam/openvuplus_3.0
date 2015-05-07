@@ -2,7 +2,7 @@ require gstreamer1.0-plugins.inc
 
 LICENSE = "GPLv2+ & LGPLv2+ & LGPLv2.1+ "
 
-DEPENDS += "gstreamer1.0-plugins-base bzip2 libpng jpeg"
+DEPENDS += "gstreamer1.0-plugins-base bzip2 libpng jpeg libdca"
 
 S = "${WORKDIR}/gst-plugins-bad-${PV}"
 
@@ -20,8 +20,9 @@ PACKAGECONFIG ?= " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'wayland', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'bluetooth', 'bluez', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'directfb', 'directfb', '', d)} \
-    orc curl uvch264 neon sndfile \
+    orc curl neon sndfile \
     hls sbc dash bz2 smoothstreaming \
+    faac faad libmms dash webp rtmp \
     "
 
 # dash = Dynamic Adaptive Streaming over HTTP
@@ -74,6 +75,8 @@ EXTRA_OECONF += " \
     --enable-shm \
     --enable-fbdev \
     --enable-decklink \
+    --enable-dts \
+    --enable-mpegdemux \
     --disable-acm \
     --disable-android_media \
     --disable-apexsink \
@@ -86,7 +89,6 @@ EXTRA_OECONF += " \
     --disable-direct3d \
     --disable-directdraw \
     --disable-directsound \
-    --disable-dts \
     --disable-gme \
     --disable-gsettings \
     --disable-gsm \
