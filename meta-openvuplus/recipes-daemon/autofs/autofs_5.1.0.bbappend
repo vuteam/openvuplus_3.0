@@ -1,10 +1,9 @@
-PR .= "-vuplus0"
+PR .= "-vuplus1"
 
 SRC_URI += " \
 	file://volatiles.99_autofs \
 	file://auto.master \
 	file://auto.hotplug \
-	file://auto.network \
 	file://autofs.default \
 "
 
@@ -17,10 +16,9 @@ do_install_append() {
     install -m 644 ${WORKDIR}/volatiles.99_autofs ${D}${sysconfdir}/default/volatiles/99_autofs
     install -m 644 ${WORKDIR}/auto.master ${D}/etc/auto.master
     install -m 644 ${WORKDIR}/auto.hotplug ${D}/etc/auto.hotplug
-    install -m 644 ${WORKDIR}/auto.network ${D}/etc/auto.network
     install -m 644 ${WORKDIR}/autofs.default ${D}/etc/default/autofs
 }
 
-CONFFILES_${PN} = "/etc/auto.network /etc/auto.hotplug"
+CONFFILES_${PN} = "/etc/auto.hotplug"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
