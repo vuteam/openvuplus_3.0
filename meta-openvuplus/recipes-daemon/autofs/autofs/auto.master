@@ -1,2 +1,1 @@
 /autofs     /etc/auto.hotplug --ghost
-/media/net  /etc/auto.network --ghost
