@@ -31,7 +31,7 @@
 # for the vuultimo, if it is not the default.
 MACHINE ?= vusolose
 
-MULTI_TEMPORARILY ?= NO
+MULTI_TEMPORARILY ?= YES
 
 # Adjust according to the number CPU cores to use for parallel build.
 # Default: Number of processors in /proc/cpuinfo, if present, or 1.
@@ -56,8 +56,7 @@ DEPDIR = $(BUILD_DIR)/.deps
 endif
 
 BBLAYERS ?= \
-	$(CURDIR)/meta-bsp/$(MACHINE) \
-	$(CURDIR)/meta-bsp/common \
+	$(CURDIR)/meta-bsp \
 	$(CURDIR)/meta-openvuplus \
 	$(CURDIR)/meta-openembedded/meta-oe \
 	$(CURDIR)/meta-openembedded/meta-networking \

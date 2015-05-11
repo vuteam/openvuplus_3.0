@@ -1,0 +1,8 @@
+require vuplus-manual.inc
+
+COMPATIBLE_MACHINE = "^(vuzero)$"
+
+SRC_DATE = "20140818_p0"
+
+SRC_URI[md5sum] = "7313bc29b5221964ed6be1321e8955b8"
+SRC_URI[sha256sum] = "2281ab78384a8b10d2c1eba811213955636c8bf05dcc6fd51d72c28807628e12"

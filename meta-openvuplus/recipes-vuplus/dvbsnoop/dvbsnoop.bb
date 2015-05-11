@@ -1,21 +1,14 @@
-DEPENDS = "dreambox-dvbincludes"
-DESCRIPTION = "DVBsnoop by rasc@users.sourceforge.net"
-MAINTAINER = "Felix Domke <tmbinc@elitdvb.net>"
+SUMMARY = "DVB / MPEG stream analyzer"
+AUTHOR = "Rainer Scherg <rasc@users.sourceforge.net>"
 LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f"
 
-PR = "r1"
+PR = "r2"
 
-SRC_REV = "master"
-
-SRC_URI = "git://git.code.sf.net/p/tuxbox-cvs/apps;protocol=git;tag=${SRC_REV} \
-           file://acinclude.m4"
-	   
+#SRCREV = "5138f15c66dba10642376f01cbc799bdbaaebc4a"
+SRC_URI = "git://git.code.sf.net/p/tuxbox-cvs/apps;protocol=git;tag=master"
+ 
 S = "${WORKDIR}/git/dvb/dvbsnoop"
 
-inherit autotools pkgconfig
+inherit autotools
 
-bindir = "/usr/bin"
-sbindir = "/usr/sbin"
-
-EXTRA_OECONF = "--with-target=cdk"

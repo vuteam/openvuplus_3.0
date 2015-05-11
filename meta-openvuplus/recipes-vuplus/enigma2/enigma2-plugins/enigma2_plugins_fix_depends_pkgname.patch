@@ -1,0 +1,63 @@
+diff --git a/dreammediathek/CONTROL/control b/dreammediathek/CONTROL/control
+index 20a5b16..d11d7a5 100644
+--- a/dreammediathek/CONTROL/control
++++ b/dreammediathek/CONTROL/control
+@@ -3,4 +3,4 @@ Version: 20110131
+ Description: Play rtp Stream on your Dreambox 
+ Maintainer: nixkoenner@newnigma2.to
+ Homepage: http://www.newnigma2.to
+-Depends: enigma2 (>> 2.6git20090409), twisted-web
++Depends: enigma2 (>> 2.6git20090409), python-twisted-web
+diff --git a/lastfm/CONTROL/control b/lastfm/CONTROL/control
+index 6255b30..672d6e1 100644
+--- a/lastfm/CONTROL/control
++++ b/lastfm/CONTROL/control
+@@ -2,4 +2,4 @@ Package: enigma2-plugin-extensions-lastfm
+ Version: 0.4-20070408-r0
+ Description: a client to use last.fm, the social music revolution 
+ Maintainer: 3c5x9 <3c5x9@gmx.net>
+-Depends: enigma2 (>> 1.0git20070908), python-twisted-web, gst-plugin-neonhttpsrc, python-crypt
++Depends: enigma2 (>> 1.0git20070908), python-twisted-web, gstreamer1.0-plugins-bad-neonhttpsrc, python-crypt
+diff --git a/mytube/CONTROL/control b/mytube/CONTROL/control
+index 43f3093..1ed65f1 100644
+--- a/mytube/CONTROL/control
++++ b/mytube/CONTROL/control
+@@ -3,4 +3,4 @@ Version: 1.0-20090420-r0
+ Description: MyTube Player for direct playback of Youtube movies
+ Maintainer: Mladen Horvat <acid-burn@opendreambox.org>
+ Homepage: http://www.dream-multimedia-tv.de/
+-Depends: enigma2 (>= 2.6git20090520), python-twisted-web, python-gdata, gst-plugin-flv
++Depends: enigma2 (>= 2.6git20090520), python-twisted-web, python-gdata, gstreamer1.0-plugins-good-flv
+diff --git a/netcaster/CONTROL/control b/netcaster/CONTROL/control
+index 0e69a47..f3d72d1 100644
+--- a/netcaster/CONTROL/control
++++ b/netcaster/CONTROL/control
+@@ -3,4 +3,4 @@ Version: 0.1-20072203-r0
+ Description: Player for Network and Internet Streams
+ Maintainer: 3c5x9 <3c5x9@gmx.net>
+ Homepage: http://enigma2-plugins.schwerkraft.elitedvb.net/
+-Depends: enigma2 (>= 1.0git20071803), gst-plugin-neonhttpsrc (>= 0.10.4), gst-plugin-icydemux (>= 0.10.14)
++Depends: enigma2 (>= 1.0git20071803), gstreamer1.0-plugins-bad-neonhttpsrc (>= 0.10.4), gstreamer1.0-plugins-good-icydemux (>= 0.10.14)
+diff --git a/podcast/CONTROL/control b/podcast/CONTROL/control
+index 4bce2da..9ab1c85 100644
+--- a/podcast/CONTROL/control
++++ b/podcast/CONTROL/control
+@@ -3,4 +3,4 @@ Version: 0.1-r0
+ Description: Stream podcasts
+ Maintainer: Nabil Hanna <nabil1978@web.de>
+ Homepage: http://www.lt-forums.org/ali
+-Depends: enigma2 (>= 2.6git20090520), gst-plugin-neonhttpsrc, python-twisted-web
++Depends: enigma2 (>= 2.6git20090520), gstreamer1.0-plugins-bad-neonhttpsrc, python-twisted-web
+diff --git a/zdfmediathek/src/plugin.py b/zdfmediathek/src/plugin.py
+index b46d12f..b4fd3f5 100644
+--- a/zdfmediathek/src/plugin.py
++++ b/zdfmediathek/src/plugin.py
+@@ -46,7 +46,7 @@ PLAY_MP4 = False
+ if not deviceName.startswith("dm7025"):
+ 	try:
+ 		#FIXMEE add better check ! ? !
+-		for line in popen("opkg info gst-plugin-rtsp").readlines():
++		for line in popen("opkg info gstreamer1.0-plugins-good-rtsp").readlines():
+ 			if line.find("Version: ") != -1:
+ 				if line[9:] >= "0.10.23-r7.1":
+ 					PLAY_MP4 = True

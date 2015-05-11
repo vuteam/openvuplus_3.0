@@ -28,6 +28,23 @@ DEPENDS = " \
         util-linux \
 	"
 
+DEPENDS += " \
+	wireless-tools \
+	wpa-supplicant \
+	python-twisted \
+	curlftpfs \
+	fuse \
+	virtual/kernel \
+	aio-grab \
+	librtmp \
+	cdrkit \
+	libcddb \
+	libcdio \
+	avahi \
+	gstreamer1.0-plugins-good \
+	gstreamer1.0-plugins-bad \
+	"
+
 RDEPENDS_${PN} = " \
 	alsa-conf \
         ethtool \
@@ -172,7 +189,7 @@ RDEPENDS_enigma2-plugin-systemplugins-crashreport = "python-twisted-mail python-
 RDEPENDS_enigma2-plugin-systemplugins-wirelessaccesspoint = "hostapd bridge-utils"
 
 RDEPENDS_enigma2-plugin-extensions-streamtv = " \
-	librtmp1 \
+	librtmp \
 	${@base_contains("GST_VERSION", "1.0", "gstreamer1.0-plugins-bad-rtmp", "gst-plugins-bad-rtmp", d)} \
 "
 
@@ -189,7 +206,7 @@ RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-m
 "
 
 RDEPENDS_enigma2-plugin-systemplugins-devicemanager = "util-linux-blkid ntfs-3g dosfstools"
-RDEPENDS_enigma2-plugin-systemplugins-netdrive = "curlftpfs kernel-module-fuse libfuse2"
+RDEPENDS_enigma2-plugin-systemplugins-netdrive = "curlftpfs kernel-module-fuse fuse"
 
 RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd-utils-nanddump mtd-utils-ubinize"
 RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
@@ -318,4 +335,10 @@ python populate_packages_prepend() {
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/.*\.a$', 'enigma2-plugin-%s-staticdev', '%s (static development)', recursive=True, match_path=True, prepend=True)
     do_split_packages(d, enigma2_plugindir, '^(\w+/\w+)/(.*/)?\.debug/.*$', 'enigma2-plugin-%s-dbg', '%s (debug)', recursive=True, match_path=True, prepend=True)
 }
+
+INSANE_SKIP_${PN} = "already-stripped"
+INSANE_SKIP_enigma2-plugin-extensions-webbrowser = "build-deps"
+INSANE_SKIP_enigma2-plugin-extensions-modem = "build-deps"
+
+
 
