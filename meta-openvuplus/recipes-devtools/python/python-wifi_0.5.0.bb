@@ -20,8 +20,10 @@ do_install_append() {
         mv ${D}${datadir}/README ${D}${docdir}/${PN}
         mv ${D}${datadir}/INSTALL ${D}${docdir}/${PN}
         mv ${D}${datadir}/docs/* ${D}${docdir}/${PN}
+        rmdir ${D}${datadir}/docs
         install -d ${D}${sbindir}
         mv ${D}${datadir}/examples/* ${D}${sbindir}
+        rmdir ${D}${datadir}/examples
 }
 
 PACKAGES =+ "${PN}-examples"

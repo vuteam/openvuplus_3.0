@@ -16,4 +16,5 @@ do_install() {
 
 PACKAGES = "${PN}"
 FILES_${PN} = "/"
+INSANE_SKIP_${PN} = "already-stripped"
 
