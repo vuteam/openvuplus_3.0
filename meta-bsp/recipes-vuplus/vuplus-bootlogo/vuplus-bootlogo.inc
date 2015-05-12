@@ -1,6 +1,8 @@
 DESCRIPTION = "Bootlogo support"
 SECTION = "base"
 LICENSE = "CLOSED"
+require conf/license/license-close.inc
+
 PRIORITY = "required"
 
 PROVIDES += "vuplus-bootlogo"

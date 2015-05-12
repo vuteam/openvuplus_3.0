@@ -1,6 +1,7 @@
 DESCRIPTION = "opera-hbbtv"
 PRIORITY = "required"
 LICENSE = "CLOSED"
+require conf/license/license-close.inc
 
 DEPENDS = "mpfr gmp"
 RDEPENDS_${PN} = "sysfsutils"

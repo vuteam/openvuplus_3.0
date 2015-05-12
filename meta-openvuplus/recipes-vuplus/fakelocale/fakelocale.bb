@@ -1,5 +1,7 @@
 SUMMARY = "Fake locale support"
 LICENSE = "CLOSED"
+require conf/license/license-close.inc
+
 SECTION = "base"
 PRIORITY = "required"
 PR = "r4"

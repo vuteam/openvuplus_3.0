@@ -2,6 +2,7 @@ DESCRIPTION = "vuplus web manual"
 SECTION = "base"
 PRIORITY = "required"
 LICENSE = "CLOSED"
+require conf/license/license-close.inc
 
 PROVIDES += "vuplus-manual"
 RPROVIDES_${PN} += "vuplus-manual"

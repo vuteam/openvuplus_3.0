@@ -1,5 +1,6 @@
 SECTION = "base"
 LICENSE = "CLOSED"
+require conf/license/license-close.inc
 
 PROVIDES += "vuplus-platform-util"
 RPROVIDES_${PN} += "vuplus-platform-util"

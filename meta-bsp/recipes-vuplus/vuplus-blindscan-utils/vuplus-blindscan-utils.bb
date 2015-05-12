@@ -4,6 +4,7 @@ PRIORITY = "optional"
 RDEPENDS_${PN} = "ncurses"
 
 LICENSE = "CLOSED"
+require conf/license/license-close.inc
 
 PV = "3.8"
 PR = "r1"

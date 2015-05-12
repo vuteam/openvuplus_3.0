@@ -1,5 +1,6 @@
 SECTION = "base"
 LICENSE = "CLOSED"
+require conf/license/license-close.inc
 
 PROVIDES += "libgles"
 RPROVIDES_${PN} += "libgles"
