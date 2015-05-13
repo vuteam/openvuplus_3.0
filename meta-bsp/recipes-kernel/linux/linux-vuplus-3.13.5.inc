@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 
 KV = "3.13.5"
 
-INC_PR = "r6"
+INC_PR = "r7"
 SRCREV = ""
 
 MODULE = "linux-3.13.5"
@@ -40,17 +40,9 @@ do_configure_prepend() {
 }
 
 kernel_do_install_append() {
-        install -d ${D}/${KERNEL_IMAGEDEST}
-        install -m 0755 ${KERNEL_OUTPUT} ${D}/${KERNEL_IMAGEDEST}
-        gzip ${D}/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}
-}
-
-kernel_do_compile() {
-        unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS MACHINE
-        oe_runmake ${KERNEL_IMAGETYPE_FOR_MAKE} ${KERNEL_ALT_IMAGETYPE} CC="${KERNEL_CC}" LD="${KERNEL_LD}"
-        if test "${KERNEL_IMAGETYPE_FOR_MAKE}.gz" = "${KERNEL_IMAGETYPE}"; then
-                gzip -9c < "${KERNEL_IMAGETYPE_FOR_MAKE}" > "${KERNEL_OUTPUT}"
-        fi
+        mv ${D}/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}-${KERNEL_VERSION} ${D}/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}
+        gzip -9c ${D}/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE} > ${D}/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}.gz
+        rm ${D}/${KERNEL_IMAGEDEST}/${KERNEL_IMAGETYPE}
 }
 
 pkg_postinst_kernel-image () {

@@ -1,6 +1,7 @@
 DESCRIPTION = "opera-hbbtv"
 PRIORITY = "required"
 LICENSE = "CLOSED"
+require conf/license/license-close.inc
 
 DEPENDS = "mpfr gmp"
 RDEPENDS_${PN} = "sysfsutils"
@@ -64,13 +65,6 @@ do_install_append() {
 	rm -f ${D}/usr/local/hbb-browser/root/jsplugins/ooif-gst*.so
 	mv ${D}/usr/local/hbb-browser/root/video/videobackend-gst-$GST_VERSION.so ${D}/usr/local/hbb-browser/root/video/videobackend.so
 	rm -f ${D}/usr/local/hbb-browser/root/video/videobackend-gst*.so
-}
-
-package_do_shlibs_append() {
-    deps = "${PKGDEST}/${PN}.shlibdeps"
-    tmp = "/tmp/.${PN}.shlibdeps"
-    os.system("sed -e '/vbrowser/d' %s > %s" % (deps, tmp))
-    os.system("cp %s %s" % (tmp, deps))
 }
 
 do_package_qa() {

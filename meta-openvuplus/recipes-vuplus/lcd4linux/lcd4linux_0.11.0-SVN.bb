@@ -2,15 +2,13 @@ DESCRIPTION = "LCD4Linux is a small program that grabs information from the kern
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
-DEPENDS = "virtual/libusb0 ncurses readline jpeg"
+DEPENDS = "virtual/libusb0 ncurses readline jpeg dbus sqlite3 mariadb"
 RDEPENDS_${PN} = "jpeg"
 
 PV = "0.11.0-SVN"
 PR = "r2"
 
-EXTRA_OECONF = " --with-glib-prefix=${STAGING_LIBDIR}/.. \
-		--with-glib-exec-prefix=${STAGING_LIBDIR}/.. \
-		--with-ncurses=${STAGING_LIBDIR}/.."
+EXTRA_OECONF = " --with-ncurses=${STAGING_LIBDIR}/.."
 
 SRC_URI = "svn://ssl.bulix.org/svn/lcd4linux/;module=trunk;protocol=https;rev=1200 \
 		file://lcd4linux.init \

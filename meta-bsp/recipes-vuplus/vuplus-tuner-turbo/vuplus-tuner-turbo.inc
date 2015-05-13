@@ -1,6 +1,7 @@
 DESCRIPTION = "Hardware drivers and blindscan util for Vuplus Tuner Turbo"
 SECTION = "base"
 LICENSE = "CLOSED"
+require conf/license/license-close.inc
 
 SRCDATE = "20150303"
 FW_SRCDATE = "20150303"

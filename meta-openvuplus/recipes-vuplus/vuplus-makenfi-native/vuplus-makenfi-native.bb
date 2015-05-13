@@ -1,6 +1,8 @@
 DESCRIPTION = "create vuplus NAND images"
 SECTION = "utils"
 LICENSE = "CLOSED"
+require conf/license/license-close.inc
+
 PV = "1.0"
 PR = "r1"
 

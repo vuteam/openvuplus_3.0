@@ -1,6 +1,7 @@
 DESCRIPTION = "Hardware drivers for VuPlus"
 SECTION = "base"
 LICENSE = "CLOSED"
+require conf/license/license-close.inc
 
 PROVIDES += "vuplus-dvb-proxy"
 RPROVIDES_${PN} += "vuplus-dvb-proxy"

@@ -1,6 +1,7 @@
 DESCIPTION = "check vfd firmware"
 MAINTAINER = "vuplus team"
 LICENSE = "CLOSED"
+require conf/license/license-close.inc
 
 PV = "1.0"
 PR = "r1"
@@ -15,4 +16,5 @@ do_install() {
 
 PACKAGES = "${PN}"
 FILES_${PN} = "/"
+INSANE_SKIP_${PN} = "already-stripped"
 

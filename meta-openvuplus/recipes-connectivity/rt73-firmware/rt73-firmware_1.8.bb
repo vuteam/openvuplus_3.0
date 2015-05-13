@@ -1,6 +1,8 @@
 DESCRIPTION = "Firmware for rt73 based USB wifi adaptors"
-LICENSE = "unknown"
+LICENSE = "Firmware-ralink-firmware"
 LIC_FILES_CHKSUM = "file://LICENSE.ralink-firmware.txt;md5=682eac07428a4e8f138bc082f090ecac"
+
+NO_GENERIC_LICENSE[Firmware-ralink-firmware] = "LICENSE.ralink-firmware.txt"
 
 PR = "r1"
 

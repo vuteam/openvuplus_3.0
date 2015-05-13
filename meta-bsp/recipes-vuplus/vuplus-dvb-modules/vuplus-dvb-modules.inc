@@ -1,6 +1,7 @@
 DESCRIPTION = "Hardware drivers for VuPlus"
 SECTION = "base"
 LICENSE = "CLOSED"
+require conf/license/license-close.inc
 
 PROVIDES += "vuplus-dvb-modules"
 RPROVIDES_${PN} += "vuplus-dvb-modules"
