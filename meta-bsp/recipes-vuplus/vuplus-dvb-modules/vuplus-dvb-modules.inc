@@ -14,7 +14,9 @@ SRC_URI = "http://archive.vuplus.com/download/drivers/vuplus-dvb-modules-${MACHI
 
 S = "${WORKDIR}"
 
-inherit module-base
+#inherit module-base
+DEPENDS = "virtual/kernel"
+KERNEL_VERSION = "${@base_read_file('${STAGING_KERNEL_BUILDDIR}/kernel-abiversion')}"
 
 do_install() {
         install -d ${D}/lib/modules/${KERNEL_VERSION}/extra
