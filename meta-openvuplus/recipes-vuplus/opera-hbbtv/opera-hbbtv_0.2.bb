@@ -4,6 +4,7 @@ LICENSE = "CLOSED"
 require conf/license/license-close.inc
 
 DEPENDS = "mpfr gmp"
+DEPENDS += "${@base_contains("GST_VERSION", "1.0", "gstreamer1.0", "gstreamer", d)}"
 RDEPENDS_${PN} = "sysfsutils"
 
 SRC_DATE = "20150410_1"
