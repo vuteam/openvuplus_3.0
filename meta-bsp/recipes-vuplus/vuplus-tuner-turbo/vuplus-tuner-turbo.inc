@@ -16,7 +16,9 @@ SRC_URI = " \
 
 S = "${WORKDIR}"
 
-inherit module-base
+#inherit module-base
+DEPENDS = "virtual/kernel"
+KERNEL_VERSION = "${@base_read_file('${STAGING_KERNEL_BUILDDIR}/kernel-abiversion')}"
 
 do_install() {
         install -d ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/media/usb/vuplus
