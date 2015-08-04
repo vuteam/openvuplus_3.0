@@ -26,6 +26,7 @@ DEPENDS = " \
         ntfs-3g \
         dosfstools \
         util-linux \
+        satipclient \
 	"
 
 DEPENDS += " \
@@ -211,11 +212,13 @@ RDEPENDS_enigma2-plugin-systemplugins-netdrive = "curlftpfs kernel-module-fuse f
 RDEPENDS_enigma2-plugin-systemplugins-backupsuitehdd = "mtd-utils-mkfs.ubifs mtd-utils-nanddump mtd-utils-ubinize"
 RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extensions-backupsuitehdd"
 
+RDEPENDS_enigma2-plugin-extensions-satipclient = "satipclient"
+
 DEPENDS += "${@base_contains("VUPLUS_FEATURES", "uianimation", "libgles libvugles2" , "", d)}"
 RDEPENDS_${PN}_append_vuplus += "${@base_contains("VUPLUS_FEATURES", "uianimation", "libgles libvugles2" , "", d)}"
 
 PN = "enigma2"
-PR = "r102"
+PR = "r103"
 
 inherit gitpkgv pythonnative
 
