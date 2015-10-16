@@ -26,6 +26,7 @@ DEPENDS = " \
         ntfs-3g \
         dosfstools \
         util-linux \
+        fuse-exfat \
         satipclient \
 	"
 
@@ -46,6 +47,11 @@ DEPENDS += " \
 	gstreamer1.0-plugins-bad \
 	"
 
+DEPENDS += " \
+	vuplus-3gcommand \
+	vuplus-dlnaserver \
+	"
+
 RDEPENDS_${PN} = " \
 	alsa-conf \
         ethtool \
@@ -53,6 +59,9 @@ RDEPENDS_${PN} = " \
         parted \
 	${PYTHON_RDEPS} \
 	${GST_RDEPENDS} \
+	fuse-exfat \
+	util-linux-partx \
+	vuplus-skins \
 	"
 
 PYTHON_RDEPS = " \
@@ -195,15 +204,18 @@ RDEPENDS_enigma2-plugin-extensions-streamtv = " \
 "
 
 DEPENDS += "djmount minidlna"
-RDEPENDS_enigma2-plugin-extensions-dlnaserver = "minidlna "
+RDEPENDS_enigma2-plugin-extensions-dlnaserver = "minidlna vuplus-dlnaserver"
 RDEPENDS_enigma2-plugin-extensions-dlnabrowser = "djmount kernel-module-fuse fuse-utils"
 
-DEPENDS += "opera-hbbtv"
-RDEPENDS_enigma2-plugin-extensions-hbbtv = "opera-hbbtv"
+DEPENDS += "${@base_contains("VUPLUS_FEATURES", "hbbtv", "opera-hbbtv" , "", d)}"
+RDEPENDS_enigma2-plugin-extensions-hbbtv = "${@base_contains("VUPLUS_FEATURES", "hbbtv", "opera-hbbtv" , "", d)}"
+
+DEPENDS += "${@base_contains("VUPLUS_FEATURES", "webkithbbtv", "webkit-hbbtv-browser" , "", d)}"
 
 DEPENDS += "wvdial wvstreams ppp usb-modeswitch usb-modeswitch-data"
 RDEPENDS_enigma2-plugin-systemplugins-3gmodemmanager = "ppp usb-modeswitch usb-modeswitch-data wvdial wvstreams \
 	kernel-module-ppp-async kernel-module-ppp-deflate kernel-module-ppp-synctty kernel-module-ppp-generic kernel-module-usbserial \
+	vuplus-3gcommand \
 "
 
 RDEPENDS_enigma2-plugin-systemplugins-devicemanager = "util-linux-blkid ntfs-3g dosfstools"
@@ -218,14 +230,14 @@ DEPENDS += "${@base_contains("VUPLUS_FEATURES", "uianimation", "libgles libvugle
 RDEPENDS_${PN}_append_vuplus += "${@base_contains("VUPLUS_FEATURES", "uianimation", "libgles libvugles2" , "", d)}"
 
 PN = "enigma2"
-PR = "r104"
+PR = "r122"
 
 inherit gitpkgv pythonnative
 
 ####################################################
 SRCDATE = "20121128"
 PV = "experimental-git${SRCDATE}"
-BRANCH = "vuplus_experimental_gst10"
+BRANCH = "vuplus_experimental"
 SRCREV = ""
 ####################################################
 
@@ -239,22 +251,12 @@ SRC_URI = "git://code.vuplus.com/git/dvbapp.git;protocol=http;branch=${BRANCH};r
 	file://enigma2_vuplus_pluginbrowser.patch \
 	file://enigma2_vuplus_proc_oom_score_adj.patch \
         file://enigma2_vuplus_fix_standby_name.patch \
-        file://enigma2_vuplus_fix_standby_name_skin.patch \
-	file://enigma2_vuplus_epng.patch \
-	file://enigma2_vuplus_eptrlist_insert.patch \
-	file://enigma2_vuplus_conversion_error.patch \
-	file://enigma2_vuplus_default_arg_error.patch \
-	file://enigma2_vuplus_wrong_boolean_type.patch \
 	file://enigma2_vuplus_disable_subtitle_sync_mode_bug.patch \
-	file://MyriadPro-Regular.otf \
-	file://MyriadPro-Semibold.otf \
-	file://MyriadPro-SemiboldIt.otf \
-	file://750S \
-	file://Vu_HD \
+	file://spinner \
 	file://number_key \
 "
 
-SRC_URI_append = " ${@base_contains('GST_VERSION', '1.0', '', 'file://enbalesubtitleshack.patch', d)}"
+SRC_URI_append = " ${@base_contains('GST_VERSION', '1.0', '', 'file://enablesubtitleshack.patch', d)}"
 
 SRC_URI_append = " ${@base_contains("VUPLUS_FEATURES", "vuwlan", "file://enigma2_vuplus_networksetup.patch", "", d)}"
 
@@ -300,20 +302,7 @@ do_configure_prepend() {
 }
 
 do_compile_prepend_vuplus() {
-	install -m 0755 ${WORKDIR}/MyriadPro-Regular.otf ${S}/data/fonts/
-	install -m 0755 ${WORKDIR}/MyriadPro-Semibold.otf ${S}/data/fonts/
-	install -m 0755 ${WORKDIR}/MyriadPro-SemiboldIt.otf ${S}/data/fonts/
-	install -m 0755 ${WORKDIR}/750S/*.png ${S}/data/750S/
-	install -m 0755 ${WORKDIR}/750S/buttons/*.png ${S}/data/750S/buttons/
-	install -m 0755 ${WORKDIR}/750S/countries/*.png ${S}/data/750S/countries/
-	install -m 0755 ${WORKDIR}/750S/icons/*.png ${S}/data/750S/icons/
-	install -m 0755 ${WORKDIR}/750S/menu/*.png ${S}/data/750S/menu/
-	install -m 0755 ${WORKDIR}/750S/spinner/*.png ${S}/data/skin_default/spinner/
-	install -m 0755 ${WORKDIR}/Vu_HD/*.png ${S}/data/Vu_HD/
-	install -m 0755 ${WORKDIR}/Vu_HD/buttons/*.png ${S}/data/Vu_HD/buttons/
-	install -m 0755 ${WORKDIR}/Vu_HD/countries/*.png ${S}/data/Vu_HD/countries/
-	install -m 0755 ${WORKDIR}/Vu_HD/icons/*.png ${S}/data/Vu_HD/icons/
-	install -m 0755 ${WORKDIR}/Vu_HD/menu/*.png ${S}/data/Vu_HD/menu/
+	install -m 0755 ${WORKDIR}/spinner/*.png ${S}/data/skin_default/spinner/
 	install -m 0755 ${WORKDIR}/number_key/*.png ${S}/data/skin_default/buttons/
 }
 

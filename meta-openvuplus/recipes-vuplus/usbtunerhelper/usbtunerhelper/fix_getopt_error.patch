@@ -1,0 +1,13 @@
+diff --git a/usbtunerhelper.c b/usbtunerhelper.c
+index 94519dc..7d7ed1e 100644
+--- a/usbtunerhelper.c
++++ b/usbtunerhelper.c
+@@ -623,7 +623,7 @@ int main(int argc, char *argv[])
+ 	int ok = 0;
+ 	int debug = 0;
+ 
+-	char option;
++	int option;
+ 	while ((option = getopt(argc, argv, "dh")) >= 0)
+ 	{
+ 		switch (option)

@@ -7,7 +7,7 @@ DEPENDS = "mpfr gmp"
 DEPENDS += "${@base_contains("GST_VERSION", "1.0", "gstreamer1.0", "gstreamer", d)}"
 RDEPENDS_${PN} = "sysfsutils"
 
-SRC_DATE = "20150622_0"
+SRC_DATE = "20151001_1"
 
 PR = "r2_${SRC_DATE}"
 SRC_URI = ""
@@ -78,6 +78,6 @@ PACKAGES = "${PN}"
 
 FILES_${PN} = "/"
 
-SRC_URI[md5sum] = "3dbefb3fce773077fd3604c4666f0c3e"
-SRC_URI[sha256sum] = "909dd2f98d322b46a97d298e0dc0ab54a47538a791be3bf40ef9314df0f0aa44"
+SRC_URI[md5sum] = "7a36b446b8d7176b8343e6df3eeb4d90"
+SRC_URI[sha256sum] = "266122d41ef7830a0595b312e882241d088ceb17c28dfa6fb4a0047155ddc3b3"
 

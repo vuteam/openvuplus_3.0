@@ -9,6 +9,7 @@ SRC_URI = " \
         file://makefile.patch \
         file://config.patch \
         file://change_device_name_wlan_from_ra.patch \
+	file://buildfix.patch \
 "
 SRC_URI[md5sum] = "8ea0d247ac5881de1cb4c113ebf65724"
 SRC_URI[sha256sum] = "e732d6b114137aa0badf46281d25d442278639d798735317b0061d3ae573593e"
@@ -28,4 +29,4 @@ do_install() {
         echo "blacklist rt2800lib" >> ${D}${sysconfdir}/modprobe.d/blacklist-wlan.conf
 }
 
-FILES_${PN} = "${sysconfdir}"
+FILES_${PN} += "${sysconfdir}"

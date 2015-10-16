@@ -1,0 +1,26 @@
+diff --git a/satellites.xml b/satellites.xml
+index 4c00ec2..5406e07 100644
+--- a/satellites.xml
++++ b/satellites.xml
+@@ -1085,6 +1085,9 @@
+ 		<transponder fec_inner="3" frequency="12692000" modulation="1" onid="319" polarization="0" symbol_rate="27500000" system="0" tsid="9900"/>
+ 		<transponder fec_inner="3" frequency="12713000" modulation="1" onid="64511" polarization="1" symbol_rate="27500000" system="0" tsid="10000"/>
+ 		<transponder fec_inner="3" frequency="12731000" modulation="1" onid="64511" polarization="0" symbol_rate="27500000" system="0" tsid="10100"/>
++		<!-- UHD channels -->
++		<transponder fec_inner="3" frequency="12727000" modulation="2" polarization="0" symbol_rate="30000000" system="1"/>
++		<transponder fec_inner="3" frequency="11296000" modulation="2" polarization="0" symbol_rate="27500000" system="1"/>
+ 	</sat>
+ 	<sat flags="1" name="Eutelsat W2 (16.0E)" position="160">
+ 		<transponder fec_inner="2" frequency="10957000" modulation="1" polarization="0" symbol_rate="2821000" system="0"/>
+@@ -1241,6 +1244,11 @@
+ 		<transponder fec_inner="4" frequency="12699000" modulation="1" onid="1" polarization="1" symbol_rate="22000000" system="0" tsid="1118"/>
+ 		<transponder fec_inner="4" frequency="12721750" modulation="1" onid="53" polarization="0" symbol_rate="22000000" system="0" tsid="1119"/>
+ 		<transponder fec_inner="4" frequency="12728500" modulation="1" onid="1" polarization="1" symbol_rate="22000000" system="0" tsid="1120"/>
++		<!-- UHD channels -->
++		<transponder fec_inner="9" frequency="10994000" modulation="1" polarization="0" symbol_rate="22000000" system="1"/>
++		<transponder fec_inner="2" frequency="11112000" modulation="2" polarization="0" symbol_rate="22000000" system="1"/>
++		<transponder fec_inner="2" frequency="12344000" modulation="2" polarization="0" symbol_rate="30000000" system="1"/>
++		<transponder fec_inner="4" frequency="10994000" modulation="2" polarization="0" symbol_rate="22000000" system="1"/>
+ 	</sat>
+ 	<sat flags="1" name="Eutelsat 2 F3 (21.5E)" position="215">
+ 		<transponder fec_inner="3" frequency="10972000" modulation="1" polarization="1" symbol_rate="2532000" system="0"/>

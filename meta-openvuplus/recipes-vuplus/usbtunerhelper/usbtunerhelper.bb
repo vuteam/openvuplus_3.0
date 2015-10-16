@@ -11,6 +11,7 @@ SRC_URI = " \
 	git://code.vuplus.com/git/vtuner.git;protocol=git;tag=${SRC_REV} \
 	file://no_usb_device.patch;striplevel=1 \
 	file://fix_set_delsys.patch \
+	file://fix_getopt_error.patch \
 	file://get_avail_vtuner.patch \
 	file://setfrontend_ofdm_fecauto.patch \
 	file://${PN}.sh \

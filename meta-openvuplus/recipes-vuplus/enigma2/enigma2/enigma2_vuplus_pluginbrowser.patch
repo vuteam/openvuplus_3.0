@@ -1,5 +1,5 @@
 diff --git a/lib/python/Screens/PluginBrowser.py b/lib/python/Screens/PluginBrowser.py
-index d423f46..0a029ed 100755
+index d423f46..016936f 100755
 --- a/lib/python/Screens/PluginBrowser.py
 +++ b/lib/python/Screens/PluginBrowser.py
 @@ -14,6 +14,9 @@ from Tools.LoadPixmap import LoadPixmap
@@ -81,7 +81,7 @@ index d423f46..0a029ed 100755
  			split = x[3].split('-', 1)
  			if len(split) < 2:
  				continue
-@@ -263,4 +270,56 @@ class PluginDownloadBrowser(Screen):
+@@ -263,4 +270,61 @@ class PluginDownloadBrowser(Screen):
  		self.list = list
  		self["list"].l.setList(list)
  
@@ -100,7 +100,12 @@ index d423f46..0a029ed 100755
 +
 +			for feed in feeds:
 +				Package = None
-+				for line in open(os.path.join(list_dir, feed), 'r'):
++
++				fn = os.path.join(list_dir, feed)
++				if not os.path.exists(fn):
++					continue
++
++				for line in open(fn, 'r'):
 +					if line.startswith("Package:"):
 +						pkg = line.split(":", 1)[1].strip()
 +						if pkg.startswith('enigma2-plugin-') and not pkg.endswith('-dev') and not pkg.endswith('-staticdev') and not pkg.endswith('-dbg') and not pkg.endswith('-doc') and not pkg.endswith('-src'):

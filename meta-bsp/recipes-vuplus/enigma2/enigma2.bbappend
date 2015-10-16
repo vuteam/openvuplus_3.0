@@ -1,6 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-PR .= "-bsp4"
+PR .= "-bsp5"
 
 SRC_URI_append_vusolo = " \
 	file://enigma2_vuplus_misc.patch \
@@ -25,6 +25,12 @@ SRC_URI_append_vuzero = " \
 	file://enigma2_vuplus_remove_pvr_action.patch \
 "
 
+SRC_URI_append_vusolo4k = " \
+	file://skin_user_vusolo4k.xml \
+	file://lcd_icons_vusolo4k \
+	file://enigma2_dvb_ci_fbc.patch \
+"
+
 do_install_append_vuultimo() {
         install -m 0755 ${WORKDIR}/analog.ttf ${D}/usr/share/fonts/
         install -m 0755 ${WORKDIR}/skin_user.xml ${D}/usr/share/enigma2/defaults/
@@ -33,8 +39,14 @@ do_install_append_vuultimo() {
 }
 
 do_install_append_vuduo2() {
-                install -m 0755 ${WORKDIR}/skin_user_vuduo2.xml ${D}/usr/share/enigma2/defaults/skin_user.xml
-                install -d ${D}/usr/share/enigma2/vfd_icons/
-                install -m 0755 ${WORKDIR}/vfd_icons_vuduo2/*.png ${D}/usr/share/enigma2/vfd_icons/
+        install -m 0755 ${WORKDIR}/skin_user_vuduo2.xml ${D}/usr/share/enigma2/defaults/skin_user.xml
+        install -d ${D}/usr/share/enigma2/vfd_icons/
+        install -m 0755 ${WORKDIR}/vfd_icons_vuduo2/*.png ${D}/usr/share/enigma2/vfd_icons/
+}
+
+do_install_append_vusolo4k() {
+        install -m 0755 ${WORKDIR}/skin_user_vusolo4k.xml ${D}/usr/share/enigma2/defaults/skin_user.xml
+        install -d ${D}/usr/share/enigma2/lcd_icons/
+        install -m 0755 ${WORKDIR}/lcd_icons_vusolo4k/*.png ${D}/usr/share/enigma2/lcd_icons/
 }
 

@@ -15,9 +15,9 @@ PROVIDES = "ffmpeg"
 
 ARM_INSTRUCTION_SET = "arm"
 
-DEPENDS = "zlib libogg yasm-native"
+DEPENDS = "zlib libogg yasm-native libsdl"
 
-INC_PR = "r8"
+INC_PR = "r9"
 
 inherit autotools pkgconfig
 

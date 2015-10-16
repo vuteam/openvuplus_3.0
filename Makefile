@@ -19,6 +19,8 @@
 # THE SOFTWARE.
 #
 
+SHELL=/bin/bash
+
 # Note: You can override all variables by storing them
 # in an external file called "make.conf".
 -include conf/make.conf
@@ -29,7 +31,7 @@
 # This only sets the default value. All platforms now use a shared build
 # directory. Run "MACHINE=vuultimo bitbake vuplus-image" to build an image
 # for the vuultimo, if it is not the default.
-MACHINE ?= vusolose
+MACHINE ?= vusolo4k
 
 MULTI_TEMPORARILY ?= YES
 
@@ -220,6 +222,9 @@ $(TOPDIR)/conf/local.conf: $(DEPDIR)/.local.conf.$(MACHINE).$(LOCAL_CONF_HASH)
 	@echo 'USER_CLASSES = "buildstats"' >> $@
 	@echo 'include $(DISTRO_INCLUDE_CONF)' >> $@
 	@echo 'include $(MACHINE_INCLUDE_CONF)' >> $@
+	@if [ "$(MULTI_TEMPORARILY)" == "YES" ] ; then \
+		echo "DEPLOY_DIR_IMAGE = \"\$${DEPLOY_DIR}/images\"" >> $@; \
+	fi
 	@echo 'INHERIT += "rm_work"' >> $@
 
 BBLAYERS_CONF_HASH := $(call hash, \

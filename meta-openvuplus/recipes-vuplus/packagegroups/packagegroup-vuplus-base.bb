@@ -2,7 +2,7 @@ SUMMARY = "Vuplus: Base set of packages for Vuplus."
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-PR = "r3"
+PR = "r4"
 
 inherit packagegroup
 
@@ -30,6 +30,7 @@ VUPLUS_BASE_ESSENTIAL = "\
     mtd-utils-ubidetach \
     mtd-utils-ubimkvol \
     hdparm \
+    gptfdisk \
     usbtunerhelper \
     killall \
     openresolv \
@@ -58,7 +59,6 @@ VUPLUS_FIRMWARE_DVB = " \
 
 VUPLUS_BASE_RECOMMENDS = "\
     dropbear \
-    vuplus-vucamd \
     sambaserver \
     openvpn \
     zeroconf \

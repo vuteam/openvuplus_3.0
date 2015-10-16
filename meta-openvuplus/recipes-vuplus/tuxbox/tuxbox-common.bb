@@ -4,11 +4,12 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=80
 MAINTAINER = "Felix Domke <tmbinc@elitdvb.net>"
 
 PN = "tuxbox-common"
-PR = "r6"
+PR = "r7"
 
 SRC_REV = "12436bfb31dafdc4c73bc4bb5d4cb39a0855c95e"
 
 SRC_URI = "git://code.vuplus.com/git/dvbapp-meta.git;protocol=git;tag=${SRC_REV} "
+SRC_URI += "file://add_uhd_channels.patch"
 
 FILES_${PN} = "/"
 

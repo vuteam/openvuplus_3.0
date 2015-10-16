@@ -12,7 +12,7 @@ IMAGES_VERSION = "1"
 BINARY_VERSION = "7"
 
 PV = "${BINARY_VERSION}.${IMAGES_VERSION}"
-INC_PR = "r8"
+INC_PR = "r9"
 
 SRC_URI = "file://bootlogo.mvi file://backdrop.mvi file://bootlogo_wait.mvi"
 
@@ -21,12 +21,12 @@ PACKAGES = "${PN}"
 INHIBIT_PACKAGE_STRIP = "1"
 
 do_install() {
-	install -d ${D}/boot ${D}${datadir}/${PN}
+	install -d ${D}/boot ${D}${datadir}/vuplus-bootlogo
 	install -d ${D}/usr/share
 	for file in *.mvi; do
-                install -m 0644 $file ${D}${datadir}/${PN}
-                ln -s ${PN}/$file ${D}${datadir}
-		ln -sf ${datadir}/${PN}/$file ${D}/boot/$file;
+                install -m 0644 $file ${D}${datadir}/vuplus-bootlogo
+                ln -s vuplus-bootlogo/$file ${D}${datadir}
+		ln -sf ${datadir}/vuplus-bootlogo/$file ${D}/boot/$file;
         done
 }
 

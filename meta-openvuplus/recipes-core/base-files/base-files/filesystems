@@ -7,4 +7,5 @@ udf
 iso9660
 cdfs
 ntfs-3g
+exfat-fuse
 *

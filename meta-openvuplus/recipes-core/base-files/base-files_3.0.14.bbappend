@@ -1,4 +1,4 @@
-PR .= "-vuplus2"
+PR .= "-vuplus3"
 
 do_install_append() {
 	rm -rf ${D}/hdd
