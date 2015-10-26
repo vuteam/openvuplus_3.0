@@ -4,8 +4,8 @@ COMPATIBLE_MACHINE = "^(vusolo4k)$"
 
 PV="15.2"
 SRCDATE = "20151019"
-SRCDATE_PR = "r0"
+SRCDATE_PR = "r1"
 
 
-SRC_URI[md5sum] = "387ef27c9e0367f7cbe3b54d732b0e1e"
-SRC_URI[sha256sum] = "db4d2bd4956eb240cd14a3c53fc5208ff20d7d692ab4da2bc852df6f44a74a7b"
+SRC_URI[md5sum] = "a0844b2988ea3a825ad2a065dfeafb6b"
+SRC_URI[sha256sum] = "faaa2c07c38869f19d2acb583f8da296965f114e2a7d8e448934cf05b97e0fa3"

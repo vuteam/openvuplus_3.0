@@ -3,7 +3,7 @@ require libgles.inc
 COMPATIBLE_MACHINE = "^(vusolo4k)$"
 
 SRCDATE = "20151019"
-SRCDATE_PR = "r0"
+SRCDATE_PR = "r1"
 PV="15.2"
 
 do_install() {
@@ -26,5 +26,5 @@ do_install() {
 }
 
 
-SRC_URI[md5sum] = "04a63de8a756d9e7143e54ef854c2118"
-SRC_URI[sha256sum] = "a26dfd07d0ea710abb79a8c16a39236c87ce57dbb400e89becde9a422e259abf"
+SRC_URI[md5sum] = "3eb1afc52dad87ffd5bf1f45aecd55da"
+SRC_URI[sha256sum] = "c63f02e0f5c99797c67c1d0e361de2aab86eab67f4dcc8d1dc21b332b15d1e0d"
