@@ -11,7 +11,7 @@ SRCREV="c8fc96e8e51e1ef71e1709f9dd6f733007f9463e"
 SRCDATE="20110215"
 BRANCH="master"
 PV = "experimental-git${SRCDATE}"
-PR = "r12"
+PR = "r13"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
@@ -24,6 +24,8 @@ EXTRA_OECONF = " \
         STAGING_LIBDIR=${STAGING_LIBDIR} \
 	--with-gstversion=1.0 \
 "
+
+PARALLEL_MAKE = ""
 
 SRC_URI_append_vuplus = " \
 	file://enigma2_plugins_mytube_tpm.patch \
