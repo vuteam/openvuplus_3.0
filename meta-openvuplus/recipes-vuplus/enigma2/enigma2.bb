@@ -62,6 +62,7 @@ RDEPENDS_${PN} = " \
 	fuse-exfat \
 	util-linux-partx \
 	vuplus-skins \
+	${@base_contains("VUPLUS_FEATURES", "dvbproxy", "vuplus-dvb-proxy libgles vuplus-platform-util", "vuplus-dvb-modules", d)} \
 	"
 
 PYTHON_RDEPS = " \
@@ -227,10 +228,10 @@ RDEPENDS_enigma2-plugin-systemplugins-backupsuiteusb = "enigma2-plugin-extension
 RDEPENDS_enigma2-plugin-extensions-satipclient = "satipclient"
 
 DEPENDS += "${@base_contains("VUPLUS_FEATURES", "uianimation", "libgles libvugles2" , "", d)}"
-RDEPENDS_${PN}_append_vuplus += "${@base_contains("VUPLUS_FEATURES", "uianimation", "libgles libvugles2" , "", d)}"
+RDEPENDS_${PN}_append_vuplus += "${@base_contains("VUPLUS_FEATURES", "uianimation", "libvugles2" , "", d)}"
 
 PN = "enigma2"
-PR = "r123"
+PR = "r124"
 
 inherit gitpkgv pythonnative
 

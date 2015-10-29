@@ -2,7 +2,7 @@ SUMMARY = "Vuplus: Base set of packages for Vuplus."
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-PR = "r4"
+PR = "r5"
 
 inherit packagegroup
 
@@ -35,7 +35,7 @@ VUPLUS_BASE_ESSENTIAL = "\
     killall \
     openresolv \
     module-init-tools \
-    ${@base_contains("VUPLUS_FEATURES", "dvbproxy", "libgles vuplus-platform-util", "", d)} \
+    ${@base_contains("VUPLUS_FEATURES", "dvbproxy", "vuplus-dvb-proxy libgles vuplus-platform-util", "vuplus-dvb-modules", d)} \
 "
 
 VUPLUS_FIRMWARE_DVB = " \
