@@ -6,7 +6,9 @@ SRCDATE = "20150623"
 SRCDATE_PR = "r0"
 
 pkg_postinst_${PN}_append () {
-  ln -s /lib/modules/${KERNEL_VERSION}/extra/dvb-bcm7241.ko $D/lib/modules/${KERNEL_VERSION}/extra/dvb-bcm.ko
+	if [ ! -f $D/lib/modules/${KERNEL_VERSION}/extra/dvb-bcm.ko ]; then
+		ln -s /lib/modules/${KERNEL_VERSION}/extra/dvb-bcm7241.ko $D/lib/modules/${KERNEL_VERSION}/extra/dvb-bcm.ko
+	fi
 }
 
 SRC_URI[md5sum] = "ef806019a6136f8511db1816e7e5c483"
