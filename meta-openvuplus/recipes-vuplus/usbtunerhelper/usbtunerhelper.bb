@@ -4,7 +4,7 @@ LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
 
 PV = "1.0+git${SRCPV}"
-PR = "r6"
+PR = "r7"
 SRC_REV = ""
 
 SRC_URI = " \
@@ -16,6 +16,8 @@ SRC_URI = " \
 	file://setfrontend_ofdm_fecauto.patch \
 	file://${PN}.sh \
 	"
+
+SRC_URI += "${@base_version_less_or_equal('VUPLUS_KERNEL_VERSION', '3.13.5', '', 'file://fix_vtuner_def.patch', d)}"
 
 do_configure_prepend() {
         sed -i 's/AM_INIT_AUTOMAKE.*$/AM_INIT_AUTOMAKE([foreign subdir-objects])/' ${S}/configure.ac
