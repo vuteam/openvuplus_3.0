@@ -1,0 +1,32 @@
+diff --git a/vtuner.h b/vtuner.h
+index dcc94f8..cac8baf 100644
+--- a/vtuner.h
++++ b/vtuner.h
+@@ -78,13 +78,13 @@ struct vtuner_message {
+ 	} body;
+ };
+ 
+-#define VTUNER_GET_MESSAGE  1
+-#define VTUNER_SET_RESPONSE 2
+-#define VTUNER_SET_NAME     3
+-#define VTUNER_SET_TYPE     4
+-#define VTUNER_SET_HAS_OUTPUTS 5
+-#define VTUNER_SET_FE_INFO  6
+-#define VTUNER_SET_DELSYS   7
++#define VTUNER_GET_MESSAGE  11
++#define VTUNER_SET_RESPONSE 12
++#define VTUNER_SET_NAME     13
++#define VTUNER_SET_TYPE     14
++#define VTUNER_SET_HAS_OUTPUTS 15
++#define VTUNER_SET_FE_INFO  16
++#define VTUNER_SET_DELSYS   17
+ 
+ 
+ class satipVtuner
+@@ -111,4 +111,4 @@ public:
+ 	bool isOpened() { return m_openok; }
+ };
+ 
+-#endif // __VTUNER_H__
+\ No newline at end of file
++#endif // __VTUNER_H__
