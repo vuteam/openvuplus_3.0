@@ -5,16 +5,20 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d32239bcb673463ab874e80d47fae504"
 
 inherit gitpkgv
 
-PR = "r9"
+PR = "r10"
 
 PV = "0.1+git${SRCPV}"
 PKGV = "0.1+git${GITPKGV}"
 SRCREV_pn-${PN} ?= "${AUTOREV}"
 
 DEPENDS += "boost"
-SRC_URI = "git://code.vuplus.com/git/filestreamproxy.git;protocol=git;branch=transtreamproxy"
-
+SRC_URI = "\
+	git://code.vuplus.com/git/filestreamproxy.git;protocol=git;branch=transtreamproxy \
+	file://ext-pid-patch.diff;striplevel=1 \
+	"
 inherit autotools-brokensep
+
+EXTRA_OECONF_vusolo4k += " --enable-ext-pid "
 
 S = "${WORKDIR}/git"
 
@@ -22,3 +26,6 @@ do_install() {
 	install -d ${D}/usr/bin
 	install -m 0755 ${S}/src/transtreamproxy ${D}/usr/bin/transtreamproxy
 }
+
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
