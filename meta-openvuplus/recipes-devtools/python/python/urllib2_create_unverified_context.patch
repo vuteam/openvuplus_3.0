@@ -1,0 +1,18 @@
+commit 7ac30501e99ca139a20701f6b56be3eccacd8ea0
+Author: hschang <chang@dev3>
+Date:   Thu Dec 3 11:03:41 2015 +0900
+
+    [urllib2] Handle target environment that doesn't support HTTPS verification.
+
+diff --git a/Lib/urllib2.py b/Lib/urllib2.py
+index 9277b1d..24e7ada 100644
+--- a/Lib/urllib2.py
++++ b/Lib/urllib2.py
+@@ -112,6 +112,7 @@ except ImportError:
+ # check for SSL
+ try:
+     import ssl
++    ssl._create_default_https_context = ssl._create_unverified_context
+ except ImportError:
+     _have_ssl = False
+ else:
