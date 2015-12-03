@@ -1,0 +1,13 @@
+diff --git a/usbtunerhelper.c b/usbtunerhelper.c
+index e7abc22..ae000de 100644
+--- a/usbtunerhelper.c
++++ b/usbtunerhelper.c
+@@ -263,7 +263,7 @@ void *pump_proc(void *ptr)
+ 		if (_select(adapter->demux + 1, &rset, NULL, NULL, &tv) > 0)
+ 		{
+ 			int size = _read(adapter->demux, adapter->buffer, BUFFER_SIZE);
+-			if (_writeall(adapter->vtuner, adapter->buffer, size) <= 0)
++			if (size > 0 && _writeall(adapter->vtuner, adapter->buffer, size) <= 0)
+ 			{
+ 				break;
+ 			}
