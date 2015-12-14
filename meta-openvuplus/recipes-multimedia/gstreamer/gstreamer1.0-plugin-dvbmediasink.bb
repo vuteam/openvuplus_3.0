@@ -13,6 +13,8 @@ SRC_URI = " \
 	file://dvbmediasink_h265.patch \
 	file://audiosink_change_message_mode_to_sync.diff \
 	file://dvbmediasink_divx4.patch \
+	file://audiosink_mpeg4_aac_header.patch \
+	file://videosink_ffmpeg_mpeg4_nofourcc.patch \
 "
 #SRCREV = "${AUTOREV}"
 SRCREV = "e83973478549ecb52067f30a3537b590d83401d6"
@@ -23,7 +25,7 @@ inherit gitpkgv
 
 PV = "${GSTVERSION}+git${SRCPV}"
 PKGV = "${GSTVERSION}+git${GITPKGV}"
-PR = "r4"
+PR = "r5"
 
 inherit autotools pkgconfig
 
