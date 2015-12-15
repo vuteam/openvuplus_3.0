@@ -10,12 +10,14 @@ GSTVERSION = "1.0"
 
 SRC_URI = " \
 	git://git.code.sf.net/p/openpli/gst-plugin-dvbmediasink;protocol=git;branch=gst-1.0 \
-	file://gstreamer10_dvbmediasink_vuplus.patch \
 	file://dvbmediasink_h265.patch \
 	file://audiosink_change_message_mode_to_sync.diff \
+	file://dvbmediasink_divx4.patch \
+	file://audiosink_mpeg4_aac_header.patch \
+	file://videosink_ffmpeg_mpeg4_nofourcc.patch \
 "
 #SRCREV = "${AUTOREV}"
-SRCREV = "1e99787f3387d3dd1e6167af73597674bf8fe37d"
+SRCREV = "e83973478549ecb52067f30a3537b590d83401d6"
 
 S = "${WORKDIR}/git"
 
@@ -23,7 +25,7 @@ inherit gitpkgv
 
 PV = "${GSTVERSION}+git${SRCPV}"
 PKGV = "${GSTVERSION}+git${GITPKGV}"
-PR = "r3"
+PR = "r5"
 
 inherit autotools pkgconfig
 

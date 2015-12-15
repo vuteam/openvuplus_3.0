@@ -1,6 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-PR .= "-vuplus0"
+PR .= "-vuplus1"
 
 SRC_URI += " \
         file://no-ldconfig.patch \
@@ -8,6 +8,7 @@ SRC_URI += " \
         file://04-default-is-optimized.patch \
         file://99-ignore-optimization-flag.patch \
 	file://pgettext.patch \
+	file://urllib2_create_unverified_context.patch \
 "
 
 EXTRA_OECONF += " \

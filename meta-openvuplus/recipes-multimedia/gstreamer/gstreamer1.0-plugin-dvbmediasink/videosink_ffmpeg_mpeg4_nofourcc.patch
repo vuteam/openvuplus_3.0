@@ -1,0 +1,69 @@
+commit 72631c9afb1b8d94a5639c6300e9e34cd2ee6859
+Author: hschang <chang@dev3>
+Date:   Mon Dec 14 17:17:50 2015 +0900
+
+    dvbvideosink : fix no video problem with "FFmpeg MPEG-4" codec.
+    based on:
+    https://github.com/christophecvr/gstreamer1.0-plugin-multibox-dvbmediasink/commit/cefca9e0a897a806a577bc667aab8f3cc13fdad6
+
+diff --git a/gstdvbvideosink.c b/gstdvbvideosink.c
+index f50929e..7a4f5b4 100644
+--- a/gstdvbvideosink.c
++++ b/gstdvbvideosink.c
+@@ -517,6 +517,25 @@ static gboolean gst_dvbvideosink_event(GstBaseSink *sink, GstEvent *event)
+ 		}
+ 		break;
+ 	}
++	case GST_EVENT_TAG:
++	{
++		GstTagList *taglist;
++		gst_event_parse_tag(event, &taglist);
++		gchar *vcodec_value = NULL;
++		GST_INFO_OBJECT(self,"[*] TAG %"GST_PTR_FORMAT, taglist);
++		gst_tag_list_get_string (taglist, "video-codec", &vcodec_value);
++		if (vcodec_value)
++		{
++			if(!strncmp(vcodec_value,"FFmpeg MPEG-4", 13) && self->mpeg4_no_fourcc)
++			{
++				self->stream_type = STREAMTYPE_XVID;
++				self->use_dts = TRUE;
++				GST_INFO_OBJECT (self, "[*] VIDEO_CODEC = %s, set STREAMTYPE_XVID", vcodec_value);
++			}
++		}
++		ret = GST_BASE_SINK_CLASS(parent_class)->event(sink, event);
++		break;
++	}
+ 	default:
+ 		ret = GST_BASE_SINK_CLASS(parent_class)->event(sink, event);
+ 		break;
+@@ -1283,6 +1302,7 @@ static gboolean gst_dvbvideosink_set_caps(GstBaseSink *basesink, GstCaps *caps)
+ 	const char *mimetype = gst_structure_get_name (structure);
+ 	self->stream_type = STREAMTYPE_UNKNOWN;
+ 	self->must_send_header = TRUE;
++	self->mpeg4_no_fourcc = FALSE;
+ 
+ 	GST_INFO_OBJECT (self, "caps = %" GST_PTR_FORMAT, caps);
+ 
+@@ -1320,6 +1340,9 @@ static gboolean gst_dvbvideosink_set_caps(GstBaseSink *basesink, GstCaps *caps)
+ 					fourcc = GST_STR_FOURCC(value);
+ 				switch (fourcc)
+ 				{
++					case 0:
++						self->mpeg4_no_fourcc = TRUE;
++						break;
+ 					case GST_MAKE_FOURCC('R', 'M', 'P', '4'):
+ 					case GST_MAKE_FOURCC('x', 'v', 'i', 'd'):
+ 					case GST_MAKE_FOURCC('X', 'V', 'I', 'D'):
+diff --git a/gstdvbvideosink.h b/gstdvbvideosink.h
+index 8577f2d..d055d4a 100644
+--- a/gstdvbvideosink.h
++++ b/gstdvbvideosink.h
+@@ -117,6 +117,8 @@ struct _GstDVBVideoSink
+ 	gboolean must_send_header;
+ 
+ 	queue_entry_t *queue;
++
++	gboolean mpeg4_no_fourcc;
+ };
+ 
+ struct _GstDVBVideoSinkClass 

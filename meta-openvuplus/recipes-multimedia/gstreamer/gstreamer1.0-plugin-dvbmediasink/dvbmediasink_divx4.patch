@@ -1,0 +1,23 @@
+diff --git a/gstdvbvideosink.c b/gstdvbvideosink.c
+index 61478f5..f50929e 100644
+--- a/gstdvbvideosink.c
++++ b/gstdvbvideosink.c
+@@ -306,7 +306,6 @@ static void gst_dvbvideosink_class_init(GstDVBVideoSinkClass *self)
+ 	gstbasesink_class->unlock = GST_DEBUG_FUNCPTR (gst_dvbvideosink_unlock);
+ 	gstbasesink_class->unlock_stop = GST_DEBUG_FUNCPTR (gst_dvbvideosink_unlock_stop);
+ 	gstbasesink_class->set_caps = GST_DEBUG_FUNCPTR (gst_dvbvideosink_set_caps);
+-
+ 	element_class->change_state = GST_DEBUG_FUNCPTR (gst_dvbvideosink_change_state);
+ 
+ 	gst_dvb_videosink_signals[SIGNAL_GET_DECODER_TIME] =
+@@ -1633,6 +1632,10 @@ static gboolean gst_dvbvideosink_set_caps(GstBaseSink *basesink, GstCaps *caps)
+ 					gst_buffer_ref (self->codec_data);
+ 				}
+ 				GST_INFO_OBJECT (self, "MIMETYPE video/x-divx vers. 4 -> STREAMTYPE_MPEG4_Part2");
++#if GST_VERSION_MAJOR >= 1
++				self->use_dts = TRUE;
++#endif
++
+ 			break;
+ 			case 6:
+ 			case 5:
