@@ -2,7 +2,7 @@ SUMMARY = "Enigma2 set of packages for Vuplus"
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-PR = "r10"
+PR = "r11"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -72,6 +72,7 @@ RDEPENDS_${PN} += " \
   ${@base_contains("VUPLUS_FEATURES", "uianimation", "enigma2-plugin-systemplugins-animationsetup", "", d)} \
   ${@base_contains("VUPLUS_FEATURES", "xbmc", "enigma2-plugin-extensions-xbmc", "", d)} \
   ${@base_contains("VUPLUS_FEATURES", "minitv", "enigma2-plugin-extensions-minitv", "", d)} \
+  ${@base_contains("VUPLUS_FEATURES", "chromiumos", "enigma2-plugin-extensions-chromium", "", d)} \
 "
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
