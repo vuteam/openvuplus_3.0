@@ -21,6 +21,9 @@ DEPENDS += " \
 DEPENDS += " \
 	${@base_contains("VUPLUS_FEATURES", "xbmc", "enigma2-plugin-extensions-xbmc", "", d)} \
 "
+DEPENDS += " \
+	${@base_contains("VUPLUS_FEATURES", "kodi", "enigma2-plugin-extensions-kodi", "", d)} \
+"
 
 #BAD_RECOMMENDATIONS += "libnss-mdns wpa-supplicant-passphrase"
 BAD_RECOMMENDATIONS += "libnss-mdns"
