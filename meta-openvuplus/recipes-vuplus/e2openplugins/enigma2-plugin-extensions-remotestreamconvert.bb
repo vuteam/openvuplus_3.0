@@ -3,13 +3,13 @@ DESCRIPTION = "Fetch channels from remote bouquets and make them available local
 
 RDEPENDS_${PN} = "python-shell"
 
-PR="r0"
-
 inherit gitpkgv
 PV = "2.0+git${SRCPV}"
 PKGV = "2.0+git${GITPKGV}"
-PR = "r0"
+PR = "r1"
 
 require openplugins-distutils.inc
-
 require assume-gplv2.inc
+
+SRCREV_pn-${PN}="6f45040821703e0afc3c29451da53f0139cd1c33"
+SRC_URI += " file://check_has_isinvisible.patch"
