@@ -12,7 +12,7 @@ PV_arm = "4.4"
 PR = "r7"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-SRC_URI = "http://archive.vuplus.com/download/utils/vuplus-blindscan-utils-${PV}.tar.bz2"
+SRC_URI = "http://archive.vuplus.com/download/utils/vuplus-blindscan-utils-${PV}.tar.gz"
 SRC_URI_arm = "http://archive.vuplus.com/download/utils/vuplus-blindscan-utils-${PV}_arm.tar.gz;name=arm"
 
 S = "${WORKDIR}/blindscan-utils"
@@ -89,8 +89,8 @@ do_install_arm() {
 	done
 }
 
-SRC_URI[md5sum] = "0efbbfd6816d00bd808d2897995a87a6"
-SRC_URI[sha256sum] = "486a22c76e051e98dcc54129ca62ad05d41c2fb78a5cdf9324ca161fece00cd7"
+SRC_URI[md5sum] = "bef93dca53592ba926742e61a7cb898a"
+SRC_URI[sha256sum] = "e5c2ef0a2452aa59c05a7840ec4083ee881334b734f78aed3bd18dd1b951a312"
 
 SRC_URI[arm.md5sum] = "9158847a6fce1ea9b7f7900128717369"
 SRC_URI[arm.sha256sum] = "bffaa88763f2f110a214dc6e5832936158e340342570488210519d001f11efe5"
