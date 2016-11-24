@@ -2,7 +2,7 @@ DESCRIPTION = "dcadec is a free DTS Coherent Acoustics decoder with support for 
 LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://COPYING.LGPLv2.1;md5=4fbd65380cdd255951079008b364516c"
 
-PR = "r0"
+PR = "r1"
 inherit autotools pkgconfig
 
 SRC_URI = "git://github.com/foo86/dcadec.git;protocol=http"
@@ -15,7 +15,11 @@ do_compile() {
 }
 
 do_install() {
-	mkdir -p ${D}/usr/{include,lib/pkgconfig}
+	install -d ${D}
+	install -d ${D}/usr
+	install -d ${D}/usr/include
+	install -d ${D}/usr/lib
+	install -d ${D}/usr/lib/pkgconfig
 	PREFIX=/usr DESTDIR=${D} make -C ${S} install
 }
 

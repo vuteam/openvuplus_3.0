@@ -2,7 +2,7 @@ DESCRIPTION = "Vuplus: W-LAN package group for the Vuplus Distribution"
 SECTION = "vuplus/base"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420"
-PR = "r19"
+PR = "r20"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -53,5 +53,6 @@ RDEPENDS_${PN}_append = "\
 	${KERNEL_WIFI_MODULES} \
 	${LEGACY_MODULES} \
 	rt2870sta \
+	${@base_conditional("MACHINE", "vuultimo4k", "vuplus-wifi-util-vuultimo4k", "", d)} \
 "
 

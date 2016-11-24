@@ -1,0 +1,287 @@
+This patch received help from openpli E2, thank to "Mike Looijmans <milo-software@users.sourceforge.net>"
+diff --git a/lib/driver/Makefile.am b/lib/driver/Makefile.am
+index a781229..28c7c55 100755
+--- a/lib/driver/Makefile.am
++++ b/lib/driver/Makefile.am
+@@ -30,6 +30,7 @@ driverinclude_HEADERS = \
+ 	rcdbox.h \
+ 	rcdreambox2.h \
+ 	rcinput.h \
++	rcinput_swig.h \
+ 	rfmod.h \
+ 	hdmi_cec.h
+ 
+diff --git a/lib/driver/rcinput.cpp b/lib/driver/rcinput.cpp
+old mode 100644
+new mode 100755
+index 64757c5..84792f5
+--- a/lib/driver/rcinput.cpp
++++ b/lib/driver/rcinput.cpp
+@@ -180,8 +180,26 @@ const char *eRCDeviceInputDev::getDescription() const
+ 
+ class eInputDeviceInit
+ {
+-	ePtrList<eRCInputEventDriver> m_drivers;
+-	ePtrList<eRCDeviceInputDev> m_devices;
++	struct element
++	{
++		public:
++			char *m_filename;
++			eRCInputEventDriver *m_driver;
++			eRCDeviceInputDev *m_device;
++
++			element(const char *filename, eRCInputEventDriver *driver, eRCDeviceInputDev *device):
++				m_filename(strdup(filename)), m_driver(driver), m_device(device)
++			{
++			}
++			~element()
++			{
++				delete m_device;
++				delete m_driver;
++				free(m_filename);
++			}
++	};
++	typedef std::vector<element*> itemlist;
++	itemlist m_items;
+ public:
+ 	eInputDeviceInit()
+ 	{
+@@ -193,9 +211,8 @@ public:
+ 			sprintf(filename, "/dev/input/event%d", i);
+ 			if (stat(filename, &s))
+ 				break;
+-			eRCInputEventDriver *p;
+-			m_drivers.push_back(p = new eRCInputEventDriver(filename));
+-			m_devices.push_back(new eRCDeviceInputDev(p));
++
++			add(filename);
+ 			++i;
+ 		}
+ 		eDebug("Found %d input devices!", i);
+@@ -203,14 +220,60 @@ public:
+ 	
+ 	~eInputDeviceInit()
+ 	{
+-		while (m_drivers.size())
++		for (itemlist::iterator it = m_items.begin(); it != m_items.end(); ++it)
+ 		{
+-			delete m_devices.back();
+-			m_devices.pop_back();
+-			delete m_drivers.back();
+-			m_drivers.pop_back();
++			delete (*it);
+ 		}
+ 	}
++
++	void add(const char* filename)
++	{
++		bool no_exist = false;
++		for (itemlist::iterator it = m_items.begin(); it != m_items.end(); ++it)
++		{
++			if (strcmp((*it)->m_filename, filename) == 0)
++			{
++				eDebug("[eInputDeviceInit] %s is already added.", filename);
++				no_exist = true;
++				break;
++			}
++		}
++
++		if (!no_exist)
++		{
++			eDebug("[eInputDeviceInit] adding device %s", filename);
++			eRCInputEventDriver *driver = new eRCInputEventDriver(filename);
++			eRCDeviceInputDev *device = new eRCDeviceInputDev(driver);
++			m_items.push_back(new element(filename, driver, device));
++		}
++	}
++
++	void remove(const char* filename)
++	{
++		for (itemlist::iterator it = m_items.begin(); it != m_items.end(); ++it)
++		{
++			if (strcmp((*it)->m_filename, filename) == 0)
++			{
++				eDebug("[eInputDeviceInit] remove device %s", filename);
++
++				delete *it;
++				m_items.erase(it);
++				return;
++			}
++		}
++		eDebug("[eInputDeviceInit] Remove '%s', not found", filename);
++	}
+ };
+ 
+ eAutoInitP0<eInputDeviceInit> init_rcinputdev(eAutoInitNumbers::rc+1, "input device driver");
++
++void addInputDevice(const char* filename)
++{
++	init_rcinputdev->add(filename);
++}
++
++void removeInputDevice(const char* filename)
++{
++	init_rcinputdev->remove(filename);
++}
++
+diff --git a/lib/driver/rcinput_swig.h b/lib/driver/rcinput_swig.h
+new file mode 100644
+index 0000000..f640f58
+--- /dev/null
++++ b/lib/driver/rcinput_swig.h
+@@ -0,0 +1,3 @@
++void addInputDevice(const char* filename);
++void removeInputDevice(const char* filename);
++
+diff --git a/lib/python/Components/InputHotplug.py b/lib/python/Components/InputHotplug.py
+new file mode 100644
+index 0000000..267be03
+--- /dev/null
++++ b/lib/python/Components/InputHotplug.py
+@@ -0,0 +1,39 @@
++import Netlink
++import enigma
++import os
++
++class NetlinkReader():
++	def __init__(self):
++		from twisted.internet import reactor
++		self.nls = Netlink.NetlinkSocket()
++		reactor.addReader(self)
++
++	def fileno(self):
++		return self.nls.fileno()
++	def doRead(self):
++		for event in self.nls.parse():
++			try:
++				subsystem = event['SUBSYSTEM']
++				if subsystem == 'input':
++					devname = event['DEVNAME']
++					action = event['ACTION']
++					if action == 'add':
++						print "New input device detected:", devname
++						enigma.addInputDevice(os.path.join('/dev', devname));
++					elif action == 'remove':
++						print "Removed input device:", devname
++						enigma.removeInputDevice(os.path.join('/dev', devname));
++				elif subsystem == 'net':
++					from Network import iNetwork
++					iNetwork.hotplug(event)
++			except KeyError:
++				# Ignore "not found"
++				pass
++	def connectionLost(self, failure):
++		# Ignore...
++		print "connectionLost?", failure
++		self.nls.close()
++	def logPrefix(self):
++		return 'NetlinkReader'
++
++reader = NetlinkReader()
+diff --git a/lib/python/Components/Makefile.am b/lib/python/Components/Makefile.am
+index b5ef068..748caf5 100755
+--- a/lib/python/Components/Makefile.am
++++ b/lib/python/Components/Makefile.am
+@@ -19,4 +19,4 @@ install_PYTHON = \
+ 	Element.py Playlist.py ParentalControl.py ParentalControlList.py \
+ 	Ipkg.py SelectionList.py Scanner.py SystemInfo.py DreamInfoHandler.py \
+ 	Task.py language_cache.py Console.py ResourceManager.py TuneTest.py \
+-	Keyboard.py Sensors.py FanControl.py
++	Keyboard.py Sensors.py FanControl.py InputHotplug.py Netlink.py
+diff --git a/lib/python/Components/Netlink.py b/lib/python/Components/Netlink.py
+new file mode 100644
+index 0000000..026f420
+--- /dev/null
++++ b/lib/python/Components/Netlink.py
+@@ -0,0 +1,33 @@
++# Listen to hotplug events. Can be used to listen for hotplug events and
++# similar things, like network connections being (un)plugged.
++import os
++import socket
++
++class NetlinkSocket(socket.socket):
++	def __init__(self):
++		NETLINK_KOBJECT_UEVENT = 15 # hasn't landed in socket yet, see linux/netlink.h
++		socket.socket.__init__(self, socket.AF_NETLINK, socket.SOCK_DGRAM, NETLINK_KOBJECT_UEVENT)
++		self.bind((os.getpid(), -1))
++
++	def parse(self):
++		data = self.recv(512)
++		event = {}
++		for item in data.split('\x00'):
++			if not item:
++				# terminator
++				yield event
++				event = {}
++			else:
++				try:
++					k,v = item.split('=', 1)
++					event[k] = v
++				except:
++					event[None] = item
++
++# Quick unit test (you can run this on any Linux machine)
++if __name__ == '__main__':
++	nls = NetlinkSocket()
++	print "socket no:", nls.fileno()
++	while 1:
++		for item in nls.parse():
++			print repr(item)
+diff --git a/lib/python/Components/Network.py b/lib/python/Components/Network.py
+index c39d1ba..2390bac 100755
+--- a/lib/python/Components/Network.py
++++ b/lib/python/Components/Network.py
+@@ -693,6 +693,21 @@ class Network:
+ 			for p in plugins.getPlugins(PluginDescriptor.WHERE_NETWORKCONFIG_READ):
+ 				p(reason=self.config_ready)
+ 
++	def hotplug(self, event):
++		interface = event['INTERFACE']
++		if self.isBlacklisted(interface):
++			return
++		action = event['ACTION']
++		if action == "add":
++			print "[Network] Add new interface:", interface
++			self.getAddrInet(interface, None)
++		elif action == "remove":
++			print "[Network] Removed interface:", interface
++			try:
++				del self.ifaces[interface]
++			except KeyError:
++				pass
++
+ 	def getInterfacesNameserverList(self, iface):
+ 		result = []
+ 		nameservers = self.getAdapterAttribute(iface, "dns-nameservers")
+diff --git a/lib/python/enigma_python.i b/lib/python/enigma_python.i
+index e9a8161..dc49082 100755
+--- a/lib/python/enigma_python.i
++++ b/lib/python/enigma_python.i
+@@ -44,6 +44,7 @@ is usually caused by not marking PSignals as immutable.
+ #include <lib/base/nconfig.h>
+ #include <lib/base/message.h>
+ #include <lib/driver/rc.h>
++#include <lib/driver/rcinput_swig.h>
+ #include <lib/service/event.h>
+ #include <lib/service/iservice.h>
+ #include <lib/service/service.h>
+@@ -169,6 +170,7 @@ typedef long time_t;
+ %include <lib/base/etpm.h>
+ %include <lib/base/nconfig.h>
+ %include <lib/driver/rc.h>
++%include <lib/driver/rcinput_swig.h>
+ %include <lib/gdi/fb.h>
+ %include <lib/gdi/font.h>
+ %include <lib/gdi/gpixmap.h>
+diff --git a/mytest.py b/mytest.py
+index 99695e0..1daf20b 100755
+--- a/mytest.py
++++ b/mytest.py
+@@ -544,6 +544,7 @@ skin.loadSkinData(getDesktop(0))
+ profile("InputDevice")
+ import Components.InputDevice
+ Components.InputDevice.InitInputDevices()
++import Components.InputHotplug
+ 
+ profile("AVSwitch")
+ import Components.AVSwitch

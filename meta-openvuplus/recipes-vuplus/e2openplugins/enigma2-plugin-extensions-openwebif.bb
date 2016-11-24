@@ -12,7 +12,7 @@ SRCREV_pn-${PN}="d84307958746e6a597b43defe5bd1cb78fd745c8"
 inherit gitpkgv
 PV = "1+git${SRCPV}"
 PKGV = "1+git${GITPKGV}"
-PR = "r1"
+PR = "r3"
 
 require openplugins-distutils.inc
 
@@ -40,6 +40,8 @@ python do_package_prepend () {
   ('vuzero', 'zero.jpg', 'vu_normal.png'),
   ('vuultimo', 'ultimo.jpg', 'vu_ultimo.png'),
   ('vuuno', 'uno.jpg', 'vu_normal.png'),
+  ('vuultimo4k', 'unknown.jpg', 'vu_normal.png'),
+  ('vuuno4k', 'unknown.jpg', 'vu_normal.png'),
   ]
   import os
   top = '${D}${PLUGINPATH}/public/images/'
@@ -61,3 +63,6 @@ python do_package_prepend () {
 }
 
 FILES_${PN} = "${PLUGINPATH}"
+
+do_populate_sysroot[noexec] = "1"
+

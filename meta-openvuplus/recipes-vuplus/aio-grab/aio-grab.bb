@@ -8,7 +8,7 @@ DEPENDS = "jpeg libpng"
 
 SRC_URI = " \
 	git://schwerkraft.elitedvb.net/aio-grab/aio-grab.git;protocol=git;tag=${SRCREV} \
-	file://aio-grab_vuplus_f66b4be472fba59c4ea5b606478ef1a92864a2cd.patch;striplevel=1 \
+	file://aio-grab_vuplus_03b822d1c72c30ba2ce55f8b584be419447dca03.patch;striplevel=1 \
 "
 
 S = "${WORKDIR}/git"

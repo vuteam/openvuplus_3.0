@@ -18,6 +18,8 @@ SRC_URI = "\
 inherit autotools-brokensep
 
 EXTRA_OECONF_vusolo4k += " --enable-ext-pid "
+EXTRA_OECONF_vuultimo4k += " --enable-ext-pid "
+EXTRA_OECONF_vuuno4k += " --enable-ext-pid "
 
 S = "${WORKDIR}/git"
 

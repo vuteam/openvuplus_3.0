@@ -6,10 +6,10 @@ RDEPENDS_${PN} = "ncurses"
 LICENSE = "CLOSED"
 require conf/license/license-close.inc
 
-PV = "3.8"
-PV_arm = "4.0"
+PV = "4.1"
+PV_arm = "4.4"
 
-PR = "r2"
+PR = "r7"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
 SRC_URI = "http://archive.vuplus.com/download/utils/vuplus-blindscan-utils-${PV}.tar.bz2"
@@ -26,6 +26,8 @@ PLUGABLE_MIPSEL_BLINDSCAN = " \
 	ssh108_t2_scan \
 	tt3l10 \
 	tt3l10_t2_scan \
+	tt2l08 \
+	tt2l08_t2_scan \
 "
 
 PLUGABLE_ARM_BLINDSCAN = " \
@@ -36,6 +38,9 @@ PLUGABLE_ARM_BLINDSCAN = " \
 	ssh108_t2_scan \
 	tt3l10 \
 	tt3l10_t2_scan \
+	tt2l08 \
+	tt2l08_t2_scan \
+	bcm3148 \
 "
 
 do_install() {
@@ -87,8 +92,8 @@ do_install_arm() {
 SRC_URI[md5sum] = "0efbbfd6816d00bd808d2897995a87a6"
 SRC_URI[sha256sum] = "486a22c76e051e98dcc54129ca62ad05d41c2fb78a5cdf9324ca161fece00cd7"
 
-SRC_URI[arm.md5sum] = "a8d402731bc957633a28ef88dbec80eb"
-SRC_URI[arm.sha256sum] = "a70c2ec82e6ba1cca71bd61c52dde3d2e6de47f7e168ec57b9ca4af5ef9f2cf4"
+SRC_URI[arm.md5sum] = "9158847a6fce1ea9b7f7900128717369"
+SRC_URI[arm.sha256sum] = "bffaa88763f2f110a214dc6e5832936158e340342570488210519d001f11efe5"
 
 INSANE_SKIP_${PN} = "already-stripped"
 

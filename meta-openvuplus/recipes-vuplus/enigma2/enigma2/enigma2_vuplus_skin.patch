@@ -92,7 +92,7 @@ index fd33298..d8c1982 100644
  	png_destroy_read_struct(&png_ptr, &info_ptr,&end_info);
  	fclose(fp);
 diff --git a/lib/python/Screens/ChannelSelection.py b/lib/python/Screens/ChannelSelection.py
-index 6813381..a4e2771 100755
+index fc176a7..75a933f 100755
 --- a/lib/python/Screens/ChannelSelection.py
 +++ b/lib/python/Screens/ChannelSelection.py
 @@ -2,6 +2,8 @@ from Tools.Profile import profile
@@ -104,7 +104,7 @@ index 6813381..a4e2771 100755
  from Components.ServiceList import ServiceList
  from Components.ActionMap import NumberActionMap, ActionMap, HelpableActionMap
  from Components.MenuList import MenuList
-@@ -732,6 +734,8 @@ class ChannelSelectionBase(Screen):
+@@ -733,6 +735,8 @@ class ChannelSelectionBase(Screen):
  		self["key_yellow"] = Button(_("Provider"))
  		self["key_blue"] = Button(_("Favourites"))
  
@@ -113,7 +113,7 @@ index 6813381..a4e2771 100755
  		self["list"] = ServiceList()
  		self.servicelist = self["list"]
  
-@@ -877,25 +881,51 @@ class ChannelSelectionBase(Screen):
+@@ -878,25 +882,51 @@ class ChannelSelectionBase(Screen):
  		pos = titleStr.find(']')
  		if pos == -1:
  			pos = titleStr.find(')')
@@ -281,10 +281,10 @@ index 2a8801c..fe5bcf0 100755
  
  	def createSummary(self):
 diff --git a/skin.py b/skin.py
-index a0190f1..2de2cf5 100755
+index 933f524..151af61 100755
 --- a/skin.py
 +++ b/skin.py
-@@ -50,7 +50,7 @@ def loadSkin(name, scope = SCOPE_SKIN):
+@@ -55,7 +55,7 @@ def loadSkin(name, scope = SCOPE_SKIN):
  
  # example: loadSkin("nemesis_greenline/skin.xml")
  config.skin = ConfigSubsection()
@@ -293,9 +293,40 @@ index a0190f1..2de2cf5 100755
  
  profile("LoadSkin")
  try:
-@@ -133,6 +133,34 @@ def loadPixmap(path, desktop):
- 		raise SkinError("pixmap file %s not found!" % (path))
- 	return ptr
+@@ -235,14 +235,27 @@ class AttributeParser:
+ 		self.guiObject.setZPosition(int(value))
+ 	def itemHeight(self, value):
+ 		self.guiObject.setItemHeight(int(value))
++
++	def getPixmapPtr(self, value):
++		global pngcache
++		ptr = None
++		for cvalue, cptr in pngcache:
++			if cvalue == value:
++				ptr = cptr
++
++		if ptr is None:
++			ptr = loadPixmap(value, self.desktop)
++
++		return ptr
++
+ 	def pixmap(self, value):
+-		ptr = loadPixmap(value, self.desktop)
++		ptr = self.getPixmapPtr(value)
+ 		self.guiObject.setPixmap(ptr)
+ 	def backgroundPixmap(self, value):
+-		ptr = loadPixmap(value, self.desktop)
++		ptr = self.getPixmapPtr(value)
+ 		self.guiObject.setBackgroundPicture(ptr)
+ 	def selectionPixmap(self, value):
+-		ptr = loadPixmap(value, self.desktop)
++		ptr = self.getPixmapPtr(value)
+ 		self.guiObject.setSelectionPicture(ptr)
+ 	def itemHeight(self, value):
+ 		self.guiObject.setItemHeight(int(value))
+@@ -336,6 +349,34 @@ class AttributeParser:
+ 	def id(self, value):
+ 		pass
  
 +from enigma import runMainloop, eDVBDB, eTimer, quitMainloop, \
 +	getDesktop, ePythonConfigQuery, eAVSwitch, eServiceEvent
@@ -326,22 +357,5 @@ index a0190f1..2de2cf5 100755
 +	print "fail cache main menu"
 +
  def applySingleAttribute(guiObject, desktop, attrib, value, scale = ((1,1),(1,1))):
- 	# and set attributes
- 	try:
-@@ -162,7 +190,15 @@ def applySingleAttribute(guiObject, desktop, attrib, value, scale = ((1,1),(1,1)
- 		elif attrib == 'itemHeight':
- 			guiObject.setItemHeight(int(value))
- 		elif attrib in ("pixmap", "backgroundPixmap", "selectionPixmap"):
--			ptr = loadPixmap(value, desktop) # this should already have been filename-resolved.
-+
-+			global pngcache
-+ 			ptr = None
-+			for cvalue, cptr in pngcache:
-+				if cvalue== value:
-+					ptr=cptr
-+			if ptr is None:
-+				ptr = loadPixmap(value, desktop) # this should already have been filename-resolved.
-+
- 			if attrib == "pixmap":
- 				guiObject.setPixmap(ptr)
- 			elif attrib == "backgroundPixmap":
+ 	# Someone still using applySingleAttribute?
+ 	AttributeParser(guiObject, desktop, scale).applyOne(attrib, value)

@@ -2,7 +2,7 @@ SUMMARY = "Vuplus: Base set of packages for Vuplus."
 SECTION = "vuplus/base"
 LICENSE = "GPLv2"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/GPL-2.0;md5=801f80980d171dd6425610833a22dbe6"
-PR = "r5"
+PR = "r6"
 
 inherit packagegroup
 
@@ -64,6 +64,7 @@ VUPLUS_BASE_RECOMMENDS = "\
     zeroconf \
     ${@base_contains("VUPLUS_FEATURES", "vuplus-fpga-update", "vuplus-fpga-update", "", d)} \
     ${@base_contains("VUPLUS_FEATURES", "wol", "vuplus-coldboot", "", d)} \
+    ${@base_contains("VUPLUS_FEATURES", "wowl", "vuplus-wowl", "", d)} \
 "
 
 VUPLUS_BASE_OPTIONAL_RECOMMENDS = "\

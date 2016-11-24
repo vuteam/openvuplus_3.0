@@ -2,7 +2,7 @@ DESCRIPTION = "Lightweight cross platform C++ GUID/UUID library"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1373274bc8d8001edc54933919f36f68"
 
-PR = "r0"
+PR = "r1"
 inherit autotools pkgconfig
 
 SRC_URI = "\
@@ -22,7 +22,11 @@ do_compile() {
 }
 
 do_install() {
-	mkdir -p ${D}/usr/{include,lib/pkgconfig}
+	install -d ${D}
+	install -d ${D}/usr
+	install -d ${D}/usr/include
+	install -d ${D}/usr/lib
+	install -d ${D}/usr/lib/pkgconfig
 	install -m 644 ${S}/guid.h ${D}/usr/include
 	install -m 644 ${S}/libcrossguid.a ${D}/usr/lib
 	install -m 644 ${WORKDIR}/crossguid.pc ${D}/usr/lib/pkgconfig

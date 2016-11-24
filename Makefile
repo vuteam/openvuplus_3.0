@@ -31,7 +31,7 @@ SHELL=/bin/bash
 # This only sets the default value. All platforms now use a shared build
 # directory. Run "MACHINE=vuultimo bitbake vuplus-image" to build an image
 # for the vuultimo, if it is not the default.
-MACHINE ?= vusolo4k
+MACHINE ?= vuuno4k
 
 MULTI_TEMPORARILY ?= YES
 

@@ -1,8 +1,8 @@
-require directfb-${MACHINE}_1.7.7.inc
+require directfb-${MACHINE}.inc
 
 GFX_FILE = "directfb_1.7-7_gfxdriver_${MACHINE}_${GFXPR}.tar.gz"
 
-PR .= "-vuplus1"
+PR .= "-vuplus1_${GFXPR}"
 
 SRC_URI += " \
 	file://vuplus-conf.patch \
@@ -52,3 +52,5 @@ FILES_${PN}-dbg += "\
 "
 
 BBCLASSEXTEND = "native"
+PACKAGE_ARCH := "${MACHINE_ARCH}"
+

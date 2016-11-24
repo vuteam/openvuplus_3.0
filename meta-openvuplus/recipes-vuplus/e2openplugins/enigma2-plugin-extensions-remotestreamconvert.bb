@@ -6,10 +6,10 @@ RDEPENDS_${PN} = "python-shell"
 inherit gitpkgv
 PV = "2.0+git${SRCPV}"
 PKGV = "2.0+git${GITPKGV}"
-PR = "r1"
+PR = "r2"
 
 require openplugins-distutils.inc
 require assume-gplv2.inc
 
-SRCREV_pn-${PN}="6f45040821703e0afc3c29451da53f0139cd1c33"
+SRCREV_pn-${PN}="baaad0038e26cde4d15e67205fdcb4217ea5a749"
 SRC_URI += " file://check_has_isinvisible.patch"

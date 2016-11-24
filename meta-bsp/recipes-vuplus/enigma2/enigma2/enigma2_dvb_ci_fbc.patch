@@ -10,7 +10,7 @@ index 374672a..1b50e67 100644
 -							case 1: tuner_source = TUNER_B; break;
 -							case 2: tuner_source = TUNER_C; break;
 -							case 3: tuner_source = TUNER_D; break;
-+							case 0 ... 10:
++							case 0 ... 18:
 +								tuner_source = (data_source)tunernum;
 +								break;
  							default:
@@ -20,7 +20,7 @@ index 374672a..1b50e67 100644
  	return slot->getMMIState();
  }
  
-+static const char *tuner_source[] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "CI0", "CI1", "CI2", "CI3"};
++static const char *tuner_source[] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "CI0", "CI1", "CI2", "CI3"};
 +
  int eDVBCIInterfaces::setInputSource(int tuner_no, data_source source)
  {
@@ -98,7 +98,7 @@ index de84e18..c90ec10 100644
  enum data_source
  {
 -	TUNER_A, TUNER_B, TUNER_C, TUNER_D, CI_A, CI_B, CI_C, CI_D
-+	TUNER_A=0, TUNER_B, TUNER_C, TUNER_D, TUNER_E, TUNER_F, TUNER_G, TUNER_H, TUNER_I, TUNER_J, CI_A, CI_B, CI_C, CI_D
++	TUNER_A=0, TUNER_B, TUNER_C, TUNER_D, TUNER_E, TUNER_F, TUNER_G, TUNER_H, TUNER_I, TUNER_J, TUNER_K, TUNER_L, TUNER_M, TUNER_N, TUNER_O, TUNER_P, TUNER_Q, TUNER_R, CI_A, CI_B, CI_C, CI_D
  };
  
  typedef std::pair<std::string, uint32_t> providerPair;
