@@ -1,4 +1,4 @@
-GFXPR = "20151007.r0"
+GFXPR = "20160310.r0"
 
-SRC_URI[gfxdriver.md5sum] = "e97373ce01e9a41c3445d2c672b2efef"
-SRC_URI[gfxdriver.sha256sum] = "f44830ae6ddaf031aac0ffcfd51227ae6b582219b523fd943c601593bf1d9c22"
+SRC_URI[gfxdriver.md5sum] = "8b11fb5d296c79f881c13f443d738cbf"
+SRC_URI[gfxdriver.sha256sum] = "42832063c22b0e669d25747139eaf858cbba2196b2d83c6d0378fa5a0bb62a0d"
