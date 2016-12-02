@@ -2,11 +2,11 @@ require libgles.inc
 
 COMPATIBLE_MACHINE = "^(vuuno4k)$"
 
-SRCDATE = "20161130"
+SRCDATE = "20161202"
 SRCDATE_PR = "r0"
 PV="16.1"
 
 S = "${WORKDIR}/libgles-vuuno4k"
 
-SRC_URI[md5sum] = "612987c0eb9aa1b2bcb9936c24ccf4f6"
-SRC_URI[sha256sum] = "4ab84c13da3beffd3ba15987b35506eb9742fe1e5dfecdd4bd54fa83f3f8c206"
+SRC_URI[md5sum] = "cc448b59d07f7d5b01ecf12b40d3eda8"
+SRC_URI[sha256sum] = "74678d8cf5e387cf6651cf0496224bf58309bf03c13c772e6ab6405d6b3e8a4d"
