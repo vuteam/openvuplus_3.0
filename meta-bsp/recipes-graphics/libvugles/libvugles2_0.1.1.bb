@@ -30,4 +30,3 @@ PACKAGE_ARCH := "${MACHINE_ARCH}"
 
 PACKAGES = "${PN}"
 FILES_${PN} = "/usr/include /usr/lib"
-
