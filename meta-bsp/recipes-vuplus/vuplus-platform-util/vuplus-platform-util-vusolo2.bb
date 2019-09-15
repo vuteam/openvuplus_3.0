@@ -2,9 +2,9 @@ require vuplus-platform-util.inc
 
 COMPATIBLE_MACHINE = "^(vusolo2)$"
 
-SRCDATE = "20161228"
+SRCDATE = "20190429"
 SRCDATE_PR = "r0"
 
 
-SRC_URI[md5sum] = "d38046cf8bbc2ca4e44c8c02313a52de"
-SRC_URI[sha256sum] = "d8c3a1f3f82b8fc8ef34804d2867f2402fbe9cd0ff2e82b57a813523e454b20a"
+SRC_URI[md5sum] = "ae44687b39be2c918dc0ab3e7627164d"
+SRC_URI[sha256sum] = "d1b802933afc01d4102222bb35e37f9281ddf878ca14584d844b94bdaaf31d8c"
